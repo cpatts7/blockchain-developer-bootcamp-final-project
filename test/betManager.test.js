@@ -109,14 +109,14 @@ contract("BetManager", function (accounts) {
 
     assert.equal(
       result[1],
-      betAmount,
-      "the bookiePayout does not match the expected value",
+      bookiePayout,
+      "the bookieCollateral does not match the expected value",
     );
 
     assert.equal(
       result[2],
-      bookiePayout,
-      "the punditPayout does not match the expected value",
+      betAmount,
+      "the punditCollateral does not match the expected value",
     );
 
     assert.equal(
@@ -193,8 +193,16 @@ contract("BetManager", function (accounts) {
 
     const bet = await instance.getBetById.call(1);
 
+    let feeWasPaid = (bet[5] > 0);
+
     assert.equal(
-      bet[4],
+      feeWasPaid,
+      true,
+      "the feeWasPaid should have been true",
+    );
+
+    assert.equal(
+      bet[8],
       1,
       "the result does not match the expected value",
     );
@@ -254,9 +262,17 @@ contract("BetManager", function (accounts) {
     const aliceBalance2 = await web3.eth.getBalance(alice);
 
     const bet = await instance.getBetById.call(1);
+
+    let feeWasPaid = (bet[5] > 0);
+
+    assert.equal(
+      feeWasPaid,
+      true,
+      "the feeWasPaid should have been true",
+    );
     
     assert.equal(
-      bet[4],
+      bet[8],
       2,
       "the result does not match the expected value",
     );
@@ -303,9 +319,17 @@ contract("BetManager", function (accounts) {
     const aliceBalance2 = await web3.eth.getBalance(alice);
 
     const bet = await instance.getBetById.call(1);
+
+    let feeWasNotPaid = (bet[5] == 0);
+
+    assert.equal(
+      feeWasNotPaid,
+      true,
+      "the feeWasNotPaid should have been true",
+    );
     
     assert.equal(
-      bet[4],
+      bet[8],
       3,
       "the result does not match the expected value",
     );

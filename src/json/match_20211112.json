@@ -1,0 +1,6060 @@
+{
+	"Stages": [
+		{
+			"Sid": "8385",
+			"Snm": "Indian Wells Masters",
+			"Scd": "indian-wells-masters",
+			"Cid": "319",
+			"Cnm": "ATP 1000",
+			"Csnm": "ATP 1000",
+			"Ccd": "atp-1000-masters",
+			"Ccdiso": "NON",
+			"Scu": 1,
+			"Chi": 0,
+			"Shi": 0,
+			"Sdn": "Indian Wells Masters",
+			"Events": [
+				{
+					"Eid": "564738",
+					"Pids": {
+						"1": "3744536",
+						"8": "564738",
+						"12": "SBTE_24811606"
+					},
+					"Eps": "W.O.",
+					"Esid": 120,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4010",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "0",
+					"T1": [
+						{
+							"Nm": "John Isner",
+							"ID": "995",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"89579"
+								],
+								"8": [
+									"995"
+								],
+								"12": [
+									"SBTP_77888"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Jannik Sinner",
+							"ID": "958",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"921714"
+								],
+								"8": [
+									"958"
+								],
+								"12": [
+									"SBTP_504916"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013010000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211012071310,
+					"EO": 133,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564706",
+					"Pids": {
+						"1": "3744483",
+						"8": "564706",
+						"12": "SBTE_24811221"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4009",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "4",
+					"Tr2S1": "6",
+					"Tr1S2": "3",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Matteo Berrettini",
+							"ID": "1119",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"313497"
+								],
+								"8": [
+									"1119"
+								],
+								"12": [
+									"SBTP_203167"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Taylor Fritz",
+							"ID": "1021",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"521390"
+								],
+								"8": [
+									"1021"
+								],
+								"12": [
+									"SBTP_143604"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013011000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013023321,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564726",
+					"Pids": {
+						"1": "3744510",
+						"8": "564726",
+						"12": "SBTE_24811608"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4014",
+					"Ewt": 1,
+					"Et": 10,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "0",
+					"Tr1S2": "6",
+					"Tr2S2": "4",
+					"T1": [
+						{
+							"Nm": "Karen Khachanov",
+							"ID": "615",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"488565"
+								],
+								"8": [
+									"615"
+								],
+								"12": [
+									"SBTP_132458"
+								]
+							},
+							"CoNm": "Russia",
+							"CoId": "RUS"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Pablo Carreno Busta",
+							"ID": "536",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"195779"
+								],
+								"8": [
+									"536"
+								],
+								"12": [
+									"SBTP_118549"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013025000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013035623,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564727",
+					"Pids": {
+						"1": "3744508",
+						"8": "564727",
+						"12": "SBTE_24811602"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4013",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "1",
+					"Tr2": "2",
+					"Tr1S1": "6",
+					"Tr2S1": "4",
+					"Tr1S2": "6",
+					"Tr2S2": "7",
+					"Tr1S3": "2",
+					"Tr2S3": "6",
+					"Tr1S2T": "2",
+					"Tr2S2T": "7",
+					"T1": [
+						{
+							"Nm": "Albert Ramos-Vinolas",
+							"ID": "5461",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"72276"
+								],
+								"8": [
+									"5461"
+								],
+								"12": [
+									"SBTP_67779",
+									"SBTP_972428"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Nikoloz Basilashvili",
+							"ID": "764",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"158885"
+								],
+								"8": [
+									"764"
+								],
+								"12": [
+									"SBTP_81685"
+								]
+							},
+							"CoNm": "Georgia",
+							"CoId": "GEO"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013030500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013053020,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564707",
+					"Pids": {
+						"1": "3744488",
+						"8": "564707"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5002",
+					"Ewt": 2,
+					"Et": 11,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "4",
+					"Tr2S1": "6",
+					"Tr1S2": "6",
+					"Tr2S2": "7",
+					"Tr1S2T": "5",
+					"Tr2S2T": "7",
+					"T1": [
+						{
+							"Nm": "Wesley Koolhof",
+							"ID": "518",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"335565"
+								],
+								"8": [
+									"518"
+								]
+							},
+							"CoNm": "Netherlands",
+							"CoId": "NLD"
+						},
+						{
+							"Nm": "Jean-Julien Rojer",
+							"ID": "1121",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48683"
+								],
+								"8": [
+									"1121"
+								],
+								"12": [
+									"SBTP_983637"
+								]
+							},
+							"CoNm": "Netherlands",
+							"CoId": "NLD"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "John Peers",
+							"ID": "535",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"289169"
+								],
+								"8": [
+									"535"
+								]
+							},
+							"CoNm": "Australia",
+							"CoId": "AUS"
+						},
+						{
+							"Nm": "Filip Polasek",
+							"ID": "1204",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"106174"
+								],
+								"8": [
+									"1204"
+								]
+							},
+							"CoNm": "Slovakia",
+							"CoId": "SVK"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013044500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013062237,
+					"EO": 133,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564723",
+					"Pids": {
+						"1": "3744491",
+						"8": "564723",
+						"12": "SBTE_24811650"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4012",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "4",
+					"Tr2S1": "6",
+					"Tr1S2": "6",
+					"Tr2S2": "7",
+					"Tr1S2T": "4",
+					"Tr2S2T": "7",
+					"T1": [
+						{
+							"Nm": "Andy Murray",
+							"ID": "1167",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48783"
+								],
+								"8": [
+									"1167"
+								],
+								"12": [
+									"SBTP_12013"
+								]
+							},
+							"CoNm": "Scotland",
+							"CoId": "SCO"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Alexander Zverev",
+							"ID": "955",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"289951"
+								],
+								"8": [
+									"955"
+								],
+								"12": [
+									"SBTP_95818"
+								]
+							},
+							"CoNm": "Germany",
+							"CoId": "DEU"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013052500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013073520,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564728",
+					"Pids": {
+						"1": "3744514",
+						"8": "564728"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5001",
+					"Ewt": 1,
+					"Et": 11,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "1",
+					"Tr1S2": "6",
+					"Tr2S2": "3",
+					"T1": [
+						{
+							"Nm": "Mate Pavic",
+							"ID": "711",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"277121"
+								],
+								"8": [
+									"711"
+								]
+							},
+							"CoNm": "Croatia",
+							"CoId": "HRV"
+						},
+						{
+							"Nm": "Nikola Mektic",
+							"ID": "738",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"78490"
+								],
+								"8": [
+									"738"
+								]
+							},
+							"CoNm": "Croatia",
+							"CoId": "HRV"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Marcelo Arevalo",
+							"ID": "807",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"313324"
+								],
+								"8": [
+									"807"
+								],
+								"12": [
+									"SBTP_91279"
+								]
+							},
+							"CoNm": "El Salvador",
+							"CoId": "SLV"
+						},
+						{
+							"Nm": "Matwe Middelkoop",
+							"ID": "913",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48672"
+								],
+								"8": [
+									"913"
+								],
+								"12": [
+									"SBTP_983631",
+									"SBTP_992760"
+								]
+							},
+							"CoNm": "Netherlands",
+							"CoId": "NLD"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013064000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013073203,
+					"EO": 133,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564705",
+					"Pids": {
+						"1": "3744476",
+						"8": "564705",
+						"12": "SBTE_24811219"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4011",
+					"Ewt": 1,
+					"Et": 10,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "7",
+					"Tr2S1": "5",
+					"Tr1S2": "6",
+					"Tr2S2": "2",
+					"T1": [
+						{
+							"Nm": "Gael Monfils",
+							"ID": "761",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48653"
+								],
+								"8": [
+									"761"
+								],
+								"12": [
+									"SBTP_1233"
+								]
+							},
+							"CoNm": "France",
+							"CoId": "FRA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Kevin Anderson",
+							"ID": "762",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"79735"
+								],
+								"8": [
+									"762"
+								],
+								"12": [
+									"SBTP_68686"
+								]
+							},
+							"CoNm": "South Africa",
+							"CoId": "ZAF"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013081500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013095250,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564351",
+					"Pids": {
+						"1": "3744104",
+						"8": "564351"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5005",
+					"Ewt": 2,
+					"Et": 11,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "5",
+					"Tr2S1": "7",
+					"Tr1S2": "3",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Jan-Lennard Struff",
+							"ID": "922",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"174436"
+								],
+								"8": [
+									"922"
+								],
+								"12": [
+									"SBTP_74245"
+								]
+							},
+							"CoNm": "Germany",
+							"CoId": "DEU"
+						},
+						{
+							"Nm": "Alexander Zverev",
+							"ID": "955",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"289951"
+								],
+								"8": [
+									"955"
+								],
+								"12": [
+									"SBTP_95818"
+								]
+							},
+							"CoNm": "Germany",
+							"CoId": "DEU"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Rohan Bopanna",
+							"ID": "517",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48389"
+								],
+								"8": [
+									"517"
+								]
+							},
+							"CoNm": "India",
+							"CoId": "IND"
+						},
+						{
+							"Nm": "Denis Shapovalov",
+							"ID": "754",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"657702"
+								],
+								"8": [
+									"754"
+								],
+								"12": [
+									"SBTP_206421"
+								]
+							},
+							"CoNm": "Canada",
+							"CoId": "CAN"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013093500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013104507,
+					"EO": 133,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564725",
+					"Pids": {
+						"1": "3744509",
+						"8": "564725",
+						"12": "SBTE_24811652"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4016",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "1",
+					"Tr2": "2",
+					"Tr1S1": "6",
+					"Tr2S1": "2",
+					"Tr1S2": "3",
+					"Tr2S2": "6",
+					"Tr1S3": "4",
+					"Tr2S3": "6",
+					"T1": [
+						{
+							"Nm": "Fabio Fognini",
+							"ID": "961",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48831"
+								],
+								"8": [
+									"961"
+								],
+								"12": [
+									"SBTP_90213",
+									"SBTP_10760"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Stefanos Tsitsipas",
+							"ID": "880",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"501740"
+								],
+								"8": [
+									"880"
+								],
+								"12": [
+									"SBTP_135616"
+								]
+							},
+							"CoNm": "Greece",
+							"CoId": "GRC"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013095500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013115712,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564720",
+					"Pids": {
+						"1": "3744490",
+						"8": "564720",
+						"12": "SBTE_24811604"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4015",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "4",
+					"Tr2S1": "6",
+					"Tr1S2": "2",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Cristian Garin",
+							"ID": "809",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"308357"
+								],
+								"8": [
+									"809"
+								],
+								"12": [
+									"SBTP_101111"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Alex de Minaur",
+							"ID": "663",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"661656"
+								],
+								"8": [
+									"663"
+								],
+								"12": [
+									"SBTP_268878"
+								]
+							},
+							"CoNm": "Australia",
+							"CoId": "AUS"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013100000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013113319,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8385",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "319",
+						"Cnm": "ATP 1000",
+						"Csnm": "ATP 1000",
+						"Ccd": "atp-1000-masters",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "870053",
+						"8": "8385",
+						"12": "SBTC3_90349"
+					},
+					"Pid": 8,
+					"Spid": 2
+				}
+			]
+		},
+		{
+			"Sid": "8383",
+			"Snm": "Indian Wells Masters",
+			"Scd": "indian-wells-masters",
+			"Cid": "300",
+			"Cnm": "WTA",
+			"Csnm": "WTA",
+			"Ccd": "wta",
+			"Ccdiso": "NON",
+			"Scu": 1,
+			"Chi": 0,
+			"Shi": 0,
+			"Sdn": "Indian Wells Masters",
+			"Events": [
+				{
+					"Eid": "564722",
+					"Pids": {
+						"1": "3744489",
+						"8": "564722",
+						"12": "SBTE_24810819"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5008",
+					"Ewt": 1,
+					"Et": 15,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "4",
+					"Tr1S2": "6",
+					"Tr2S2": "3",
+					"T1": [
+						{
+							"Nm": "Jelena Ostapenko",
+							"ID": "1033",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"386256"
+								],
+								"8": [
+									"1033"
+								],
+								"12": [
+									"SBTP_100997",
+									"SBTP_413449"
+								]
+							},
+							"CoNm": "Latvia",
+							"CoId": "LVA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Iga Swiatek",
+							"ID": "5969",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"754178"
+								],
+								"8": [
+									"5969"
+								],
+								"12": [
+									"SBTP_386716",
+									"SBTP_972406"
+								]
+							},
+							"CoNm": "Poland",
+							"CoId": "POL"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013010500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013024305,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564724",
+					"Pids": {
+						"1": "3744507",
+						"8": "564724",
+						"12": "SBTE_24810820"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5006",
+					"Ewt": 1,
+					"Et": 15,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "1",
+					"Tr1S2": "6",
+					"Tr2S2": "1",
+					"T1": [
+						{
+							"Nm": "Jessica Pegula",
+							"ID": "579",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"169154"
+								],
+								"8": [
+									"579"
+								],
+								"12": [
+									"SBTP_80439",
+									"SBTP_972401"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Elina Svitolina",
+							"ID": "956",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"245250"
+								],
+								"8": [
+									"956"
+								],
+								"12": [
+									"SBTP_86572"
+								]
+							},
+							"CoNm": "Ukraine",
+							"CoId": "UKR"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013010500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013021530,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564745",
+					"Pids": {
+						"1": "3744549",
+						"8": "564745",
+						"12": "SBTE_24811610"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5007",
+					"Ewt": 1,
+					"Et": 15,
+					"Tr1": "2",
+					"Tr2": "1",
+					"Tr1S1": "2",
+					"Tr2S1": "6",
+					"Tr1S2": "6",
+					"Tr2S2": "1",
+					"Tr1S3": "7",
+					"Tr2S3": "6",
+					"Tr1S3T": "7",
+					"Tr2S3T": "4",
+					"T1": [
+						{
+							"Nm": "Shelby Rogers",
+							"ID": "876",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"199816"
+								],
+								"8": [
+									"876"
+								],
+								"12": [
+									"SBTP_75778",
+									"SBTP_972417"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Leylah Fernandez",
+							"ID": "1059",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"839836"
+								],
+								"8": [
+									"1059"
+								],
+								"12": [
+									"SBTP_423546"
+								]
+							},
+							"CoNm": "Canada",
+							"CoId": "CAN"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013023500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013050816,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564694",
+					"Pids": {
+						"1": "3744475",
+						"8": "564694"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1004,
+					"ErnInf": "6003",
+					"Ewt": 2,
+					"Et": 16,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "1",
+					"Tr2S1": "6",
+					"Tr1S2": "6",
+					"Tr2S2": "7",
+					"Tr1S2T": "2",
+					"Tr2S2T": "7",
+					"T1": [
+						{
+							"Nm": "Makoto Ninomiya",
+							"ID": "594",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"299103"
+								],
+								"8": [
+									"594"
+								],
+								"12": [
+									"SBTP_98249"
+								]
+							},
+							"CoNm": "Japan",
+							"CoId": "JPN"
+						},
+						{
+							"Nm": "Sabrina Santamaria",
+							"ID": "952",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"469648"
+								],
+								"8": [
+									"952"
+								],
+								"12": [
+									"SBTP_972407"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Ena Shibahara",
+							"ID": "583",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"523412"
+								],
+								"8": [
+									"583"
+								],
+								"12": [
+									"SBTP_146071"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						},
+						{
+							"Nm": "Shuko Aoyama",
+							"ID": "619",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"230302"
+								],
+								"8": [
+									"619"
+								]
+							},
+							"CoNm": "Japan",
+							"CoId": "JPN"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013030500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013042928,
+					"EO": 133,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564729",
+					"Pids": {
+						"1": "3744511",
+						"8": "564729",
+						"12": "SBTE_24810818"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5005",
+					"Ewt": 1,
+					"Et": 15,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "3",
+					"Tr1S2": "6",
+					"Tr2S2": "4",
+					"T1": [
+						{
+							"Nm": "Victoria Azarenka",
+							"ID": "5642",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"48821"
+								],
+								"8": [
+									"5642"
+								],
+								"12": [
+									"SBTP_6870"
+								]
+							},
+							"CoNm": "Belarus",
+							"CoId": "BLR"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Aliaksandra Sasnovich",
+							"ID": "618",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"239018"
+								],
+								"8": [
+									"618"
+								],
+								"12": [
+									"SBTP_82544",
+									"SBTP_972412"
+								]
+							},
+							"CoNm": "Belarus",
+							"CoId": "BLR"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013055000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013072020,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565302",
+					"Pids": {
+						"1": "3745021",
+						"8": "565302",
+						"12": "SBTE_24825383"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5003",
+					"Ewt": 2,
+					"Et": 15,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "1",
+					"Tr2S1": "6",
+					"Tr1S2": "5",
+					"Tr2S2": "7",
+					"T1": [
+						{
+							"Nm": "Barbora Krejcikova",
+							"ID": "630",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"386199"
+								],
+								"8": [
+									"630"
+								],
+								"12": [
+									"SBTP_94461"
+								]
+							},
+							"CoNm": "Czech Republic",
+							"CoId": "CZE"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Paula Badosa",
+							"ID": "1048",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"435994"
+								],
+								"8": [
+									"1048"
+								],
+								"12": [
+									"SBTP_139904"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013061500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013074129,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565300",
+					"Pids": {
+						"1": "3744999",
+						"8": "565300",
+						"12": "SBTE_24824830"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5004",
+					"Ewt": 1,
+					"Et": 15,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "4",
+					"Tr1S2": "6",
+					"Tr2S2": "1",
+					"T1": [
+						{
+							"Nm": "Angelique Kerber",
+							"ID": "1026",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"49060"
+								],
+								"8": [
+									"1026"
+								],
+								"12": [
+									"SBTP_20823"
+								]
+							},
+							"CoNm": "Germany",
+							"CoId": "DEU"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Ajla Tomljanovic",
+							"ID": "573",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"167150"
+								],
+								"8": [
+									"573"
+								],
+								"12": [
+									"SBTP_75501"
+								]
+							},
+							"CoNm": "Australia",
+							"CoId": "AUS"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013081000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013093347,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565297",
+					"Pids": {
+						"1": "3744996",
+						"8": "565297",
+						"12": "SBTE_24823816"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5001",
+					"Ewt": 2,
+					"Et": 15,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "0",
+					"Tr2S1": "6",
+					"Tr1S2": "2",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Beatriz Haddad Maia",
+							"ID": "7184",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"386081"
+								],
+								"8": [
+									"7184"
+								],
+								"12": [
+									"SBTP_960959"
+								]
+							},
+							"CoNm": "Brazil",
+							"CoId": "BRA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Anett Kontaveit",
+							"ID": "833",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"314254"
+								],
+								"8": [
+									"833"
+								],
+								"12": [
+									"SBTP_85872"
+								]
+							},
+							"CoNm": "Estonia",
+							"CoId": "EST"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013081000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013091407,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565279",
+					"Pids": {
+						"1": "3744991",
+						"8": "565279"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1004,
+					"ErnInf": "6004",
+					"Ewt": 2,
+					"Et": 16,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "5",
+					"Tr2S1": "7",
+					"Tr1S2": "4",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Cori Gauff",
+							"ID": "693",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"879223"
+								],
+								"8": [
+									"693"
+								],
+								"12": [
+									"SBTP_468030"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						},
+						{
+							"Nm": "Leylah Fernandez",
+							"ID": "1059",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"839836"
+								],
+								"8": [
+									"1059"
+								],
+								"12": [
+									"SBTP_423546"
+								]
+							},
+							"CoNm": "Canada",
+							"CoId": "CAN"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Su-Wei Hsieh",
+							"ID": "560",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"48359"
+								],
+								"8": [
+									"560"
+								],
+								"12": [
+									"SBTP_88782"
+								]
+							},
+							"CoNm": "Taiwan",
+							"CoId": "NON"
+						},
+						{
+							"Nm": "Elise Mertens",
+							"ID": "772",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"386657"
+								],
+								"8": [
+									"772"
+								],
+								"12": [
+									"SBTP_109880"
+								]
+							},
+							"CoNm": "Belgium",
+							"CoId": "BEL"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013081000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013094023,
+					"EO": 133,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564730",
+					"Pids": {
+						"1": "3744534",
+						"8": "564730"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1004,
+					"ErnInf": "6001",
+					"Ewt": 2,
+					"Et": 16,
+					"Tr1": "1",
+					"Tr2": "2",
+					"Tr1S1": "6",
+					"Tr2S1": "2",
+					"Tr1S2": "4",
+					"Tr2S2": "6",
+					"Tr1S3": "8",
+					"Tr2S3": "10",
+					"T1": [
+						{
+							"Nm": "Barbora Krejcikova",
+							"ID": "630",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"386199"
+								],
+								"8": [
+									"630"
+								],
+								"12": [
+									"SBTP_94461"
+								]
+							},
+							"CoNm": "Czech Republic",
+							"CoId": "CZE"
+						},
+						{
+							"Nm": "Katerina Siniakova",
+							"ID": "631",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"386578"
+								],
+								"8": [
+									"631"
+								],
+								"12": [
+									"SBTP_105500",
+									"SBTP_964339",
+									"SBTP_405332"
+								]
+							},
+							"CoNm": "Czech Republic",
+							"CoId": "CZE"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Lyudmyla Kichenok",
+							"ID": "568",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"192333"
+								],
+								"8": [
+									"568"
+								],
+								"12": [
+									"SBTP_74520"
+								]
+							},
+							"CoNm": "Ukraine",
+							"CoId": "UKR"
+						},
+						{
+							"Nm": "Jelena Ostapenko",
+							"ID": "1033",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"386256"
+								],
+								"8": [
+									"1033"
+								],
+								"12": [
+									"SBTP_100997",
+									"SBTP_413449"
+								]
+							},
+							"CoNm": "Latvia",
+							"CoId": "LVA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013093000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013111128,
+					"EO": 133,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565298",
+					"Pids": {
+						"1": "3744997",
+						"8": "565298",
+						"12": "SBTE_24823815"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5002",
+					"Ewt": 1,
+					"Et": 15,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "2",
+					"Tr1S2": "6",
+					"Tr2S2": "2",
+					"T1": [
+						{
+							"Nm": "Ons Jabeur",
+							"ID": "593",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"306082"
+								],
+								"8": [
+									"593"
+								],
+								"12": [
+									"SBTP_94468"
+								]
+							},
+							"CoNm": "Tunisia",
+							"CoId": "TUN"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Anna Kalinskaya",
+							"ID": "5501",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 2,
+							"Pids": {
+								"1": [
+									"590222"
+								],
+								"8": [
+									"5501"
+								],
+								"12": [
+									"SBTP_215061"
+								]
+							},
+							"CoNm": "Russia",
+							"CoId": "RUS"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013101000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013113028,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8383",
+						"Snm": "Indian Wells Masters",
+						"Scd": "indian-wells-masters",
+						"Cid": "300",
+						"Cnm": "WTA",
+						"Csnm": "WTA",
+						"Ccd": "wta",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Indian Wells Masters"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "874093",
+						"8": "8383",
+						"12": "SBTC3_112632"
+					},
+					"Pid": 8,
+					"Spid": 2
+				}
+			]
+		},
+		{
+			"Sid": "8412",
+			"Snm": "Alicante, Spain",
+			"Scd": "alicante-spain",
+			"Cid": "309",
+			"Cnm": "ATP Challenger",
+			"Csnm": "ATP Challenger",
+			"Ccd": "atp-challenger",
+			"Ccdiso": "NON",
+			"Scu": 1,
+			"Chi": 0,
+			"Shi": 0,
+			"Sdn": "Alicante, Spain",
+			"Events": [
+				{
+					"Eid": "565546",
+					"Pids": {
+						"1": "3745195",
+						"8": "565546",
+						"12": "SBTE_24828697"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5007",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "5",
+					"Tr2S1": "7",
+					"Tr1S2": "3",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Kacper Zuk",
+							"ID": "864",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"681495"
+								],
+								"8": [
+									"864"
+								],
+								"12": [
+									"SBTP_350133",
+									"SBTP_968140",
+									"SBTP_981434"
+								]
+							},
+							"CoNm": "Poland",
+							"CoId": "POL"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Lucas Miedler",
+							"ID": "1247",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"389314"
+								],
+								"8": [
+									"1247"
+								],
+								"12": [
+									"SBTP_110108",
+									"SBTP_968437"
+								]
+							},
+							"CoNm": "Austria",
+							"CoId": "AUT"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013164000,
+					"LuUT": 0,
+					"Eds": 20211013163850,
+					"Edf": 20211013180232,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8412",
+						"Snm": "Alicante, Spain",
+						"Scd": "alicante-spain",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Alicante, Spain"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875170",
+						"8": "8412",
+						"12": "SBTC3_114731"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565568",
+					"Pids": {
+						"1": "3745252",
+						"8": "565568",
+						"12": "SBTE_24828693"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5003",
+					"Ewt": 1,
+					"Et": 10,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "1",
+					"Tr1S2": "6",
+					"Tr2S2": "4",
+					"T1": [
+						{
+							"Nm": "Oscar Otte",
+							"ID": "839",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"292384"
+								],
+								"8": [
+									"839"
+								],
+								"12": [
+									"SBTP_99792",
+									"SBTP_983651"
+								]
+							},
+							"CoNm": "Germany",
+							"CoId": "DEU"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Thomas Fabbiano",
+							"ID": "606",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"68406"
+								],
+								"8": [
+									"606"
+								],
+								"12": [
+									"SBTP_74403"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013164000,
+					"LuUT": 0,
+					"Eds": 20211013164103,
+					"Edf": 20211013175003,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8412",
+						"Snm": "Alicante, Spain",
+						"Scd": "alicante-spain",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Alicante, Spain"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875170",
+						"8": "8412",
+						"12": "SBTC3_114731"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565567",
+					"Pids": {
+						"1": "3745255",
+						"8": "565567"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5004",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "5",
+					"Tr2S1": "7",
+					"Tr1S2": "4",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Denis Istomin",
+							"ID": "5422",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48848"
+								],
+								"8": [
+									"5422"
+								],
+								"12": [
+									"SBTP_64865",
+									"SBTP_973362"
+								]
+							},
+							"CoNm": "Uzbekistan",
+							"CoId": "UZB"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Denis Yevseyev",
+							"ID": "1160",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"277268"
+								],
+								"8": [
+									"1160"
+								]
+							},
+							"CoNm": "Kazakhstan",
+							"CoId": "KAZ"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013180500,
+					"LuUT": 0,
+					"Eds": 20211013180441,
+					"Edf": 20211013200236,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8412",
+						"Snm": "Alicante, Spain",
+						"Scd": "alicante-spain",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Alicante, Spain"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875170",
+						"8": "8412",
+						"12": "SBTC3_114731"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564620",
+					"Pids": {
+						"1": "3744074",
+						"8": "564620"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5001",
+					"Ewt": 2,
+					"Et": 11,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "4",
+					"Tr2S1": "6",
+					"Tr1S2": "2",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Andre Goeransson",
+							"ID": "651",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"393879"
+								],
+								"8": [
+									"651"
+								]
+							},
+							"CoNm": "Sweden",
+							"CoId": "SWE"
+						},
+						{
+							"Nm": "Szymon Walkow",
+							"ID": "1081",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"479074"
+								],
+								"8": [
+									"1081"
+								],
+								"12": [
+									"SBTP_968449",
+									"SBTP_972796"
+								]
+							},
+							"CoNm": "Poland",
+							"CoId": "POL"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Jeevan Nedunchezhiyan",
+							"ID": "1067",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"302197"
+								],
+								"8": [
+									"1067"
+								]
+							},
+							"CoNm": "India",
+							"CoId": "IND"
+						},
+						{
+							"Nm": "Purav Raja",
+							"ID": "1126",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"102282"
+								],
+								"8": [
+									"1126"
+								]
+							},
+							"CoNm": "India",
+							"CoId": "IND"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013181500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013193152,
+					"EO": 4228,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8412",
+						"Snm": "Alicante, Spain",
+						"Scd": "alicante-spain",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Alicante, Spain"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875170",
+						"8": "8412",
+						"12": "SBTC3_114731"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564625",
+					"Pids": {
+						"1": "3744081",
+						"8": "564625"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5008",
+					"Ewt": 2,
+					"Et": 11,
+					"Tr1": "1",
+					"Tr2": "2",
+					"Tr1S1": "6",
+					"Tr2S1": "3",
+					"Tr1S2": "3",
+					"Tr2S2": "6",
+					"Tr1S3": "5",
+					"Tr2S3": "10",
+					"T1": [
+						{
+							"Nm": "Karol Drzewiecki",
+							"ID": "1080",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"488426"
+								],
+								"8": [
+									"1080"
+								]
+							},
+							"CoNm": "Poland",
+							"CoId": "POL"
+						},
+						{
+							"Nm": "Piotr Matuszewski",
+							"ID": "180639",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"754193"
+								],
+								"8": [
+									"180639"
+								]
+							},
+							"CoNm": "Poland",
+							"CoId": "POL"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Matt Reid",
+							"ID": "863",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"162848"
+								],
+								"8": [
+									"863"
+								],
+								"12": [
+									"SBTP_72657"
+								]
+							},
+							"CoNm": "Australia",
+							"CoId": "AUS"
+						},
+						{
+							"Nm": "Romain Arneodo",
+							"ID": "865",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"264589"
+								],
+								"8": [
+									"865"
+								],
+								"12": [
+									"SBTP_992768"
+								]
+							},
+							"CoNm": "Monaco",
+							"CoId": "NON"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013194500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013204415,
+					"EO": 4228,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8412",
+						"Snm": "Alicante, Spain",
+						"Scd": "alicante-spain",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Alicante, Spain"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875170",
+						"8": "8412",
+						"12": "SBTC3_114731"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564621",
+					"Pids": {
+						"1": "3744078",
+						"8": "564621"
+					},
+					"Eps": "NS",
+					"Esid": 1,
+					"Epr": 0,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5005",
+					"Et": 11,
+					"T1": [
+						{
+							"Nm": "Divij Sharan",
+							"ID": "886",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"92814"
+								],
+								"8": [
+									"886"
+								],
+								"12": [
+									"SBTP_968451",
+									"SBTP_983654"
+								]
+							},
+							"CoNm": "India",
+							"CoId": "IND"
+						},
+						{
+							"Nm": "Lucas Miedler",
+							"ID": "1247",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"389314"
+								],
+								"8": [
+									"1247"
+								],
+								"12": [
+									"SBTP_110108",
+									"SBTP_968437"
+								]
+							},
+							"CoNm": "Austria",
+							"CoId": "AUT"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Diego Augusto Barreto Sanches",
+							"ID": "8628",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"1035294"
+								],
+								"8": [
+									"8628"
+								],
+								"12": [
+									"SBTP_648641",
+									"SBTP_964814"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						},
+						{
+							"Nm": "Daniel Rincon",
+							"ID": "172883",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"1224523"
+								],
+								"8": [
+									"172883"
+								],
+								"12": [
+									"SBTP_767867"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013201500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 0,
+					"EO": 4230,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8412",
+						"Snm": "Alicante, Spain",
+						"Scd": "alicante-spain",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Alicante, Spain"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875170",
+						"8": "8412",
+						"12": "SBTC3_114731"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564623",
+					"Pids": {
+						"1": "3744079",
+						"8": "564623"
+					},
+					"Eps": "NS",
+					"Esid": 1,
+					"Epr": 0,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5006",
+					"Et": 11,
+					"T1": [
+						{
+							"Nm": "Mario Vilella Martinez",
+							"ID": "542",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"385604"
+								],
+								"8": [
+									"542"
+								],
+								"12": [
+									"SBTP_105483",
+									"SBTP_980979",
+									"SBTP_728442",
+									"SBTP_1040875"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						},
+						{
+							"Nm": "Adrian Menendez-Maceiras",
+							"ID": "1187",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"78329"
+								],
+								"8": [
+									"1187"
+								],
+								"12": [
+									"SBTP_266780",
+									"SBTP_965588"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Robert Galloway",
+							"ID": "539",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"685053"
+								],
+								"8": [
+									"539"
+								],
+								"12": [
+									"SBTP_980007"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						},
+						{
+							"Nm": "Alex Lawson",
+							"ID": "695",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"764567"
+								],
+								"8": [
+									"695"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013205500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 0,
+					"EO": 4230,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8412",
+						"Snm": "Alicante, Spain",
+						"Scd": "alicante-spain",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Alicante, Spain"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875170",
+						"8": "8412",
+						"12": "SBTC3_114731"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565545",
+					"Pids": {
+						"1": "3745196",
+						"8": "565545",
+						"12": "SBTE_24828695"
+					},
+					"Eps": "NS",
+					"Esid": 1,
+					"Epr": 0,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5008",
+					"Et": 10,
+					"T1": [
+						{
+							"Nm": "Constant Lestienne",
+							"ID": "905",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"385702"
+								],
+								"8": [
+									"905"
+								],
+								"12": [
+									"SBTP_100032"
+								]
+							},
+							"CoNm": "France",
+							"CoId": "FRA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Fernando Verdasco",
+							"ID": "549",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48250"
+								],
+								"8": [
+									"549"
+								],
+								"12": [
+									"SBTP_1883"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013224500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 0,
+					"EO": 135,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8412",
+						"Snm": "Alicante, Spain",
+						"Scd": "alicante-spain",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Alicante, Spain"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875170",
+						"8": "8412",
+						"12": "SBTC3_114731"
+					},
+					"Pid": 8,
+					"Spid": 2
+				}
+			]
+		},
+		{
+			"Sid": "8411",
+			"Snm": "Napoli 2, Italy",
+			"Sds": "Napoli 2, Italy",
+			"Scd": "napoli-2",
+			"Cid": "309",
+			"Cnm": "ATP Challenger",
+			"Csnm": "ATP Challenger",
+			"Ccd": "atp-challenger",
+			"Ccdiso": "NON",
+			"Scu": 1,
+			"Chi": 0,
+			"Shi": 0,
+			"Sdn": "Napoli 2, Italy",
+			"Events": [
+				{
+					"Eid": "564595",
+					"Pids": {
+						"1": "3743798",
+						"8": "564595"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5002",
+					"Ewt": 2,
+					"Et": 11,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "3",
+					"Tr2S1": "6",
+					"Tr1S2": "6",
+					"Tr2S2": "7",
+					"Tr1S2T": "6",
+					"Tr2S2T": "8",
+					"T1": [
+						{
+							"Nm": "Glenn Smits",
+							"ID": "6301",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"614836"
+								],
+								"8": [
+									"6301"
+								],
+								"12": [
+									"SBTP_973634"
+								]
+							},
+							"CoNm": "Netherlands",
+							"CoId": "NLD"
+						},
+						{
+							"Nm": "Mats Hermans",
+							"ID": "174256",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"866300"
+								],
+								"8": [
+									"174256"
+								]
+							},
+							"CoNm": "Netherlands",
+							"CoId": "NLD"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Jay Clarke",
+							"ID": "881",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"453070"
+								],
+								"8": [
+									"881"
+								],
+								"12": [
+									"SBTP_177738"
+								]
+							},
+							"CoNm": "England",
+							"CoId": "GBR"
+						},
+						{
+							"Nm": "Arjun Kadhe",
+							"ID": "1171",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"385657"
+								],
+								"8": [
+									"1171"
+								],
+								"12": [
+									"SBTP_997933"
+								]
+							},
+							"CoNm": "India",
+							"CoId": "IND"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013160000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013172406,
+					"EO": 4228,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565406",
+					"Pids": {
+						"1": "3745062",
+						"8": "565406",
+						"12": "SBTE_24828484"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5003",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "1",
+					"Tr2": "2",
+					"Tr1S1": "1",
+					"Tr2S1": "6",
+					"Tr1S2": "6",
+					"Tr2S2": "3",
+					"Tr1S3": "2",
+					"Tr2S3": "6",
+					"T1": [
+						{
+							"Nm": "Matteo Arnaldi",
+							"ID": "5661",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"968194"
+								],
+								"8": [
+									"5661"
+								],
+								"12": [
+									"SBTP_570478"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Flavio Cobolli",
+							"ID": "5885",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"1047548"
+								],
+								"8": [
+									"5885"
+								],
+								"12": [
+									"SBTP_635418"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013160500,
+					"LuUT": 0,
+					"Eds": 20211013160549,
+					"Edf": 20211013174125,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565598",
+					"Pids": {
+						"1": "3745276",
+						"8": "565598"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5002",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "3",
+					"Tr2S1": "6",
+					"Tr1S2": "3",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Alvaro Lopez San Martin",
+							"ID": "8597",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"560740"
+								],
+								"8": [
+									"8597"
+								],
+								"12": [
+									"SBTP_192926",
+									"SBTP_1040915"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Tallon Griekspoor",
+							"ID": "1168",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"579876"
+								],
+								"8": [
+									"1168"
+								],
+								"12": [
+									"SBTP_192983"
+								]
+							},
+							"CoNm": "Netherlands",
+							"CoId": "NLD"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013161000,
+					"LuUT": 0,
+					"Eds": 20211013161001,
+					"Edf": 20211013171410,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564589",
+					"Pids": {
+						"1": "3743799",
+						"8": "564589"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5003",
+					"Ewt": 1,
+					"Et": 11,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "2",
+					"Tr1S2": "6",
+					"Tr2S2": "3",
+					"T1": [
+						{
+							"Nm": "Sergio Martos Gornes",
+							"ID": "1125",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"362729"
+								],
+								"8": [
+									"1125"
+								],
+								"12": [
+									"SBTP_109885",
+									"SBTP_988704",
+									"SBTP_728730"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						},
+						{
+							"Nm": "Marco Bortolotti",
+							"ID": "6431",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"313564"
+								],
+								"8": [
+									"6431"
+								],
+								"12": [
+									"SBTP_88384"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Andrea Pellegrino",
+							"ID": "541",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"551063"
+								],
+								"8": [
+									"541"
+								],
+								"12": [
+									"SBTP_126960",
+									"SBTP_968452",
+									"SBTP_566055"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						},
+						{
+							"Nm": "Filippo Palumbo",
+							"ID": "193218",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"1303724"
+								],
+								"8": [
+									"193218"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013173000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013183618,
+					"EO": 4228,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564592",
+					"Pids": {
+						"1": "3743803",
+						"8": "564592"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5007",
+					"Ewt": 1,
+					"Et": 11,
+					"Tr1": "2",
+					"Tr2": "1",
+					"Tr1S1": "3",
+					"Tr2S1": "6",
+					"Tr1S2": "7",
+					"Tr2S2": "5",
+					"Tr1S3": "10",
+					"Tr2S3": "3",
+					"T1": [
+						{
+							"Nm": "Marc-Andrea Huesler",
+							"ID": "5417",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"574698"
+								],
+								"8": [
+									"5417"
+								],
+								"12": [
+									"SBTP_200995"
+								]
+							},
+							"CoNm": "Switzerland",
+							"CoId": "CHE"
+						},
+						{
+							"Nm": "Franco Agamenone",
+							"ID": "8151",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"313201"
+								],
+								"8": [
+									"8151"
+								],
+								"12": [
+									"SBTP_122535"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Filip Jianu",
+							"ID": "1279",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"861929"
+								],
+								"8": [
+									"1279"
+								],
+								"12": [
+									"SBTP_461611",
+									"SBTP_965599"
+								]
+							},
+							"CoNm": "Romania",
+							"CoId": "ROU"
+						},
+						{
+							"Nm": "Evan Furness",
+							"ID": "5683",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"588927"
+								],
+								"8": [
+									"5683"
+								],
+								"12": [
+									"SBTP_234933",
+									"SBTP_744965"
+								]
+							},
+							"CoNm": "France",
+							"CoId": "FRA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013173500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013185828,
+					"EO": 4228,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565566",
+					"Pids": {
+						"1": "3745253",
+						"8": "565566",
+						"12": "SBTE_24828480"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5001",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "2",
+					"Tr2S1": "6",
+					"Tr1S2": "2",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Federico Coria",
+							"ID": "676",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"385445"
+								],
+								"8": [
+									"676"
+								],
+								"12": [
+									"SBTP_93794"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Manuel Guinard",
+							"ID": "5464",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"492969"
+								],
+								"8": [
+									"5464"
+								],
+								"12": [
+									"SBTP_143418"
+								]
+							},
+							"CoNm": "France",
+							"CoId": "FRA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013175500,
+					"LuUT": 0,
+					"Eds": 20211013175635,
+					"Edf": 20211013190442,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564593",
+					"Pids": {
+						"1": "3743802",
+						"8": "564593"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5006",
+					"Ewt": 2,
+					"Et": 11,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "1",
+					"Tr2S1": "6",
+					"Tr1S2": "6",
+					"Tr2S2": "7",
+					"Tr1S2T": "4",
+					"Tr2S2T": "7",
+					"T1": [
+						{
+							"Nm": "Javier Barranco Cosano",
+							"ID": "5596",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"665010"
+								],
+								"8": [
+									"5596"
+								],
+								"12": [
+									"SBTP_269795",
+									"SBTP_997909"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						},
+						{
+							"Nm": "Alvaro Lopez San Martin",
+							"ID": "8597",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"560740"
+								],
+								"8": [
+									"8597"
+								],
+								"12": [
+									"SBTP_192926",
+									"SBTP_1040915"
+								]
+							},
+							"CoNm": "Spain",
+							"CoId": "ESP"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Sadio Doumbia",
+							"ID": "5401",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"492266"
+								],
+								"8": [
+									"5401"
+								],
+								"12": [
+									"SBTP_126463",
+									"SBTP_972772"
+								]
+							},
+							"CoNm": "France",
+							"CoId": "FRA"
+						},
+						{
+							"Nm": "Fabien Reboul",
+							"ID": "5402",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"465067"
+								],
+								"8": [
+									"5402"
+								]
+							},
+							"CoNm": "France",
+							"CoId": "FRA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013185000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013201614,
+					"EO": 4228,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565225",
+					"Pids": {
+						"1": "3744960",
+						"8": "565225",
+						"12": "SBTE_24823979"
+					},
+					"Eps": "S2",
+					"Esid": 93,
+					"Epr": 1,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5004",
+					"Et": 10,
+					"Tr1": "1",
+					"Tr2": "0",
+					"Tr1G": "15",
+					"Tr2G": "15",
+					"Tr1S1": "6",
+					"Tr2S1": "4",
+					"Tr1S2": "2",
+					"Tr2S2": "3",
+					"T1": [
+						{
+							"Nm": "Lorenzo Giustino",
+							"ID": "1015",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"335621"
+								],
+								"8": [
+									"1015"
+								],
+								"12": [
+									"SBTP_96146"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Andrej Martin",
+							"ID": "1075",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"155615"
+								],
+								"8": [
+									"1075"
+								],
+								"12": [
+									"SBTP_75032"
+								]
+							},
+							"CoNm": "Slovakia",
+							"CoId": "SVK"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013192000,
+					"LuUT": 0,
+					"Eds": 20211013191831,
+					"Edf": 0,
+					"EO": 647,
+					"Esrv": 2,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564591",
+					"Pids": {
+						"1": "3743800",
+						"8": "564591"
+					},
+					"Eps": "NS",
+					"Esid": 1,
+					"Epr": 0,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5004",
+					"Et": 11,
+					"T1": [
+						{
+							"Nm": "Vijay Sundar Prashanth",
+							"ID": "1111",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"162423"
+								],
+								"8": [
+									"1111"
+								]
+							},
+							"CoNm": "India",
+							"CoId": "IND"
+						},
+						{
+							"Nm": "Anirudh Chandrasekar",
+							"ID": "1202",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"681509"
+								],
+								"8": [
+									"1202"
+								],
+								"12": [
+									"SBTP_311411"
+								]
+							},
+							"CoNm": "India",
+							"CoId": "IND"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Raul Brancaccio",
+							"ID": "1149",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"681486"
+								],
+								"8": [
+									"1149"
+								],
+								"12": [
+									"SBTP_269658"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						},
+						{
+							"Nm": "Flavio Cobolli",
+							"ID": "5885",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"1047548"
+								],
+								"8": [
+									"5885"
+								],
+								"12": [
+									"SBTP_635418"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013202500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 0,
+					"EO": 4230,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564594",
+					"Pids": {
+						"1": "3743804",
+						"8": "564594"
+					},
+					"Eps": "NS",
+					"Esid": 1,
+					"Epr": 0,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5008",
+					"Et": 11,
+					"T1": [
+						{
+							"Nm": "Raffaele Barba",
+							"ID": "193219",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"1303725"
+								],
+								"8": [
+									"193219"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						},
+						{
+							"Nm": "Giovanni Cozzolino",
+							"ID": "193220",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"1303727"
+								],
+								"8": [
+									"193220"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Andrea Vavassori",
+							"ID": "544",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"625505"
+								],
+								"8": [
+									"544"
+								],
+								"12": [
+									"SBTP_160250"
+								]
+							},
+							"CoNm": "Italy",
+							"CoId": "ITA"
+						},
+						{
+							"Nm": "Dustin Brown",
+							"ID": "7052",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"48480"
+								],
+								"8": [
+									"7052"
+								],
+								"12": [
+									"SBTP_66699",
+									"SBTP_991277"
+								]
+							},
+							"CoNm": "Germany",
+							"CoId": "DEU"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013213000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 0,
+					"EO": 4230,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8411",
+						"Snm": "Napoli 2, Italy",
+						"Sds": "Napoli 2, Italy",
+						"Scd": "napoli-2",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Napoli 2, Italy"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875171",
+						"8": "8411",
+						"12": "SBTC3_206623"
+					},
+					"Pid": 8,
+					"Spid": 2
+				}
+			]
+		},
+		{
+			"Sid": "8409",
+			"Snm": "Santiago 3, Chile",
+			"Sds": "Santiago 3, Chile",
+			"Scd": "santiago-3-chile",
+			"Cid": "309",
+			"Cnm": "ATP Challenger",
+			"Csnm": "ATP Challenger",
+			"Ccd": "atp-challenger",
+			"Ccdiso": "NON",
+			"Scu": 1,
+			"Chi": 0,
+			"Shi": 0,
+			"Sdn": "Santiago 3, Chile",
+			"Events": [
+				{
+					"Eid": "564556",
+					"Pids": {
+						"1": "3744098",
+						"8": "564556",
+						"12": "SBTE_24810533"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4012",
+					"Ewt": 1,
+					"Et": 10,
+					"Tr1": "2",
+					"Tr2": "1",
+					"Tr1S1": "6",
+					"Tr2S1": "4",
+					"Tr1S2": "4",
+					"Tr2S2": "6",
+					"Tr1S3": "6",
+					"Tr2S3": "2",
+					"T1": [
+						{
+							"Nm": "Thiago Agustin Tirante",
+							"ID": "5624",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"851896"
+								],
+								"8": [
+									"5624"
+								],
+								"12": [
+									"SBTP_476032",
+									"SBTP_972781",
+									"SBTP_980442"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Thiago Seyboth Wild",
+							"ID": "5327",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"634161"
+								],
+								"8": [
+									"5327"
+								],
+								"12": [
+									"SBTP_478744"
+								]
+							},
+							"CoNm": "Brazil",
+							"CoId": "BRA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013004500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013030726,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564564",
+					"Pids": {
+						"1": "3744114",
+						"8": "564564"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5005",
+					"Ewt": 1,
+					"Et": 11,
+					"Tr1": "2",
+					"Tr2": "0",
+					"Tr1S1": "6",
+					"Tr2S1": "4",
+					"Tr1S2": "6",
+					"Tr2S2": "3",
+					"T1": [
+						{
+							"Nm": "Amador Salazar",
+							"ID": "192208",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"989374"
+								],
+								"8": [
+									"192208"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						},
+						{
+							"Nm": "Ricardo Urzua",
+							"ID": "192209",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"112697"
+								],
+								"8": [
+									"192209"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Victor Nunez",
+							"ID": "8765",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"164175"
+								],
+								"8": [
+									"8765"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						},
+						{
+							"Nm": "Benjamin Torres",
+							"ID": "148230",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"1237920"
+								],
+								"8": [
+									"148230"
+								],
+								"12": [
+									"SBTP_1120904"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013005500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013021541,
+					"EO": 12420,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564553",
+					"Pids": {
+						"1": "3744099",
+						"8": "564553",
+						"12": "SBTE_24810535"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4013",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "1",
+					"Tr2S1": "6",
+					"Tr1S2": "1",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Enzo Couacaud",
+							"ID": "650",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"409240"
+								],
+								"8": [
+									"650"
+								],
+								"12": [
+									"SBTP_120153"
+								]
+							},
+							"CoNm": "France",
+							"CoId": "FRA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Matheus Pucinelli de Almeida",
+							"ID": "5592",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"879235"
+								],
+								"8": [
+									"5592"
+								],
+								"12": [
+									"SBTP_964965",
+									"SBTP_969277"
+								]
+							},
+							"CoNm": "Brazil",
+							"CoId": "BRA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013015000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013024846,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564558",
+					"Pids": {
+						"1": "3744115",
+						"8": "564558"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5006",
+					"Ewt": 2,
+					"Et": 11,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "3",
+					"Tr2S1": "6",
+					"Tr1S2": "2",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Facundo Acosta",
+							"ID": "5394",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"881272"
+								],
+								"8": [
+									"5394"
+								],
+								"12": [
+									"SBTP_464984"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						},
+						{
+							"Nm": "Hernan Casanova",
+							"ID": "5628",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"385458"
+								],
+								"8": [
+									"5628"
+								],
+								"12": [
+									"SBTP_102904"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Evan King",
+							"ID": "681",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"132171"
+								],
+								"8": [
+									"681"
+								],
+								"12": [
+									"SBTP_97231"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						},
+						{
+							"Nm": "Max Jacob Schnur",
+							"ID": "878",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"560763"
+								],
+								"8": [
+									"878"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013031000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013043025,
+					"EO": 12420,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565276",
+					"Pids": {
+						"1": "3744987",
+						"8": "565276",
+						"12": "SBTE_24820232"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4008",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "5",
+					"Tr2S1": "7",
+					"Tr1S2": "2",
+					"Tr2S2": "6",
+					"T1": [
+						{
+							"Nm": "Lucas Catarina",
+							"ID": "6173",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"629607"
+								],
+								"8": [
+									"6173"
+								],
+								"12": [
+									"SBTP_246343"
+								]
+							},
+							"CoNm": "Monaco",
+							"CoId": "NON"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Marcelo Barrios",
+							"ID": "1116",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"593204"
+								],
+								"8": [
+									"1116"
+								],
+								"12": [
+									"SBTP_290973"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013032500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013051318,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564550",
+					"Pids": {
+						"1": "3744097",
+						"8": "564550",
+						"12": "SBTE_24810531"
+					},
+					"Eps": "FT",
+					"Esid": 6,
+					"Epr": 2,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1016,
+					"ErnInf": "4011",
+					"Ewt": 2,
+					"Et": 10,
+					"Tr1": "0",
+					"Tr2": "2",
+					"Tr1S1": "6",
+					"Tr2S1": "7",
+					"Tr1S2": "4",
+					"Tr2S2": "6",
+					"Tr1S1T": "2",
+					"Tr2S1T": "7",
+					"T1": [
+						{
+							"Nm": "Nicolas Jarry",
+							"ID": "727",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"406625"
+								],
+								"8": [
+									"727"
+								],
+								"12": [
+									"SBTP_121610"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Gerald Melzer",
+							"ID": "7924",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"141693"
+								],
+								"8": [
+									"7924"
+								],
+								"12": [
+									"SBTP_81907"
+								]
+							},
+							"CoNm": "Austria",
+							"CoId": "AUT"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 1,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013053000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013071627,
+					"EO": 645,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564565",
+					"Pids": {
+						"1": "3744110",
+						"8": "564565"
+					},
+					"Eps": "W.O.",
+					"Esid": 120,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5001",
+					"Ewt": 1,
+					"Et": 11,
+					"Tr1": "0",
+					"Tr2": "0",
+					"T1": [
+						{
+							"Nm": "Felipe Meligeni Rodrigues Alves",
+							"ID": "1240",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"653608"
+								],
+								"8": [
+									"1240"
+								],
+								"12": [
+									"SBTP_531863",
+									"SBTP_723066"
+								]
+							},
+							"CoNm": "Brazil",
+							"CoId": "BRA"
+						},
+						{
+							"Nm": "Rafael Matos",
+							"ID": "1294",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"500895"
+								],
+								"8": [
+									"1294"
+								],
+								"12": [
+									"SBTP_983618"
+								]
+							},
+							"CoNm": "Brazil",
+							"CoId": "BRA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Alexis Galarneau",
+							"ID": "1184",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"623554"
+								],
+								"8": [
+									"1184"
+								],
+								"12": [
+									"SBTP_243125"
+								]
+							},
+							"CoNm": "Canada",
+							"CoId": "CAN"
+						},
+						{
+							"Nm": "Thiago Seyboth Wild",
+							"ID": "5327",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"634161"
+								],
+								"8": [
+									"5327"
+								],
+								"12": [
+									"SBTP_478744"
+								]
+							},
+							"CoNm": "Brazil",
+							"CoId": "BRA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013200000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013030032,
+					"EO": 4228,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564562",
+					"Pids": {
+						"1": "3744116",
+						"8": "564562"
+					},
+					"Eps": "W.O.",
+					"Esid": 120,
+					"Epr": 2,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5007",
+					"Ewt": 1,
+					"Et": 11,
+					"Tr1": "0",
+					"Tr2": "0",
+					"T1": [
+						{
+							"Nm": "Sebastian Santibanez",
+							"ID": "148231",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"481874"
+								],
+								"8": [
+									"148231"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						},
+						{
+							"Nm": "Diego Fernandez",
+							"ID": "192210",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"975523"
+								],
+								"8": [
+									"192210"
+								],
+								"12": [
+									"SBTP_528989"
+								]
+							},
+							"CoNm": "Chile",
+							"CoId": "CHL"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Francisco Cerundolo",
+							"ID": "1225",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"807176"
+								],
+								"8": [
+									"1225"
+								],
+								"12": [
+									"SBTP_348585"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						},
+						{
+							"Nm": "Camilo Ugo Carabelli",
+							"ID": "5448",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"751196"
+								],
+								"8": [
+									"5448"
+								],
+								"12": [
+									"SBTP_340770",
+									"SBTP_512666",
+									"SBTP_970006"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013200000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 20211013030032,
+					"EO": 4228,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565238",
+					"Pids": {
+						"1": "3744970",
+						"8": "565238",
+						"12": "SBTE_24823994"
+					},
+					"Eps": "NS",
+					"Esid": 1,
+					"Epr": 0,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5001",
+					"Et": 10,
+					"T1": [
+						{
+							"Nm": "Juan Manuel Cerundolo",
+							"ID": "915",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"916481"
+								],
+								"8": [
+									"915"
+								],
+								"12": [
+									"SBTP_462572"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Pedro Cachin",
+							"ID": "5490",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"313654"
+								],
+								"8": [
+									"5490"
+								],
+								"12": [
+									"SBTP_964880",
+									"SBTP_112918",
+									"SBTP_980824"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013210500,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 0,
+					"EO": 135,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "565679",
+					"Pids": {
+						"1": "3745407",
+						"8": "565679"
+					},
+					"Eps": "NS",
+					"Esid": 1,
+					"Epr": 0,
+					"Ecov": 0,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5007",
+					"Et": 10,
+					"T1": [
+						{
+							"Nm": "Matheus Pucinelli de Almeida",
+							"ID": "5592",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"879235"
+								],
+								"8": [
+									"5592"
+								],
+								"12": [
+									"SBTP_964965",
+									"SBTP_969277"
+								]
+							},
+							"CoNm": "Brazil",
+							"CoId": "BRA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Nicolas Kicker",
+							"ID": "142645",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"385478"
+								],
+								"8": [
+									"142645"
+								],
+								"12": [
+									"SBTP_98273"
+								]
+							},
+							"CoNm": "Argentina",
+							"CoId": "ARG"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013223000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 0,
+					"EO": 135,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				},
+				{
+					"Eid": "564559",
+					"Pids": {
+						"1": "3744111",
+						"8": "564559"
+					},
+					"Eps": "NS",
+					"Esid": 1,
+					"Epr": 0,
+					"Ecov": 2,
+					"ErnO": 0,
+					"Ern": 1008,
+					"ErnInf": "5002",
+					"Et": 11,
+					"T1": [
+						{
+							"Nm": "Nicolas Barrientos",
+							"ID": "550",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"257811"
+								],
+								"8": [
+									"550"
+								],
+								"12": [
+									"SBTP_88762"
+								]
+							},
+							"CoNm": "Colombia",
+							"CoId": "COL"
+						},
+						{
+							"Nm": "Fernando Romboli",
+							"ID": "556",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"56761"
+								],
+								"8": [
+									"556"
+								],
+								"12": [
+									"SBTP_965600",
+									"SBTP_961353",
+									"SBTP_278609"
+								]
+							},
+							"CoNm": "Brazil",
+							"CoId": "BRA"
+						}
+					],
+					"T2": [
+						{
+							"Nm": "Nick Chappell",
+							"ID": "889",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"385569"
+								],
+								"8": [
+									"889"
+								],
+								"12": [
+									"SBTP_113115",
+									"SBTP_1041363"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						},
+						{
+							"Nm": "Reese Stalder",
+							"ID": "181826",
+							"tbd": 0,
+							"EL": [],
+							"Gd": 1,
+							"Pids": {
+								"1": [
+									"949924"
+								],
+								"8": [
+									"181826"
+								]
+							},
+							"CoNm": "USA",
+							"CoId": "USA"
+						}
+					],
+					"IncsX": 0,
+					"ComX": 0,
+					"LuX": 0,
+					"StatX": 0,
+					"SubsX": 0,
+					"SDFowX": 0,
+					"SDInnX": 0,
+					"Esd": 20211013230000,
+					"LuUT": 0,
+					"Eds": 0,
+					"Edf": 0,
+					"EO": 4230,
+					"Eact": 1,
+					"Stg": {
+						"Sid": "8409",
+						"Snm": "Santiago 3, Chile",
+						"Sds": "Santiago 3, Chile",
+						"Scd": "santiago-3-chile",
+						"Cid": "309",
+						"Cnm": "ATP Challenger",
+						"Csnm": "ATP Challenger",
+						"Ccd": "atp-challenger",
+						"Ccdiso": "NON",
+						"Scu": 1,
+						"Chi": 0,
+						"Shi": 0,
+						"Sdn": "Santiago 3, Chile"
+					},
+					"Ehid": 0,
+					"Sids": {
+						"1": "875169",
+						"8": "8409",
+						"12": "SBTC3_206627"
+					},
+					"Pid": 8,
+					"Spid": 2
+				}
+			]
+		}
+	]
+}
