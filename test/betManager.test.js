@@ -67,6 +67,29 @@ contract("BetManager", function (accounts) {
 
   });
 
+  //on an evens odds bet. ie: 1:1 it is typical that a bookie will include a spread so they make money no matter what result occurs. 
+  //In this case if lay odds 1.95 on both sides (1 ETH liquidity each side) they will lose 1 ETH on 1 result but make 1.05 ETH on the other which is a total of 2.05 ETH. 
+  //They profit 0.05 ETH with no risk (assuming they sell both sides to pundits)
+  it("Bookie Add Liquidity with 2.5% Spread", async () => {
+    await instance.addLiquidity(1, 1, 195, { from: chris, value: bookiePaymentAmount1 });
+    await instance.addLiquidity(1, 2, 195, { from: chris, value: bookiePaymentAmount1 });
+    const betAmount = web3.utils.toWei('1.052631578947368', 'ether');
+    await instance.placeBet(1, { from: alice, value: betAmount });
+    await instance.placeBet(2, { from: alice, value: betAmount });
+    const result1 = await instance.getLiquidityById.call(1);
+    const result2 = await instance.getLiquidityById.call(2);
+    assert.equal(
+      web3.utils.fromWei(result1[2]),
+      0.0000000000000004,
+      "the remainingLiquidity does not match the expected value",
+    );
+    assert.equal(
+      web3.utils.fromWei(result2[2]),
+      0.0000000000000004,
+      "the remainingLiquidity does not match the expected value",
+    );
+  });
+
   it("Placing Bet", async () => {
     const betAmount = web3.utils.toWei('1', 'ether');
     const bookiePayout = web3.utils.toWei('0.5', 'ether');
@@ -162,7 +185,7 @@ contract("BetManager", function (accounts) {
     const chrisBalance1 = await web3.eth.getBalance(chris);
     const aliceBalance1 = await web3.eth.getBalance(alice);
 
-    await instance.setResult(1, 1, { from: contractOwner, value: 0 });
+    const tx1 = await instance.setResult(1, 1, { from: contractOwner, value: 0 });
 
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);
@@ -197,6 +220,20 @@ contract("BetManager", function (accounts) {
       false,
       "the ownerBalance1 " + ownerBalance1 + " should not match ownerBalance2" + ownerBalance2,
     );
+
+    it("should emit a BetResult event when result is set", async () => {
+      let eventEmitted = false;
+      
+      if (tx1.logs[0].event == "BetResult") {
+        eventEmitted = true;
+      }
+
+      assert.equal(
+        eventEmitted,
+        true,
+        "laying a bet should emit a BetResult event",
+      );
+    });
     
   });
 
