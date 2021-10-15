@@ -3,146 +3,194 @@ pragma solidity >=0.5.16 <0.9.0;
 import "./safemath.sol";
 contract BetManager {
 
-    address public owner;
+    address payable public owner;
     uint256 betCounter;
+    uint256 liquidityCounter;
     uint minBet = 0.001 ether;
+    uint minLiquidity = 0.001 ether;
 
     Bet[] public bets;
     mapping (uint256 => uint) private betMapping;
-    
-    enum State{ NeedPundit, NeedBookie, Matched }
-    enum MatchResult{ Undecided, BookieWon, PunditWon }
 
-    event BookieLayingOdds(uint256 id);
-    event PunditLookingForBookie(uint256 id);
-    event BetFinalized(uint256 id);
+    Liquidity[] public betPools;
+    mapping (uint256 => uint) private poolMapping;
+    
+    enum MatchResult{ Undecided, BookieWon, PunditWon, Void }
+
+    event BookieProvidingLiquidity(uint256 id);
+    event BetPlaced(uint256 id);
 
     struct Bet {
         uint256 id;
-        uint matchId; //each match will have a unique id
-        uint sideId; //will need to choose the winning side of the match
-        uint bookieAmount;
-        uint punditAmount;
-        uint256 odds; // 1.50 odds would be stored as 150 (*100).
-        bool sold;
-        State state;
+        uint256 liquidityId;
+        uint bookiePayout;
+        uint punditPayout;
+        address payable pundit; //account taking a punt on this outcome (they want to win)
         MatchResult result;
-        address bookie; //account laying the odds (they do not want this bet to pay out)
-        address pundit; //account taking a punt on this outcome (they want to win)
     }
 
-    function isOwner() public view returns(bool) {
-        return msg.sender == owner;
+    struct Liquidity {
+        uint256 id;
+        address payable bookie; //account laying the odds (they do not want this bet to pay out)
+        uint matchId; //each match will have a unique id
+        uint sideId; //will need to choose the winning side of the match
+        uint remainingLiquidity;
+        uint256 odds; // 1.50 odds would be stored as 150 (*100).
+        bool closed;
+    }
+
+
+      /* 
+   * Modifiers
+   */
+
+  // Create a modifer, `isOwner` that checks if the msg.sender is the owner of the contract
+  function isOwner() public view returns(bool) {
+    return msg.sender == owner;
+  }
+
+
+    // Fallback function - Called if other functions don't match call or
+    // sent ether without data
+    // Typically, called when invalid data is sent
+    // Added so ether sent to this contract is reverted if the contract fails
+    // otherwise, the sender's money is transferred to contract
+    function () external payable {
+        revert();
     }
 
     constructor() public {
         owner = msg.sender;
     }
 
-    modifier verifyCaller (address _address) { 
-        require(isOwner());
-        _;
-    }
-
-    function bookieLayOdds(uint _matchId, uint _sideId, uint256 _odds) public payable returns (uint _id)
+    
+    function addLiquidity(uint _matchId, uint _sideId, uint256 _odds) public payable returns (uint _id)
     {
         require(_odds > 100);
-        require(msg.value >= minBet);
-        //require(msg.value >= _bookieAmount);
-        //require(SafeMath.mul(_punditAmount, _odds)-(SafeMath.mul(_punditAmount,100)) == SafeMath.mul(_bookieAmount,100));
-        _id = CreateBet(_matchId, _sideId, _odds, State.NeedPundit, msg.sender, address(0));
-        
-        bets[betMapping[_id]].bookieAmount = msg.value;
-        //bets[betMapping[_id]].punditAmount = _punditAmount;
+        require(msg.value >= minLiquidity);
 
-        emit BookieLayingOdds(_id);
-    }
+        _id = ++liquidityCounter;
 
-    function PunditPlaceOpenBet(uint _matchId, uint _sideId, uint256 _odds) public payable returns (uint _id)
-    {
-        require(_odds > 100);
-        require(msg.value > 0.001 ether);
-        _id = CreateBet(_matchId, _sideId, _odds, State.NeedBookie, address(0), msg.sender);
-        bets[betMapping[_id]].punditAmount = msg.value;
-        bets[betMapping[_id]].bookieAmount = (_odds/100*msg.value)-msg.value;
-        emit PunditLookingForBookie(_id);
-    }
-
-    function CreateBet(uint _matchId, uint _sideId, uint256 _odds, State _state, address _bookie, address _pundit) private returns (uint) {
-        uint _betId = ++betCounter;
-
-        bets.push(Bet({
-            id: _betId,
+        betPools.push(Liquidity({
+            id: _id,
+            bookie: msg.sender,
             matchId: _matchId, 
             sideId: _sideId,
-            bookieAmount: 0,
-            punditAmount: 0,
+            remainingLiquidity: msg.value,
             odds: _odds, 
-            state: _state, 
-            bookie: _bookie, 
-            pundit: _pundit,
-            sold: false,
+            closed: false
+            }));
+
+        poolMapping[_id] = _id-1;
+
+        emit BookieProvidingLiquidity(_id);
+
+    }
+
+    function placeBet(uint256 _liquidityId) public payable returns (uint256 _id)
+    {
+        require(msg.value >= minBet);
+        
+        Liquidity storage _l = betPools[poolMapping[_liquidityId]];
+        require(_l.closed == false);
+
+        uint256 poolRequired = SafeMath.div(SafeMath.mul(msg.value, _l.odds), 100)-msg.value;
+        require(_l.remainingLiquidity >= poolRequired);
+
+        _id = ++betCounter;
+
+        bets.push(Bet({
+            id: _id,
+            liquidityId: _liquidityId, 
+            bookiePayout: msg.value, //the amount paid to the bookie if they win (they will get their collateral back as well)
+            punditPayout: poolRequired, //the amount paid to the pundit if they win (they also get their stake back)
+            pundit: msg.sender,
             result: MatchResult.Undecided
             }));
 
-        betMapping[_betId] = _betId-1;
+        betMapping[_id] = _id-1;
 
-        return _betId;
+        _l.remainingLiquidity = SafeMath.sub(_l.remainingLiquidity, poolRequired);
+        if (_l.remainingLiquidity == 0)
+        {
+            _l.closed = true;
+        }
+
+        emit BetPlaced(_id);
+
     }
 
-    function PunditTakeBet(uint _betId) public payable returns (bool) {
-        require(bets[betMapping[_betId]].state == State.NeedPundit);
-        require(bets[betMapping[_betId]].sold == false);
-        require(bets[betMapping[_betId]].result == MatchResult.Undecided);
-        require(bets[betMapping[_betId]].punditAmount <= msg.value);
+    function setResult(uint256 _betId, MatchResult _result) public payable returns (bool _success) {
+        require(isOwner());
+        require(msg.value == 0);
 
-        bets[betMapping[_betId]].pundit = msg.sender;
-        bets[betMapping[_betId]].sold = true;
+        Bet storage _bet = bets[betMapping[_betId]];
+        Liquidity storage _l = betPools[poolMapping[_bet.liquidityId]];
+        require(_bet.result == MatchResult.Undecided);
 
-        emit BetFinalized(_betId);
-        return true;
+        _bet.result = _result;
+
+        if (_result == MatchResult.BookieWon)
+        {
+            uint256 fee = SafeMath.div(_bet.bookiePayout, 100);
+            uint256 payout = _bet.bookiePayout + _bet.punditPayout - fee;
+            _l.bookie.transfer(payout);
+            owner.transfer(fee);
+        }
+        else if (_result == MatchResult.PunditWon)
+        {
+            uint256 fee = SafeMath.div(_bet.punditPayout, 100);
+            uint256 payout = _bet.bookiePayout + _bet.punditPayout - fee;
+            _bet.pundit.transfer(payout);
+            owner.transfer(fee);
+        }
+        else if (_result == MatchResult.Void)
+        {
+            //refund their money as the match was cancelled
+            _l.bookie.transfer(_bet.punditPayout);
+            _bet.pundit.transfer(_bet.bookiePayout);
+        }
+
+        _success = true;
+
     }
 
-    function BookieTakeBet(uint _betId) public payable returns (bool) {
-        require(bets[betMapping[_betId]].state == State.NeedBookie);
-        require(bets[betMapping[_betId]].sold == false);
-        require(bets[betMapping[_betId]].result == MatchResult.Undecided);
-        require(bets[betMapping[_betId]].bookieAmount <= msg.value);
-
-        bets[betMapping[_betId]].bookie = msg.sender;
-        bets[betMapping[_betId]].sold = true;
-
-        emit BetFinalized(_betId);
-        return true;
+    function refundLiquidity(uint _id) public payable returns (bool _result) {
+        require(isOwner());
+        require(msg.value == 0);
+        Liquidity storage _l = betPools[poolMapping[_id]];
+        require(!_l.closed);
+        
+        _l.closed = true;
+        uint refund = _l.remainingLiquidity;
+        _l.remainingLiquidity = 0;
+        _l.bookie.transfer(refund);
+        _result = true;
     }
 
-    function getBetById(uint _id) public view
-     returns (uint matchId, //each match will have a unique id
-        uint sideId, //will need to choose the winning side of the match
-        uint bookieAmount,
-        uint punditAmount,
-        uint256 odds, // 1.50 odds would be stored as 150 (*100).
-        bool sold,
-        State state,
-        MatchResult result,
-        address bookie, //account laying the odds (they do not want this bet to pay out)
-        address pundit)
-   { 
-     Bet storage bet = bets[betMapping[_id]];
-     matchId = bet.matchId;
-     sideId = bet.sideId;
-     bookieAmount = bet.bookieAmount;
-     punditAmount = bet.punditAmount;
-     odds = bet.odds;
-     sold = bet.sold;
-     state = bet.state;
-     result = bet.result; 
-     bookie = bet.bookie; 
-     pundit = bet.pundit; 
-     return (matchId, sideId, bookieAmount, punditAmount, odds, sold, state, result, bookie, pundit); 
-   }
+    function getLiquidityById(uint _id) public view returns (uint matchId, uint sideId, uint256 remainingLiquidity, bool closed)
+    {
+        Liquidity storage _l = betPools[poolMapping[_id]];
+        matchId = _l.matchId;
+        sideId = _l.sideId;
+        remainingLiquidity = _l.remainingLiquidity;
+        closed = _l.closed;
+        return (matchId, sideId, remainingLiquidity, closed);
+    }
 
-    function ContractBalance() public view returns (uint256 _balance) {
+    function getBetById(uint _id) public view returns (uint256 liquidityId, uint bookiePayout, uint punditPayout, address pundit, MatchResult result)
+    {
+        Bet storage bet = bets[betMapping[_id]];
+        liquidityId = bet.liquidityId;
+        bookiePayout = bet.bookiePayout;
+        punditPayout = bet.punditPayout;
+        pundit = bet.pundit;
+        result = bet.result;
+        return (liquidityId, bookiePayout, punditPayout, pundit, result);
+    }
+
+
+    function contractBalance() public view returns (uint256 _balance) {
         _balance = address(this).balance;
     }
 
