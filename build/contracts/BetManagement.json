@@ -1,0 +1,148 @@
+{
+  "contractName": "BetManagement",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BetManagement.sol\":\"BetManagement\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/BetManagement.sol\":{\"keccak256\":\"0x308c46ff285021ed4390263b935c1dca4733fc93104bb9342063afef1c11d20b\",\"urls\":[\"bzz-raw://ed2a908730e8b1121398373ce5690ac9639535c67029a04c4e9598a70f2d9489\",\"dweb:/ipfs/Qmf9ivLjDGZeTq49GwPCzqAmH8Xea41BdZy4SP3hMXL17m\"]},\"project:/contracts/safemath.sol\":{\"keccak256\":\"0x066186b47477a5012a5b54f18e7d5f4921d542742b9475e85ae44ca1c98c70cb\",\"urls\":[\"bzz-raw://70c80649157806e3e63ebe3913c82ae25a120c17adeccfe9d9352f1f51da479f\",\"dweb:/ipfs/QmdjMioAGrHuP6MTV1ufUMEQJetjEZZwFtF9C9yFz6DMJc\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a723158208892fe6db2c8274e8f4bc87957510ce976f5a1564d56ccec7aeba34cb016a38964736f6c63430005100032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a723158208892fe6db2c8274e8f4bc87957510ce976f5a1564d56ccec7aeba34cb016a38964736f6c63430005100032",
+  "sourceMap": "62:27:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;62:27:0;;;;;;;",
+  "deployedSourceMap": "62:27:0:-;;;;;",
+  "source": "pragma solidity >=0.5.16 <0.9.0;\r\nimport \"./safemath.sol\";\r\n\r\ncontract BetManagement {\r\n}",
+  "sourcePath": "E:\\GIT\\blockchain-developer-bootcamp-final-project\\contracts\\BetManagement.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/BetManagement.sol",
+    "exportedSymbols": {
+      "BetManagement": [
+        3
+      ]
+    },
+    "id": 4,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".16",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:0"
+      },
+      {
+        "absolutePath": "project:/contracts/safemath.sol",
+        "file": "./safemath.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 4,
+        "sourceUnit": 1120,
+        "src": "34:24:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 3,
+        "linearizedBaseContracts": [
+          3
+        ],
+        "name": "BetManagement",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 4,
+        "src": "62:27:0"
+      }
+    ],
+    "src": "0:89:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/BetManagement.sol",
+      "exportedSymbols": {
+        "BetManagement": [
+          3
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".16",
+            "<",
+            "0.9",
+            ".0"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:32:0"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1120,
+          "absolutePath": "project:/contracts/safemath.sol",
+          "file": "./safemath.sol",
+          "scope": 4,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2,
+        "name": "ImportDirective",
+        "src": "34:24:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            3
+          ],
+          "name": "BetManagement",
+          "nodes": [
+            null
+          ],
+          "scope": 4
+        },
+        "id": 3,
+        "name": "ContractDefinition",
+        "src": "62:27:0"
+      }
+    ],
+    "id": 4,
+    "name": "SourceUnit",
+    "src": "0:89:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-10-16T13:32:34.947Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -21,6 +21,9 @@ contract BetManager {
     
     enum MatchResult{ Undecided, BookieWon, PunditWon, Void }
 
+/// @notice Maintains a list of addresses which have opted to self exclude from the platform.
+    mapping (address => bool) exclusionList;
+
 /// @notice Raises an event that a new liquidity / market has been provided to pundits.
 /// @dev Will be used by the GUI as a trigger to reload the screen
 /// @param id the liquidityId
@@ -31,9 +34,9 @@ contract BetManager {
 /// @param id new unique bet id
     event BetPlaced(uint256 id);
 
-    /// @notice Explain to an end user what this does
-    /// @dev Will be used by the GUI as a trigger to reload the screen to show if they won or not.
-    /// @param id bet id
+/// @notice Explain to an end user what this does
+/// @dev Will be used by the GUI as a trigger to reload the screen to show if they won or not.
+/// @param id bet id
     event BetResult(uint256 id);
 
 //Structure representing a bet with 2 parties involved. The Pundit and the Bookie. The bookie placed odds and liquidity and the pundit took a position. 
@@ -49,6 +52,7 @@ contract BetManager {
         address payable bookie; // bookie address copied from the liquidity object
         address payable pundit; //account taking a punt on this outcome (they want to win)
         MatchResult result;
+        uint createdTime;
         bool closed;
     }
 
@@ -78,6 +82,9 @@ contract BetManager {
     return msg.sender == owner;
   }
 
+  function isNotExcluded() public view returns(bool) {
+    return !exclusionList[msg.sender];
+  }
 
     // Fallback function - Called if other functions don't match call or
     // sent ether without data
@@ -100,6 +107,7 @@ contract BetManager {
     /// @return _id returns unique ID of the new liquidity object.
     function addLiquidity(uint _matchId, uint _sideId, uint256 _odds) public payable returns (uint _id)
     {
+        require(isNotExcluded()); //ensure the participant has not chosed to self exclude from the platform
         require(_odds > 100);
         require(_odds < 10001);
         require(msg.value >= minLiquidity);
@@ -128,6 +136,7 @@ contract BetManager {
 /// @return _id - returns unique ID of the new bet object.
     function placeBet(uint256 _liquidityId) public payable returns (uint256 _id)
     {
+        require(isNotExcluded()); //ensure the participant has not chosed to self exclude from the platform
         require(msg.value >= minBet);
         
         Liquidity storage _l = betPools[poolMapping[_liquidityId]];
@@ -150,6 +159,7 @@ contract BetManager {
             pundit: msg.sender,
             bookie: _l.bookie,
             result: MatchResult.Undecided, 
+            createdTime: now,
             closed: false
             }));
 
@@ -236,6 +246,15 @@ contract BetManager {
         _result = true;
     }
 
+/// @notice Gambling addiction is a real problem and this option allows people to self exclude from the platform should they feel they are participating in an unhealthly way.
+/// @return _excluded returns true when added.
+    function selfExclude() public returns (bool _excluded)
+    {
+        require(isNotExcluded()); //no point executing this function twice.
+        _excluded = true;
+        exclusionList[msg.sender] = _excluded;
+    }
+
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @param _id liqudity id
@@ -253,7 +272,7 @@ contract BetManager {
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @param _id bet id
-    function getBetById(uint _id) public view returns (uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, address pundit, address bookie, MatchResult result, bool closed)
+    function getBetById(uint _id) public view returns (uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, address pundit, address bookie, MatchResult result, uint createdTime, bool closed)
     {
         Bet storage bet = bets[betMapping[_id]];
         liquidityId = bet.liquidityId;
@@ -265,9 +284,12 @@ contract BetManager {
         pundit = bet.pundit;
         bookie = bet.bookie;
         result = bet.result;
+        createdTime = bet.createdTime;
         closed = bet.closed;
-        return (liquidityId, bookieCollateral, punditCollateral, bookiePayout, punditPayout, feePaid, pundit, bookie, result, closed);
+        return (liquidityId, bookieCollateral, punditCollateral, bookiePayout, punditPayout, feePaid, pundit, bookie, result, createdTime, closed);
     }
+
+    
 
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
