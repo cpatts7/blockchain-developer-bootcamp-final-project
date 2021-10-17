@@ -1,0 +1,18 @@
+{
+	"Matches": [
+        {
+            "id": 1,
+            "player1": "Federer",
+            "player2": "Nadal",
+            "player1_id": 1,
+            "player2_id": 2
+        },
+        {
+            "id": 2,
+            "player1": "Djokovic",
+            "player2": "Medvedev",
+            "player1_id": 1,
+            "player2_id": 2
+        }
+    ]
+}

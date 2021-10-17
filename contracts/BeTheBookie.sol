@@ -5,19 +5,19 @@ import "./safemath.sol";
 /// @author Chris Patterson
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
-contract BetManager {
+contract BeTheBookie {
 
     address payable public owner;
     uint256 betCounter;
-    uint256 liquidityCounter;
     uint minBet = 0.001 ether;
+    uint256 liquidityCounter;
     uint minLiquidity = 0.001 ether;
 
     Bet[] public bets;
-    mapping (uint256 => uint) private betMapping;
+    mapping (uint256 => uint) internal betMapping;
 
     Liquidity[] public betPools;
-    mapping (uint256 => uint) private poolMapping;
+    mapping (uint256 => uint) internal poolMapping;
     
     enum MatchResult{ Undecided, BookieWon, PunditWon, Void }
 
@@ -53,6 +53,7 @@ contract BetManager {
         address payable pundit; //account taking a punt on this outcome (they want to win)
         MatchResult result;
         uint createdTime;
+        uint closedTime;
         bool closed;
     }
 
@@ -68,7 +69,7 @@ contract BetManager {
         uint matchId; //each match will have a unique id
         uint sideId; //will need to choose the winning side of the match
         uint256 remainingLiquidity;
-        uint256 odds; // 1.50 odds would be stored as 150 (*100).
+        uint odds; // 1.50 odds would be stored as 150 (*100).
         bool closed;
     }
 
@@ -99,42 +100,29 @@ contract BetManager {
         owner = msg.sender;
     }
 
-    /// @notice Public function for a bookie to place odds on a match result and submit available liquidity. ie: Federer to beat Nadal, 200 odds with 10ETH max payout.
-    /// @param _matchId The unique ID of a match (ie: Federer vs Nadal at 2018 Wimbledon final)
-    /// @param _sideId The perspective winning side, ie: Federer. (unique ID from the source JSON data)
-    /// @param _odds The odds. ie: 150 = decimal equivalent odds at 1.5. 200 = 2. Payout formula is basically _odds/100 * stake. 
-                    //ie: 150/100 * 1ETH = 0.5ETH payout + your original stake = 1.5ETH return. 
-    /// @return _id returns unique ID of the new liquidity object.
-    function addLiquidity(uint _matchId, uint _sideId, uint256 _odds) public payable returns (uint _id)
+/// @notice Gambling addiction is a real problem and this option allows people to self exclude from the platform should they feel they are participating in an unhealthly way.
+/// @return _excluded returns true when added.
+    function selfExclude() public returns (bool _excluded)
     {
-        require(isNotExcluded()); //ensure the participant has not chosed to self exclude from the platform
-        require(_odds > 100);
-        require(_odds < 10001);
-        require(msg.value >= minLiquidity);
-
-        _id = ++liquidityCounter;
-
-        betPools.push(Liquidity({
-            id: _id,
-            bookie: msg.sender,
-            matchId: _matchId, 
-            sideId: _sideId,
-            remainingLiquidity: msg.value,
-            odds: _odds, 
-            closed: false
-            }));
-
-        poolMapping[_id] = _id-1;
-
-        emit BookieProvidingLiquidity(_id);
-
+        require(isNotExcluded()); //no point executing this function twice.
+        _excluded = true;
+        exclusionList[msg.sender] = _excluded;
     }
+
+/// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+    function contractBalance() public view returns (uint256 _balance) {
+        _balance = address(this).balance;
+    }
+
+    
+    
 
 /// @notice Public function allowing a pundit to place a bet leveraging existing liquidity in a market/odds.
 /// @dev bookieCollateral is somewhat complex as depending on the stake, the payout has to be calculated on the fly and deducted from the pool of liquidity. 
 /// @param _liquidityId pointer to available liquidity. The msg.amount is the stake.
 /// @return _id - returns unique ID of the new bet object.
-    function placeBet(uint256 _liquidityId) public payable returns (uint256 _id)
+    function placeBet(uint256 _liquidityId, uint _odds) public payable returns (uint256 _id)
     {
         require(isNotExcluded()); //ensure the participant has not chosed to self exclude from the platform
         require(msg.value >= minBet);
@@ -142,8 +130,9 @@ contract BetManager {
         Liquidity storage _l = betPools[poolMapping[_liquidityId]];
         require(_l.closed == false);
         require(msg.sender != _l.bookie);
+        require(_l.odds == _odds); //possible the bookie might adjust the odds before a bet has been placed. Confirm they match.
 
-        uint256 bookieCollateral = SafeMath.div(SafeMath.mul(msg.value, _l.odds), 100)-msg.value;
+        uint256 bookieCollateral = SafeMath.div(SafeMath.mul(msg.value, _odds), 100)-msg.value;
         require(_l.remainingLiquidity >= bookieCollateral);
 
         _id = ++betCounter;
@@ -160,6 +149,7 @@ contract BetManager {
             bookie: _l.bookie,
             result: MatchResult.Undecided, 
             createdTime: now,
+            closedTime: 0,
             closed: false
             }));
 
@@ -190,6 +180,8 @@ contract BetManager {
 
         
         _bet.result = _result;
+        _bet.closedTime = now;
+        
         uint256 fee;
         if (_result == MatchResult.BookieWon)
         {
@@ -229,47 +221,7 @@ contract BetManager {
         emit BetResult(_betId);
     }
 
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
-/// @param _id liqudity id
-/// @return _result true if no errors
-    function refundLiquidity(uint _id) public payable returns (bool _result) {
-        require(isOwner());
-        require(msg.value == 0);
-        Liquidity storage _l = betPools[poolMapping[_id]];
-        require(!_l.closed);
-        
-        _l.closed = true;
-        uint refund = _l.remainingLiquidity;
-        _l.remainingLiquidity = 0;
-        _l.bookie.transfer(refund);
-        _result = true;
-    }
-
-/// @notice Gambling addiction is a real problem and this option allows people to self exclude from the platform should they feel they are participating in an unhealthly way.
-/// @return _excluded returns true when added.
-    function selfExclude() public returns (bool _excluded)
-    {
-        require(isNotExcluded()); //no point executing this function twice.
-        _excluded = true;
-        exclusionList[msg.sender] = _excluded;
-    }
-
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
-/// @param _id liqudity id
-/// @return _result true if no errors
-    function getLiquidityById(uint _id) public view returns (uint matchId, uint sideId, uint256 remainingLiquidity, bool closed)
-    {
-        Liquidity storage _l = betPools[poolMapping[_id]];
-        matchId = _l.matchId;
-        sideId = _l.sideId;
-        remainingLiquidity = _l.remainingLiquidity;
-        closed = _l.closed;
-        return (matchId, sideId, remainingLiquidity, closed);
-    }
-
-/// @notice Explain to an end user what this does
+    /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @param _id bet id
     function getBetById(uint _id) public view returns (uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, address pundit, address bookie, MatchResult result, uint createdTime, bool closed)
@@ -289,12 +241,83 @@ contract BetManager {
         return (liquidityId, bookieCollateral, punditCollateral, bookiePayout, punditPayout, feePaid, pundit, bookie, result, createdTime, closed);
     }
 
-    
+
+    /// @notice Public function for a bookie to place odds on a match result and submit available liquidity. ie: Federer to beat Nadal, 200 odds with 10ETH max payout.
+    /// @param _matchId The unique ID of a match (ie: Federer vs Nadal at 2018 Wimbledon final)
+    /// @param _sideId The perspective winning side, ie: Federer. (unique ID from the source JSON data)
+    /// @param _odds The odds. ie: 150 = decimal equivalent odds at 1.5. 200 = 2. Payout formula is basically _odds/100 * stake. 
+                    //ie: 150/100 * 1ETH = 0.5ETH payout + your original stake = 1.5ETH return. 
+    /// @return _id returns unique ID of the new liquidity object.
+    function addLiquidity(uint _matchId, uint _sideId, uint256 _odds) public payable returns (uint _id)
+    {
+        require(isNotExcluded()); //ensure the participant has not chosed to self exclude from the platform
+        require(_odds > 100);
+        require(_odds < 10001);
+        require(msg.value >= minLiquidity);
+
+        _id = ++liquidityCounter;
+
+        betPools.push(Liquidity({
+            id: _id,
+            bookie: msg.sender,
+            matchId: _matchId, 
+            sideId: _sideId,
+            remainingLiquidity: msg.value,
+            odds: _odds, 
+            closed: false
+            }));
+
+        poolMapping[_id] = _id-1;
+
+        emit BookieProvidingLiquidity(_id);
+
+    }
+
+    function adjustOdds(uint _liquidityId, uint _odds) public returns (bool _result) {
+        require(_odds > 100);
+        require(_odds < 10001);
+
+        Liquidity storage _l = betPools[poolMapping[_liquidityId]];
+        require(msg.sender == _l.bookie);
+        require(!_l.closed);
+        require(_l.remainingLiquidity > 0);
+
+        _l.odds = _odds;
+        _result = true;
+    }
+
 
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
-    function contractBalance() public view returns (uint256 _balance) {
-        _balance = address(this).balance;
+/// @param _id liqudity id
+/// @return _result true if no errors
+    function refundLiquidity(uint _id) public payable returns (bool _result) {
+        require(msg.value == 0);
+        Liquidity storage _l = betPools[poolMapping[_id]];
+        require(isOwner() || msg.sender == _l.bookie);
+        require(!_l.closed);
+        
+        _l.closed = true;
+        uint refund = _l.remainingLiquidity;
+        _l.remainingLiquidity = 0;
+        _l.bookie.transfer(refund);
+        _result = true;
+    }
+
+    
+    /// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+/// @param _id liqudity id
+/// @return _result true if no errors
+    function getLiquidityById(uint _id) public view returns (uint matchId, uint sideId, uint256 remainingLiquidity, uint odds, bool closed)
+    {
+        Liquidity storage _l = betPools[poolMapping[_id]];
+        matchId = _l.matchId;
+        sideId = _l.sideId;
+        remainingLiquidity = _l.remainingLiquidity;
+        odds = _l.odds;
+        closed = _l.closed;
+        return (matchId, sideId, remainingLiquidity, odds, closed);
     }
 
 }

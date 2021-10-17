@@ -1,5 +1,5 @@
-var BetManager = artifacts.require("./BetManager.sol");
+var BeTheBookie = artifacts.require("./BeTheBookie.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(BetManager);
+  deployer.deploy(BeTheBookie);
 };

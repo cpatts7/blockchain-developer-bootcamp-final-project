@@ -9,6 +9,7 @@ App = {
 
   initWeb3: async function() {
     // Modern dapp browsers...
+    
       if (window.ethereum) {
         App.web3Provider = window.ethereum;
         try {
@@ -33,15 +34,18 @@ App = {
 
   initContract: function() {
       
-      $.getJSON('BetManager.json', function(data) {
+      $.getJSON('BeTheBookie.json', function(data) {
         // Get the necessary contract artifact file and instantiate it with @truffle/contract
-        var BetManagerArtifact = data;
-        App.contracts.BetManager = TruffleContract(BetManagerArtifact);
-      
+        
+        var BeTheBookieABIArtifact = data;
+        App.contracts.BeTheBookie = TruffleContract(BeTheBookieABIArtifact);
+        
         // Set the provider for our contract
-        App.contracts.BetManager.setProvider(App.web3Provider);
+        App.contracts.BeTheBookie.setProvider(App.web3Provider);
       
       });
+
+      
 
     return App.bindEvents();
   },
@@ -51,13 +55,15 @@ App = {
     $(document).on('click', '.btn-bet', App.placeBet);
     $(document).on('click', '.btn-result', App.setResult);
     $(document).on('click', '.btn-refund', App.refundLiquidity);
+
+    
   },
 
   addLiquidity: function(event) {
 
     event.preventDefault();
 
-    var betManagerInstance;
+    var bookieInstance;
 
       web3.eth.getAccounts(function(error, accounts) {
       if (error) {
@@ -65,18 +71,26 @@ App = {
       }
       
       var account = accounts[0];
-      
-      App.contracts.BetManager.deployed().then(function(instance) {
-        betManagerInstance = instance;
-
+      App.contracts.BeTheBookie.deployed().then(function(instance) {
+        bookieInstance = instance;
+        
+        var matchId = $('#bk_lq_match').find(":selected").val();
+        var playerId = $('#bk_lq_player').find(":selected").val();
+        var odds = parseInt(parseFloat($('#bk_lq_odds').val()) * 100); //convert to INT
+        var amount = parseFloat($('#bk_lq_quantity').val());
+        var weiAmount = amount * 1000000000000000000; //convert to WEI
+        
         // Execute adopt as a transaction by sending account
-        return betManagerInstance.addLiquidity(1, 1, 150, {from: account, value:1000000000000000000});
+        return bookieInstance.addLiquidity(matchId, playerId, odds, {from: account, value:weiAmount});
           }).then(function(result) {
-           alert("success");
+            
           }).catch(function(err) {
             console.log(err.message);
             $("#txStatus").text(err.message);
+            return;
           });
+
+
         }); 
     },
 
@@ -84,7 +98,7 @@ App = {
 
       event.preventDefault();
   
-      var betManagerInstance;
+      var betInstance;
   
         web3.eth.getAccounts(function(error, accounts) {
         if (error) {
@@ -93,11 +107,11 @@ App = {
         
         var account = accounts[0];
         
-        App.contracts.BetManager.deployed().then(function(instance) {
-          betManagerInstance = instance;
+        App.contracts.BeTheBookie.deployed().then(function(instance) {
+          betInstance = instance;
   
           // Execute adopt as a transaction by sending account
-          return betManagerInstance.placeBet(1, {from: account, value:1000000000000000000});
+          return betInstance.placeBet(1, {from: account, value:1000000000000000000});
             }).then(function(result) {
              alert("success");
             }).catch(function(err) {
@@ -111,7 +125,7 @@ App = {
 
         event.preventDefault();
     
-        var betManagerInstance;
+        var betInstance;
     
           web3.eth.getAccounts(function(error, accounts) {
           if (error) {
@@ -120,11 +134,11 @@ App = {
           
           var account = accounts[0];
           
-          App.contracts.BetManager.deployed().then(function(instance) {
-            betManagerInstance = instance;
+          App.contracts.BeTheBookie.deployed().then(function(instance) {
+            betInstance = instance;
     
             // Execute adopt as a transaction by sending account
-            return betManagerInstance.setResult(1, 2, {from: account, value:0});
+            return betInstance.setResult(1, 2, {from: account, value:0});
               }).then(function(result) {
                alert("success");
               }).catch(function(err) {
@@ -136,10 +150,10 @@ App = {
         },
 
         refundLiquidity: function(event) {
-          alert("refund");
+          
           event.preventDefault();
       
-          var betManagerInstance;
+          var bookieInstance;
       
             web3.eth.getAccounts(function(error, accounts) {
             if (error) {
@@ -148,11 +162,11 @@ App = {
             
             var account = accounts[0];
             
-            App.contracts.BetManager.deployed().then(function(instance) {
-              betManagerInstance = instance;
+            App.contracts.BeTheBookie.deployed().then(function(instance) {
+              bookieInstance = instance;
       
               // Execute adopt as a transaction by sending account
-              return betManagerInstance.refundLiquidity(1, {from: account, value:0});
+              return bookieInstance.refundLiquidity(1, {from: account, value:0});
                 }).then(function(result) {
                  alert("success");
                 }).catch(function(err) {
@@ -162,10 +176,48 @@ App = {
               }); 
           },
 
+          loadLiquidity: function() {
+                  
+            var bookieInstance;
+        
+            web3.eth.getAccounts(function(error, accounts) {
+              if (error) {
+                console.log(error);
+              }
+                
+              var account = accounts[0];
+
+              App.contracts.BeTheBookie.deployed().then(function(instance) {
+                bookieInstance = instance;
+
+                return bookieInstance.betPools.call(0);
+                }).then(function(result) {
+                 alert(result[5]);
+                }).catch(function(err) {
+                  console.log(err.message);
+                  $("#txStatus").text(err.message);
+                });
+            
+            }); 
+
+          }
+
 };
 
 $(function() {
   $(window).load(function() {
     App.init();
+
+    $.getJSON('../json/matches.json', function(data) {
+          
+          $('#bookie-matches').bootstrapTable({
+            data: data.Matches
+          });
+          $("#bookie-matches").bootstrapTable("hideLoading");
+      }
+    );
+
+    //App.loadLiquidity();
+
   });
 });
