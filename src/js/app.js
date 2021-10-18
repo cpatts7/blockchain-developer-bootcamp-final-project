@@ -1,6 +1,9 @@
 App = {
   web3Provider: null,
   contracts: {},
+  oneETH: 1000000000000000000,
+  bookieInstance: null,
+  openBookiePositions:null,
 
   init: async function() {
     
@@ -43,6 +46,11 @@ App = {
         // Set the provider for our contract
         App.contracts.BeTheBookie.setProvider(App.web3Provider);
       
+        App.contracts.BeTheBookie.deployed().then(function(instance) {
+          bookieInstance = instance;
+          App.loadLiquidity();
+        });
+
       });
 
       
@@ -61,37 +69,18 @@ App = {
 
   addLiquidity: function(event) {
 
-    event.preventDefault();
+      event.preventDefault();
+      var account = web3.eth.accounts[0];
 
-    var bookieInstance;
-
-      web3.eth.getAccounts(function(error, accounts) {
-      if (error) {
-        console.log(error);
-      }
-      
-      var account = accounts[0];
-      App.contracts.BeTheBookie.deployed().then(function(instance) {
-        bookieInstance = instance;
+      var matchId = $('#bk_lq_match').find(":selected").val();
+      var playerId = $('#bk_lq_player').find(":selected").val();
+      var odds = parseInt(parseFloat($('#bk_lq_odds').val()) * 100); //convert to INT
+      var amount = parseFloat($('#bk_lq_quantity').val());
+      var weiAmount = amount * App.oneETH; //convert to WEI
+      bookieInstance.addLiquidity(matchId, playerId, odds, {from: account, value:weiAmount}).then(function(id) {
+        App.loadLiquidity();
+      });
         
-        var matchId = $('#bk_lq_match').find(":selected").val();
-        var playerId = $('#bk_lq_player').find(":selected").val();
-        var odds = parseInt(parseFloat($('#bk_lq_odds').val()) * 100); //convert to INT
-        var amount = parseFloat($('#bk_lq_quantity').val());
-        var weiAmount = amount * 1000000000000000000; //convert to WEI
-        
-        // Execute adopt as a transaction by sending account
-        return bookieInstance.addLiquidity(matchId, playerId, odds, {from: account, value:weiAmount});
-          }).then(function(result) {
-            
-          }).catch(function(err) {
-            console.log(err.message);
-            $("#txStatus").text(err.message);
-            return;
-          });
-
-
-        }); 
     },
 
     placeBet: function(event) {
@@ -111,7 +100,7 @@ App = {
           betInstance = instance;
   
           // Execute adopt as a transaction by sending account
-          return betInstance.placeBet(1, {from: account, value:1000000000000000000});
+          return betInstance.placeBet(1, {from: account, value:App.oneETH});
             }).then(function(result) {
              alert("success");
             }).catch(function(err) {
@@ -178,27 +167,94 @@ App = {
 
           loadLiquidity: function() {
                   
-            var bookieInstance;
-        
-            web3.eth.getAccounts(function(error, accounts) {
-              if (error) {
-                console.log(error);
-              }
-                
-              var account = accounts[0];
+            var account = web3.eth.accounts[0];
+            bookieInstance.getBookieLiquidity(account).then(function (ids) {
+              App.displayLiquidity(ids);
+            });
 
-              App.contracts.BeTheBookie.deployed().then(function(instance) {
-                bookieInstance = instance;
+          },
 
-                return bookieInstance.betPools.call(0);
-                }).then(function(result) {
-                 alert(result[5]);
-                }).catch(function(err) {
-                  console.log(err.message);
-                  $("#txStatus").text(err.message);
-                });
+          displayLiquidity: async function(ids) {
             
-            }); 
+            var openData = [];
+            var historicData = [];
+
+            $('#bookie-liquidity').bootstrapTable('destroy');
+
+            if (ids == null || ids.length == 0)  
+              return;
+            
+           
+            for (var i = 0; i < ids.length; i++)
+            {
+              
+              bookieInstance.getLiquidityById(parseInt(ids[i])).then(function (lq) {
+                  var item = {}
+                  
+                  item ["id"] = lq[0];
+                  item ["matchId"] = lq[1];
+                  item ["sideId"] = lq[2];
+                  item ["remainingLiquidity"] = lq[3]/App.oneETH;
+                  item ["odds"] = lq[4]/100;
+                  item ["closed"] = lq[5];
+
+                  if (lq[5] == true)
+                    historicData.push(item);
+                  else
+                    openData.push(item);
+
+                  if (openData.length + historicData.length == ids.length) {
+                      App.openBookiePositions = openData;
+                      App.updateBookieLiquidityTable(openData); 
+                  }
+              });
+            }
+
+          },
+
+          updateBookieLiquidityTable: function(data) {
+
+            $(function() {
+              $('#bookie-liquidity').bootstrapTable({
+                data: data,
+                columns: [ {},{},{},{},  
+                {
+                  field: 'id',
+                  title: 'Adjust Odds',
+                  align: 'center',
+                  valign: 'middle',
+                  clickToSelect: false,
+                  formatter : function(value,row,index) {
+                    return '<button class=\'btn btn-primary \' liquidityId="'+data[index].id+'" onclick=\'App.editLiquidityOdds('+data[index].id+')\'>Edit Odds</button> ';
+                  }
+                },
+                {
+                  field: 'id',
+                  title: 'Cancel Position',
+                  align: 'center',
+                  valign: 'middle',
+                  clickToSelect: false,
+                  formatter : function(value,row,index) {
+                    return '<button class=\'btn btn-primary \' liquidityId="'+data[index].id+'" onclick=\'App.cancelLiquidity('+data[index].id+')\'>Cancel</button> ';
+                  }
+                }
+              ]               
+              });
+
+              $("#bookie-liquidity").bootstrapTable("hideLoading");
+            });
+          },
+
+          editLiquidityOdds: function(liquidityId) {
+            alert(liquidityId);
+          },
+
+          cancelLiquidity: function(liquidityId) {
+
+            var account = web3.eth.accounts[0];
+            bookieInstance.refundLiquidity(liquidityId, {from: account, value:0}).then(function () {
+              App.loadLiquidity();
+            });
 
           }
 
@@ -216,8 +272,6 @@ $(function() {
           $("#bookie-matches").bootstrapTable("hideLoading");
       }
     );
-
-    //App.loadLiquidity();
 
   });
 });

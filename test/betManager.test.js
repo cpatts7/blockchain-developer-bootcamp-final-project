@@ -30,31 +30,38 @@ contract("BetManager", function (accounts) {
   it("Bookie Add Liquidity", async () => {
     const tx = await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
     const result = await instance.getLiquidityById.call(1);
+    const ownedLiquidityResult = await instance.getBookieLiquidity(chris);
     assert.equal(
-      result[0],
+      result[1],
       1,
       "the matchId does not match the expected value",
     );
     assert.equal(
-      result[1],
+      result[2],
       1,
       "the sideId does not match the expected value",
     );
     assert.equal(
-      result[2],
+      result[3],
       bookiePaymentAmount1,
       "the remainingLiquidity does not match the expected value",
     );
     assert.equal(
-      result[3],
+      result[4],
       odds1,
       "the odds does not match the expected value",
     );
     assert.equal(
-      result[4],
+      result[5],
       false,
       "the closed does not match the expected value",
     );
+
+    assert.equal(
+      ownedLiquidityResult.length,
+      1,
+      "the ownedLiquidityResult does not match the expected value"
+    )
 
     it("should emit a BookieProvidingLiquidity event when bookie lays a bet", async () => {
       let eventEmitted = false;
@@ -76,7 +83,7 @@ contract("BetManager", function (accounts) {
     await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
     const result1 = await instance.getLiquidityById.call(1);
     assert.equal(
-      result1[3],
+      result1[4],
       150,
       "the odds do not match the expected value",
     );
@@ -86,7 +93,7 @@ contract("BetManager", function (accounts) {
     const result2 = await instance.getLiquidityById.call(1);
 
     assert.equal(
-      result2[3],
+      result2[4],
       200,
       "the odds do not match the expected value",
     );
@@ -101,20 +108,39 @@ contract("BetManager", function (accounts) {
     await instance.addLiquidity(1, 1, 195, { from: chris, value: bookiePaymentAmount1 });
     await instance.addLiquidity(1, 2, 195, { from: chris, value: bookiePaymentAmount1 });
     const betAmount = web3.utils.toWei('1.052631578947368', 'ether');
+    const ownedLiquidityResult = await instance.getBookieLiquidity(chris);
     await instance.placeBet(1, 195, { from: alice, value: betAmount });
     await instance.placeBet(2, 195, { from: alice, value: betAmount });
     const result1 = await instance.getLiquidityById.call(1);
     const result2 = await instance.getLiquidityById.call(2);
     assert.equal(
-      web3.utils.fromWei(result1[2]),
+      web3.utils.fromWei(result1[3]),
       0.0000000000000004,
       "the remainingLiquidity does not match the expected value",
     );
     assert.equal(
-      web3.utils.fromWei(result2[2]),
+      web3.utils.fromWei(result2[3]),
       0.0000000000000004,
       "the remainingLiquidity does not match the expected value",
     );
+
+    assert.equal(
+      ownedLiquidityResult.length,
+      2,
+      "the ownedLiquidityResult does not match the expected value"
+    )
+
+    assert.equal(
+      ownedLiquidityResult[0],
+      1,
+      "the ownedLiquidityResult does not match the expected value"
+    )
+
+    assert.equal(
+      ownedLiquidityResult[1],
+      2,
+      "the ownedLiquidityResult does not match the expected value"
+    )
   });
 
   it("Placing Bet", async () => {
@@ -129,19 +155,19 @@ contract("BetManager", function (accounts) {
     const balance = await instance.contractBalance.call();
 
     assert.equal(
-      result[0],
+      result[1],
       1,
       "the liquidityId does not match the expected value",
     );
 
     assert.equal(
-      result[1],
+      result[2],
       bookiePayout,
       "the bookieCollateral does not match the expected value",
     );
 
     assert.equal(
-      result[2],
+      result[3],
       betAmount,
       "the punditCollateral does not match the expected value",
     );
@@ -153,12 +179,12 @@ contract("BetManager", function (accounts) {
     );
 
     assert.equal(
-      web3.utils.fromWei(liquidityObject[2]),
+      web3.utils.fromWei(liquidityObject[3]),
       web3.utils.fromWei(remainingLiquidity),
       "the remainingLiquidity does not match the expected value",
     );
     assert.equal(
-      liquidityObject[4],
+      liquidityObject[5],
       false,
       "the closed does not match the expected value",
     );
@@ -184,9 +210,8 @@ contract("BetManager", function (accounts) {
     await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
     await instance.placeBet(1, odds1, { from: alice, value: betAmount });
     const liquidity1 = await instance.getLiquidityById.call(1);
-
     assert.equal(
-      liquidity1[4],
+      liquidity1[5],
       false,
       "the closed does not match the expected value",
     );
@@ -195,11 +220,31 @@ contract("BetManager", function (accounts) {
 
     const liquidity2 = await instance.getLiquidityById.call(1);
 
+    const bets = await instance.getPunditBets(alice)
+
     assert.equal(
-      liquidity2[4],
+      liquidity2[5],
       true,
       "the closed does not match the expected value",
     );
+
+    assert.equal(
+      bets.length,
+      2,
+      "the bets does not match the expected value"
+    )
+
+    assert.equal(
+      bets[0],
+      1,
+      "the bets does not match the expected value"
+    )
+
+    assert.equal(
+      bets[1],
+      2,
+      "the bets does not match the expected value"
+    )
     
   });
 
@@ -220,7 +265,7 @@ contract("BetManager", function (accounts) {
 
     const bet = await instance.getBetById.call(1);
 
-    let feeWasPaid = (bet[5] > 0);
+    let feeWasPaid = (bet[6] > 0);
 
     assert.equal(
       feeWasPaid,
@@ -229,7 +274,7 @@ contract("BetManager", function (accounts) {
     );
 
     assert.equal(
-      bet[8],
+      bet[9],
       1,
       "the result does not match the expected value",
     );
@@ -290,7 +335,7 @@ contract("BetManager", function (accounts) {
 
     const bet = await instance.getBetById.call(1);
 
-    let feeWasPaid = (bet[5] > 0);
+    let feeWasPaid = (bet[6] > 0);
 
     assert.equal(
       feeWasPaid,
@@ -299,7 +344,7 @@ contract("BetManager", function (accounts) {
     );
     
     assert.equal(
-      bet[8],
+      bet[7],
       2,
       "the result does not match the expected value",
     );
@@ -347,7 +392,7 @@ contract("BetManager", function (accounts) {
 
     const bet = await instance.getBetById.call(1);
 
-    let feeWasNotPaid = (bet[5] == 0);
+    let feeWasNotPaid = (bet[6] == 0);
 
     assert.equal(
       feeWasNotPaid,
@@ -356,7 +401,7 @@ contract("BetManager", function (accounts) {
     );
     
     assert.equal(
-      bet[8],
+      bet[7],
       3,
       "the result does not match the expected value",
     );
@@ -401,13 +446,13 @@ contract("BetManager", function (accounts) {
     const liquidity1 = await instance.getLiquidityById.call(1);
 
     assert.equal(
-      liquidity1[2],
+      liquidity1[3],
       0,
       "the remainingLiquidity value does not match the expected value (0)",
     );
 
     assert.equal(
-      liquidity1[4],
+      liquidity1[5],
       true,
       "the closed value does not match the expected value (true)",
     );

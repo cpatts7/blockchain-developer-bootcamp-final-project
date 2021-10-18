@@ -14,10 +14,16 @@ contract BeTheBookie {
     uint minLiquidity = 0.001 ether;
 
     Bet[] public bets;
-    mapping (uint256 => uint) internal betMapping;
+    mapping (uint256 => uint) betMapping; //id -> index
+    
+    //mapping of pundit bets to an address
+    mapping (address => uint256[]) punditBetsMapping; 
 
     Liquidity[] public betPools;
-    mapping (uint256 => uint) internal poolMapping;
+    mapping (uint256 => uint) poolMapping; //id -> index
+
+    //mapping of bookie liquidity to an address
+    mapping (address => uint256[]) bookieLiquidityMapping; 
     
     enum MatchResult{ Undecided, BookieWon, PunditWon, Void }
 
@@ -71,6 +77,8 @@ contract BeTheBookie {
         uint256 remainingLiquidity;
         uint odds; // 1.50 odds would be stored as 150 (*100).
         bool closed;
+        uint createdTime;
+        uint closedTime;
     }
 
 
@@ -154,6 +162,7 @@ contract BeTheBookie {
             }));
 
         betMapping[_id] = _id-1;
+        punditBetsMapping[msg.sender].push(_id);
 
         _l.remainingLiquidity = SafeMath.sub(_l.remainingLiquidity, bookieCollateral);
         if (_l.remainingLiquidity == 0)
@@ -221,24 +230,32 @@ contract BeTheBookie {
         emit BetResult(_betId);
     }
 
+/// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+/// @return uint256[] - list of bet ID's owned by the msg.sender
+    function getPunditBets(address pundit) external view returns (uint256[] memory)
+    {
+        uint256[] memory response = punditBetsMapping[pundit];
+        return response;
+    }
+
     /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @param _id bet id
-    function getBetById(uint _id) public view returns (uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, address pundit, address bookie, MatchResult result, uint createdTime, bool closed)
+    function getBetById(uint _id) external view returns (uint256 id, uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, MatchResult result, uint createdTime, bool closed)
     {
         Bet storage bet = bets[betMapping[_id]];
+        id = bet.id;
         liquidityId = bet.liquidityId;
         bookieCollateral = bet.bookieCollateral;
         punditCollateral = bet.punditCollateral;
         bookiePayout = bet.bookiePayout;
         punditPayout = bet.punditPayout;
         feePaid = bet.feePaid;
-        pundit = bet.pundit;
-        bookie = bet.bookie;
         result = bet.result;
         createdTime = bet.createdTime;
         closed = bet.closed;
-        return (liquidityId, bookieCollateral, punditCollateral, bookiePayout, punditPayout, feePaid, pundit, bookie, result, createdTime, closed);
+        return (id, liquidityId, bookieCollateral, punditCollateral, bookiePayout, punditPayout, feePaid, result, createdTime, closed);
     }
 
 
@@ -264,10 +281,13 @@ contract BeTheBookie {
             sideId: _sideId,
             remainingLiquidity: msg.value,
             odds: _odds, 
-            closed: false
+            closed: false,
+            createdTime: now,
+            closedTime: 0
             }));
 
         poolMapping[_id] = _id-1;
+        bookieLiquidityMapping[msg.sender].push(_id);
 
         emit BookieProvidingLiquidity(_id);
 
@@ -304,20 +324,30 @@ contract BeTheBookie {
         _result = true;
     }
 
+/// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+/// @return uint256[] - list of liquidity ID's owned by the msg.sender
+    function getBookieLiquidity(address bookie) external view returns (uint256[] memory)
+    {
+        uint256[] memory response = bookieLiquidityMapping[bookie];
+        return response;
+    }
     
     /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @param _id liqudity id
 /// @return _result true if no errors
-    function getLiquidityById(uint _id) public view returns (uint matchId, uint sideId, uint256 remainingLiquidity, uint odds, bool closed)
+    function getLiquidityById(uint _id) external view returns (uint id, uint matchId, uint sideId, uint256 remainingLiquidity, uint odds, bool closed, uint createdTime)
     {
         Liquidity storage _l = betPools[poolMapping[_id]];
+        id = _l.id;
         matchId = _l.matchId;
         sideId = _l.sideId;
         remainingLiquidity = _l.remainingLiquidity;
         odds = _l.odds;
         closed = _l.closed;
-        return (matchId, sideId, remainingLiquidity, odds, closed);
+        createdTime = _l.createdTime;
+        return (id, matchId, sideId, remainingLiquidity, odds, closed, createdTime);
     }
 
 }
