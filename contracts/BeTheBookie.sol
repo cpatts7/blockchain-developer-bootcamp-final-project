@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.5.16 <0.9.0;
 import "./safemath.sol";
+
 /// @title A title that should describe the contract/interface
 /// @author Chris Patterson
 /// @notice Explain to an end user what this does
@@ -19,11 +20,17 @@ contract BeTheBookie {
     //mapping of pundit bets to an address
     mapping (address => uint256[]) punditBetsMapping; 
 
+    //mapping of bookie bets to an address
+    mapping (address => uint256[]) bookieBetsMapping; 
+
     Liquidity[] public betPools;
     mapping (uint256 => uint) poolMapping; //id -> index
 
     //mapping of bookie liquidity to an address
     mapping (address => uint256[]) bookieLiquidityMapping; 
+
+    //mapping of the unique match id's to provided liquidity. Used to be able to filter for available bets without downloading the entire dataset.
+    mapping (uint256 => uint256[]) matchLiquidityMapping; 
     
     enum MatchResult{ Undecided, BookieWon, PunditWon, Void }
 
@@ -163,6 +170,7 @@ contract BeTheBookie {
 
         betMapping[_id] = _id-1;
         punditBetsMapping[msg.sender].push(_id);
+        bookieBetsMapping[_l.bookie].push(_id);
 
         _l.remainingLiquidity = SafeMath.sub(_l.remainingLiquidity, bookieCollateral);
         if (_l.remainingLiquidity == 0)
@@ -241,6 +249,16 @@ contract BeTheBookie {
 
     /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
+/// @return uint256[] - list of bet ID's owned by the msg.sender
+    function getBookieBets(address bookie) external view returns (uint256[] memory)
+    {
+        uint256[] memory response = bookieBetsMapping[bookie];
+        return response;
+    }
+
+
+    /// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
 /// @param _id bet id
     function getBetById(uint _id) external view returns (uint256 id, uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, MatchResult result, uint createdTime, bool closed)
     {
@@ -288,6 +306,7 @@ contract BeTheBookie {
 
         poolMapping[_id] = _id-1;
         bookieLiquidityMapping[msg.sender].push(_id);
+        matchLiquidityMapping[_matchId].push(_id);
 
         emit BookieProvidingLiquidity(_id);
 
@@ -330,6 +349,15 @@ contract BeTheBookie {
     function getBookieLiquidity(address bookie) external view returns (uint256[] memory)
     {
         uint256[] memory response = bookieLiquidityMapping[bookie];
+        return response;
+    }
+
+/// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+/// @param _matchId unique match id
+/// @return uint256[] - list of liquidity ID's for that match
+    function getMatchLiquidity(uint256 _matchId) external view returns (uint256[] memory) {
+        uint256[] memory response = matchLiquidityMapping[_matchId];
         return response;
     }
     
