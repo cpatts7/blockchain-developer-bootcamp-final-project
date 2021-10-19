@@ -65,15 +65,28 @@ App = {
   },
 
   bindEvents: function() {
-    $(document).on('click', '.btn-result', App.setResult);
-    $(document).on('click', '.btn-refund', App.refundLiquidity);
+    $(document).on('click', '.btn-mgt-result', App.setResult);    
   },
 
       setResult: function(event) {
 
         event.preventDefault();
+  
+        var matchId = parseInt($('#bk_manage_match').find(":selected").val());
+        var playerId = parseInt($('#bk_manage_match_result').find(":selected").val());
+        var account = web3.eth.accounts[0];
+
+        bookieInstance.setMatchResult(matchId, playerId, {from: account, value:0}).then(function(result) {
+          alert(result);
+        });
+
+      },
+
+      refundLiquidity: function(event) {
+        
+        event.preventDefault();
     
-        var betInstance;
+        var bookieInstance;
     
           web3.eth.getAccounts(function(error, accounts) {
           if (error) {
@@ -83,46 +96,18 @@ App = {
           var account = accounts[0];
           
           App.contracts.BeTheBookie.deployed().then(function(instance) {
-            betInstance = instance;
+            bookieInstance = instance;
     
             // Execute adopt as a transaction by sending account
-            return betInstance.setResult(1, 2, {from: account, value:0});
+            return bookieInstance.refundLiquidity(1, {from: account, value:0});
               }).then(function(result) {
-               alert("success");
+                alert("success");
               }).catch(function(err) {
                 console.log(err.message);
                 $("#txStatus").text(err.message);
               });
             }); 
-
         },
-
-        refundLiquidity: function(event) {
-          
-          event.preventDefault();
-      
-          var bookieInstance;
-      
-            web3.eth.getAccounts(function(error, accounts) {
-            if (error) {
-              console.log(error);
-            }
-            
-            var account = accounts[0];
-            
-            App.contracts.BeTheBookie.deployed().then(function(instance) {
-              bookieInstance = instance;
-      
-              // Execute adopt as a transaction by sending account
-              return bookieInstance.refundLiquidity(1, {from: account, value:0});
-                }).then(function(result) {
-                 alert("success");
-                }).catch(function(err) {
-                  console.log(err.message);
-                  $("#txStatus").text(err.message);
-                });
-              }); 
-          },
 
 };
 

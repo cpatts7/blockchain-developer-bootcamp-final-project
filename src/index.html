@@ -21,10 +21,7 @@
   <div class="container-lg">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="bookie-tab" data-bs-toggle="tab" data-bs-target="#bookie" type="button" role="tab" aria-controls="bookie" aria-selected="false">Bookie</button>
+        <button class="nav-link active" id="bookie-tab" data-bs-toggle="tab" data-bs-target="#bookie" type="button" role="tab" aria-controls="bookie" aria-selected="false">Bookie</button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="pundit-tab" data-bs-toggle="tab" data-bs-target="#pundit" type="button" role="tab" aria-controls="pundit" aria-selected="false">Pundit</button>
@@ -34,10 +31,7 @@
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        
-      </div>
-      <div class="tab-pane fade" id="bookie" role="tabpanel" aria-labelledby="bookie-tab">
+      <div class="tab-pane fade show active" id="bookie" role="tabpanel" aria-labelledby="bookie-tab">
         <div class="container-md">
           <br/><br/>
           <h4>Upcoming Matches</h4>
@@ -129,8 +123,32 @@
 
       </div>
       <div class="tab-pane fade" id="management" role="tabpanel" aria-labelledby="management-tab">
-        <button class="btn btn-primary btn-result" type="button">Set Result</button><br/><br/>  
-        <button class="btn btn-primary btn-refund" type="button">Refund Liquidity</button><br/><br/>
+        <br/>
+        <h6>Select Match</h6>
+        <div class="container-sm">
+          <div class="row">
+            <div class="col">
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="bk_manage_match">
+                <option selected value="1">Federer vs Nadal</option>
+                <option value="2">Djokovic vs Medvedev</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h6>Select Winner</h6>
+        <div class="container-sm">
+          <div class="row">
+            <div class="col">
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="bk_manage_match_result">
+                <option selected value="1">Player 1</option>
+                <option value="2">Player 2</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <button class="btn btn-outline-primary btn-sm btn-mgt-result" type="button">Set Result</button><br/><br/>
       </div>
     </div>
   </div>

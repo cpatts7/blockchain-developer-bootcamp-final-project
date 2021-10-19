@@ -31,6 +31,8 @@ contract BeTheBookie {
 
     //mapping of the unique match id's to provided liquidity. Used to be able to filter for available bets without downloading the entire dataset.
     mapping (uint256 => uint256[]) matchLiquidityMapping; 
+    //mapping of the unique match id's to bets. It is needed to be able to find all bets for a given match on the client. 
+    mapping (uint256 => uint256[]) matchBetMapping; 
     
     enum MatchResult{ Undecided, BookieWon, PunditWon, Void }
 
@@ -171,6 +173,7 @@ contract BeTheBookie {
         betMapping[_id] = _id-1;
         punditBetsMapping[msg.sender].push(_id);
         bookieBetsMapping[_l.bookie].push(_id);
+        matchBetMapping[_l.matchId].push(_id);
 
         _l.remainingLiquidity = SafeMath.sub(_l.remainingLiquidity, bookieCollateral);
         if (_l.remainingLiquidity == 0)
@@ -180,6 +183,35 @@ contract BeTheBookie {
 
         emit BetPlaced(_id);
 
+    }
+
+    function setMatchResult(uint256 _matchId, uint256 winningPlayerId) public payable returns (bool _success) {
+        require(isOwner());
+        require(msg.value == 0);
+
+        for (uint i = 0; i < matchBetMapping[_matchId].length; i++)
+        {
+            Bet storage _bet = bets[betMapping[matchBetMapping[_matchId][i]]];
+            if (_bet.closed || _bet.result != MatchResult.Undecided) //double check to ensure the bet is still open.
+                {continue;}
+
+            Liquidity storage _l = betPools[poolMapping[_bet.liquidityId]];
+            MatchResult _result = MatchResult.BookieWon;
+            if (_l.sideId == winningPlayerId)
+                _result = MatchResult.PunditWon;
+
+            setResult(_bet.id, _result);
+        }
+
+        for (uint j = 0; j < matchLiquidityMapping[_matchId].length; j++)
+        {
+            Liquidity storage _l = betPools[poolMapping[matchLiquidityMapping[_matchId][j]]];
+            if (_l.closed || _l.remainingLiquidity == 0)
+                { continue; }
+            refundLiquidity(_l.id);
+        }
+
+        return true;
     }
 
 /// @notice called by the contract owner to set the result of a given bet. This should be handled by an oracle in the future so there is no manual intervention required. 
@@ -360,6 +392,15 @@ contract BeTheBookie {
         uint256[] memory response = matchLiquidityMapping[_matchId];
         return response;
     }
+
+/// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+/// @param _matchId unique match id
+/// @return uint256[] - list of liquidity ID's for that match
+    function getMatchBets(uint256 _matchId) external view returns (uint256[] memory) {
+        uint256[] memory response = matchBetMapping[_matchId];
+        return response;
+    }    
     
     /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details

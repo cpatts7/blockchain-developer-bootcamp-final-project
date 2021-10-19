@@ -162,6 +162,7 @@ contract("BetManager", function (accounts) {
     const liquidityObject = await instance.getLiquidityById.call(1);
     const balance = await instance.contractBalance.call();
     const bets = await instance.getBookieBets(chris);
+    const matchBets = await instance.getMatchBets(1);
 
     assert.equal(
       result[1],
@@ -202,6 +203,12 @@ contract("BetManager", function (accounts) {
       bets.length,
       1,
       "the bets does not match the expected value"
+    )
+
+    assert.equal(
+      matchBets.length,
+      1,
+      "the matchBets does not match the expected value"
     )
 
     it("should emit a BetPlaced event when bookie lays a bet", async () => {
@@ -272,7 +279,7 @@ contract("BetManager", function (accounts) {
     const chrisBalance1 = await web3.eth.getBalance(chris);
     const aliceBalance1 = await web3.eth.getBalance(alice);
 
-    const tx1 = await instance.setResult(1, 1, { from: contractOwner, value: 0 });
+    const tx1 = await instance.setMatchResult(1, 2, { from: contractOwner, value: 0 });
 
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);
@@ -335,14 +342,14 @@ contract("BetManager", function (accounts) {
 
   it("Pundit Won", async () => {
     const betAmount = web3.utils.toWei('1', 'ether');
-    await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
-    await instance.placeBet(1, odds1, { from: alice, value: betAmount });
+    await instance.addLiquidity(1, 1, 200, { from: chris, value: betAmount });
+    await instance.placeBet(1, 200, { from: alice, value: betAmount });
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
     const chrisBalance1 = await web3.eth.getBalance(chris);
     const aliceBalance1 = await web3.eth.getBalance(alice);
 
-    await instance.setResult(1, 2, { from: contractOwner, value: 0 });
+    await instance.setMatchResult(1, 1, { from: contractOwner, value: 0 });
 
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);
