@@ -1,4 +1,4 @@
-# blockchain-developer-bootcamp-final-project
+# blockchain-developer-bootcamp-final-project - Be The Bookie
 Be The Bookie
 
 Most centralized betting sites (bet365 for example) make odds on sporting events and typically earn profit by using spreads. They aim to build a book on both sides that offers them risk free profits by taking the spread in between odds (ie: 5%).
