@@ -119,7 +119,7 @@ BookieApp = {
                 item ["id"] = bet[0];
                 item ["bookieCollateral"] = bet[2]/BookieApp.oneETH;
                 item ["punditCollateral"] = bet[3]/BookieApp.oneETH;
-                item ["bookiePayout"] = bet[4]/BookieApp.oneETH;
+                item ["bookiePayout"] =  bet[4]/BookieApp.oneETH;;
                 item ["punditPayout"] = bet[5]/BookieApp.oneETH;
                 item ["feePaid"] = bet[6]/BookieApp.oneETH;
 
@@ -178,7 +178,16 @@ BookieApp = {
                 item ["closed"] = lq[5];
                 item ["teamName"] = "DRAW";
 
+                for (var j = 0; j < BookieApp.matchData.length; j++)
+                {
+                    if (BookieApp.matchData[j].match_id == lq[1])
+                    {
+                        item ["matchDetails"] = BookieApp.matchData[j].home_team.name + " vs " + BookieApp.matchData[j].away_team.name;
+                        item ["match_start"] = BookieApp.matchData[j].match_start;
+                    }
+                }
                 
+
                 for (var j = 0; j < BookieApp.teamData.length; j++)
                 { 
                     if (lq[2] == BookieApp.teamData[j].id)
@@ -209,7 +218,7 @@ BookieApp = {
             $(function() {
             $('#bookie-liquidity').bootstrapTable({
                 data: data,
-                columns: [ {},{},{},{},{},  
+                columns: [ {},{},{},{},{},{},{},  
                 {
                 field: 'id',
                 title: 'Adjust Odds',
@@ -314,6 +323,10 @@ BookieApp = {
                     return BookieApp.matchData[i];
                 }
             }
+        },
+
+        formatWEI: function(weiValue) {
+            return  ethers.utils.formatEther(ethers.utils.bigNumberify(weiValue));
         }
   
   };

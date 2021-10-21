@@ -38,7 +38,7 @@ App = {
 
   initContract: function() {
       
-      $.getJSON('BeTheBookie.json', function(data) {
+      $.getJSON('../json/BeTheBookie.json', function(data) {
         // Get the necessary contract artifact file and instantiate it with @truffle/contract
         
         var BeTheBookieABIArtifact = data;
@@ -51,10 +51,16 @@ App = {
           bookieInstance = instance;
           BookieApp.bookieInstance = instance;
           PunditApp.bookieInstance = instance;
-          BookieApp.loadLiquidity();
-          PunditApp.loadAvailableBets();
-          BookieApp.loadBets();
-          PunditApp.loadMyBets();
+
+          $.getJSON('../json/football_matches.json', function(data) {
+            BookieApp.initMatches(data.data);
+            PunditApp.initMatches(data.data);
+            BookieApp.loadBets();
+            PunditApp.loadMyBets();
+            BookieApp.loadLiquidity();
+            }
+          );
+
         });
 
       });
@@ -101,7 +107,7 @@ App = {
             // Execute adopt as a transaction by sending account
             return bookieInstance.refundLiquidity(1, {from: account, value:0});
               }).then(function(result) {
-                alert("success");
+                
               }).catch(function(err) {
                 console.log(err.message);
                 $("#txStatus").text(err.message);
@@ -114,27 +120,14 @@ App = {
 $(function() {
   $(window).load(function() {
 
-    $('#dp3').datepicker({
-      format: 'mm-dd-yyyy'
-    });
-
     App.init();
     BookieApp.init();
     PunditApp.init();
 
     $.getJSON('../json/football_teams.json', function(data) {
       BookieApp.initTeams(data.Teams);
-        
+      PunditApp.initTeams(data.Teams);
     });
-
-    $.getJSON('../json/football_matches.json', function(data) {
-         BookieApp.initMatches(data.data);
-
-          PunditApp.matchData = data.data;
-      }
-    );
-
-    
 
   });
 });

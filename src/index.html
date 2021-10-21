@@ -6,23 +6,24 @@
   <title>Be The Bookie front-end</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
   <link href="css/datepicker.css" rel="stylesheet"  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+
   <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/web3.min.js"></script>
   <script language="javascript" src="js/truffle-contract.js"></script>
+  <script language="javascript" src="https://cdn.ethers.io/lib/ethers-5.1.umd.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/app.js"></script>
   <script language="javascript" type="text/javascript" src="js/bookie.js"></script>
   <script language="javascript" type="text/javascript" src="js/pundit.js"></script>
   <script language="javascript" type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
-</head>
-
-<body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bluebird@3.7.2/js/browser/bluebird.min.js"></script>
+</head>
 
+<body>
   
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding:5px">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="bookie-tab" data-bs-toggle="tab" data-bs-target="#bookie" type="button" role="tab" aria-controls="bookie" aria-selected="false">Bookie</button>
       </li>
@@ -93,6 +94,8 @@
                   <tr>
                     <th scope="col" data-field="id">Id</th>
                     <th scope="col" data-field="matchId">Match Id</th>
+                    <th scope="col" data-field="match_start">Date</th>
+                    <th scope="col" data-field="matchDetails">Match Details</th>
                     <th scope="col" data-field="teamName">Team (To Win)</th>
                     <th scope="col" data-field="odds">Odds</th>
                     <th scope="col" data-field="remainingLiquidity">Remaining Balance (ETH)</th>
@@ -133,46 +136,102 @@
         
       </div>
       <div class="tab-pane fade" id="pundit" role="tabpanel" aria-labelledby="pundit-tab">
-        <br/>
-        <h4>Select Match</h4>
-        <div class="container-sm">
-          <div class="row">
-            <div class="col">
-              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="bk_pundit_match" onchange="PunditApp.changeMatch()">
-                <option selected value="1">Federer vs Nadal</option>
-                <option value="2">Djokovic vs Medvedev</option>
-              </select>
+        <div class="tab-pane fade show active" id="pundit" role="tabpanel" aria-labelledby="pundit-tab">
+          <div class="container-md">
+            <br/>
+            <p>View Open Odds, place bets and view bet history on this tab</p>
+
+            <ul class="nav nav-tabs" id="BookieTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pundit-placebets-tab-id" data-bs-toggle="tab" data-bs-target="#pundit-placebets-tab" type="button" role="tab" aria-selected="false">Place Bets</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pundit-bets-tab-id" data-bs-toggle="tab" data-bs-target="#pundit-bets-tab" type="button" role="tab" aria-selected="false">My Open Bets</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pundit-closedbets-tab-id" data-bs-toggle="tab" data-bs-target="#pundit-closedbets-tab" type="button" role="tab" aria-selected="false">My Closed Bets</button>
+              </li>
+            </ul>
+    
+            <div class="tab-content" id="punditTabContent">
+              <div class="tab-pane fade show active" id="pundit-placebets-tab" role="tabpanel" aria-labelledby="pundit-placebets-tab">
+                
+                <table class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Filter</th>
+                      <th scope="col" width="90%">Value</th>
+                    </tr>
+                  </thead>
+                  <tr class="table-light">
+                    <td>Match Date:</td>
+                    <td><input type="text" class="span2 form-control-sm" id="punditDateFilter" /></td>
+                  </tr>
+                  <tr class="table-light">
+                    <td>Team:</td>
+                    <td><select class="form-select-sm" aria-label=".form-select-sm example" id="pundit_match_filter">
+                      <option id="0" value="" />
+                    </select></td>
+                  </tr>
+                </table>
+    
+                <table id="pundit-liquidity" class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-field="id">Position Id</th>
+                      <th scope="col" data-field="match_start">Date</th>
+                      <th scope="col" data-field="matchDetails">Match Details</th>
+                      <th scope="col" data-field="teamName">Team (To Win)</th>
+                      <th scope="col" data-field="odds">Odds</th>
+                      <th scope="col" data-field="maxBet">Max Bet (ETH)</th>
+                      <th scope="col" data-field="maxPayout">Total Return (ETH)</th>
+                      <th scope="col" data-field="id">Place Bet</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+
+              <div class="tab-pane fade" id="pundit-bets-tab" role="tabpanel" aria-labelledby="pundit-bets-tab">
+                <table id="pundit-mybets" class="table table-hover table-striped">
+                  <thead>
+                    <tr>            
+                      <th scope="col" data-field="id">Position Id</th>
+                      <th scope="col" data-field="match_start">Date</th>
+                      <th scope="col" data-field="matchDetails">Match Details</th>
+                      <th scope="col" data-field="teamName">Team (To Win)</th>
+                      <th scope="col" data-field="punditCollateral">My Stake (ETH)</th>
+                      <th scope="col" data-field="odds">Odds</th>
+                      <th scope="col" data-field="bookieCollateral">Potential Profit (ETH)</th>
+                      <th scope="col" data-field="createdTime">Bet Time</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+
+              <div class="tab-pane fade" id="pundit-closedbets-tab" role="tabpanel" aria-labelledby="pundit-closedbets-tab">
+                <table id="pundit-closedbets" class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-field="id">Position Id</th>
+                      <th scope="col" data-field="punditPayout">Pundit Payout (ETH)</th>
+                      <th scope="col" data-field="bookiePayout">Bookie Payout (ETH)</th>
+                      <th scope="col" data-field="feePaid">Fee (ETH)</th>
+                      <th scope="col" data-field="result">Result</th>
+                      <th scope="col" data-field="createdTime">Bet Time</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+
             </div>
+
           </div>
         </div>
+      
+        
+        
 
-        <br/><br/>
-          <h4>Available Bets</h4>
-          <table id="pundit-liquidity" class="table table-hover table-striped">
-            <thead>
-              <tr>
-                <th scope="col" data-field="id">Position Id</th>
-                <th scope="col" data-field="playerName">Player (To Win)</th>
-                <th scope="col" data-field="odds">Odds</th>
-                <th scope="col" data-field="maxBet">Max Bet (ETH)</th>
-                <th scope="col" data-field="maxPayout">Total Return (ETH)</th>
-                <th scope="col" data-field="id">Place Bet</th>
-              </tr>
-            </thead>
-          </table>
-
-          <br/><br/>
-          <h4>My Bets</h4>
-          <table id="pundit-mybets" class="table table-hover table-striped">
-            <thead>
-              <tr>            
-                <th scope="col" data-field="id">Position Id</th>
-                <th scope="col" data-field="punditCollateral">Pundit Stake (ETH)</th>
-                <th scope="col" data-field="bookieCollateral">Bookie Risk (ETH)</th>
-                <th scope="col" data-field="createdTime">Bet Time</th>
-              </tr>
-            </thead>
-          </table>
+        
 
       </div>
       <div class="tab-pane fade" id="management" role="tabpanel" aria-labelledby="management-tab">
