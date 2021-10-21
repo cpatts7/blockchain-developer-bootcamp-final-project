@@ -113,19 +113,28 @@ App = {
 
 $(function() {
   $(window).load(function() {
+
+    $('#dp3').datepicker({
+      format: 'mm-dd-yyyy'
+    });
+
     App.init();
     BookieApp.init();
     PunditApp.init();
 
-    $.getJSON('../json/matches.json', function(data) {
-          $('#bookie-matches').bootstrapTable({
-            data: data.Matches
-          });
-          $("#bookie-matches").bootstrapTable("hideLoading");
-          PunditApp.matchData = data.Matches;
-          BookieApp.matchData = data.Matches;
+    $.getJSON('../json/football_teams.json', function(data) {
+      BookieApp.initTeams(data.Teams);
+        
+    });
+
+    $.getJSON('../json/football_matches.json', function(data) {
+         BookieApp.initMatches(data.data);
+
+          PunditApp.matchData = data.data;
       }
     );
+
+    
 
   });
 });

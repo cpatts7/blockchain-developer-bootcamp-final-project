@@ -57,6 +57,8 @@ PunditApp = {
     },
 
     displayAvailableBets: async function(ids) {
+        return;
+        
         var openData = [];
         var historicData = [];
         

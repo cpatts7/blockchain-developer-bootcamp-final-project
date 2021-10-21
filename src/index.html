@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Be The Bookie front-end</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link href="css/datepicker.css" rel="stylesheet"  />
   <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/web3.min.js"></script>
   <script language="javascript" src="js/truffle-contract.js"></script>
   <script language="javascript" type="text/javascript" src="js/app.js"></script>
   <script language="javascript" type="text/javascript" src="js/bookie.js"></script>
   <script language="javascript" type="text/javascript" src="js/pundit.js"></script>
+  <script language="javascript" type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -18,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bluebird@3.7.2/js/browser/bluebird.min.js"></script>
 
-  <div class="container-lg">
+  
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="bookie-tab" data-bs-toggle="tab" data-bs-target="#bookie" type="button" role="tab" aria-controls="bookie" aria-selected="false">Bookie</button>
@@ -33,49 +36,99 @@
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="bookie" role="tabpanel" aria-labelledby="bookie-tab">
         <div class="container-md">
-          <br/><br/>
-          <h4>Upcoming Matches</h4>
-          <table id="bookie-matches" class="table table-hover table-striped">
-            <thead>
-              <tr>
-                <th scope="col" data-field="id">Match Id</th>
-                <th scope="col" data-field="player1">Player 1</th>
-                <th scope="col" data-field="player2">Player 2</th>
-              </tr>
-            </thead>
-          </table>
           <br/>
-          <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#bookieAddLiquidityModal">Add Position</button><br/><br/>
+          <p>View upcoming matches and place odds, manage existing positions and view bets that are open on this screen.</p>
+          <ul class="nav nav-tabs" id="BookieTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="bookie-placebets-tab-id" data-bs-toggle="tab" data-bs-target="#bookie-placebets-tab" type="button" role="tab" aria-selected="false">Place Odds</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="bookie-manage-tab-id" data-bs-toggle="tab" data-bs-target="#bookie-manage-tab" type="button" role="tab" aria-selected="false">Manage Positions</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="bookie-bets-tab-id" data-bs-toggle="tab" data-bs-target="#bookie-bets-tab" type="button" role="tab" aria-selected="false">Open Bets</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="bookie-closedbets-tab-id" data-bs-toggle="tab" data-bs-target="#bookie-closedbets-tab" type="button" role="tab" aria-selected="false">Closed Bets</button>
+            </li>
+          </ul>
 
-          <br/><br/>
-          <h4>Open Positions</h4>
-          <table id="bookie-liquidity" class="table table-hover table-striped">
-            <thead>
-              <tr>
-                <th scope="col" data-field="id">Id</th>
-                <th scope="col" data-field="matchId">Match Id</th>
-                <th scope="col" data-field="playerName">Player (To Win)</th>
-                <th scope="col" data-field="odds">Odds</th>
-                <th scope="col" data-field="remainingLiquidity">Remaining Balance (ETH)</th>
-                <th scope="col" data-field="id">Adjust Odds</th>
-                <th scope="col" data-field="id">Cancel Position</th>
-              </tr>
-            </thead>
-          </table>
+          <div class="tab-content" id="bookieTabContent">
+            <div class="tab-pane fade show active" id="bookie-placebets-tab" role="tabpanel" aria-labelledby="bookie-placebets-tab">
+              
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Filter</th>
+                    <th scope="col" width="90%">Value</th>
+                  </tr>
+                </thead>
+                <tr class="table-light">
+                  <td>Match Date:</td>
+                  <td><input type="text" class="span2 form-control-sm" id="dp3" /></td>
+                </tr>
+                <tr class="table-light">
+                  <td>Team:</td>
+                  <td><select class="form-select-sm" aria-label=".form-select-sm example" id="bookie_match_filter">
+                    <option id="0" value="" />
+                  </select></td>
+                </tr>
+              </table>
 
-          <br/><br/>
-          <h4>Live Bets against Positions</h4>
-          <table id="bookie-bets" class="table table-hover table-striped">
-            <thead>
-              <tr>
-                <th scope="col" data-field="id">Position Id</th>
-                <th scope="col" data-field="punditCollateral">Pundit Stake (ETH)</th>
-                <th scope="col" data-field="bookieCollateral">Bookie Risk (ETH)</th>
-                <th scope="col" data-field="createdTime">Bet Time</th>
-              </tr>
-            </thead>
-          </table>
-
+              <table id="bookie-matches" class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" data-field="match_id">Match Id</th>
+                    <th scope="col" data-field="match_start">Date</th>
+                    <th scope="col" data-field="home_team.name">Home Team</th>
+                    <th scope="col" data-field="away_team.name">Away Team</th>
+                    <th scope="col" data-field="match_id">Place Odds</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="tab-pane fade" id="bookie-manage-tab" role="tabpanel" aria-labelledby="bookie-manage-tab">
+              <table id="bookie-liquidity" class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" data-field="id">Id</th>
+                    <th scope="col" data-field="matchId">Match Id</th>
+                    <th scope="col" data-field="teamName">Team (To Win)</th>
+                    <th scope="col" data-field="odds">Odds</th>
+                    <th scope="col" data-field="remainingLiquidity">Remaining Balance (ETH)</th>
+                    <th scope="col" data-field="id">Adjust Odds</th>
+                    <th scope="col" data-field="id">Cancel Position</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="tab-pane fade" id="bookie-bets-tab" role="tabpanel" aria-labelledby="bookie-bets-tab">
+              <table id="bookie-bets" class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" data-field="id">Position Id</th>
+                    <th scope="col" data-field="punditCollateral">Pundit Stake (ETH)</th>
+                    <th scope="col" data-field="bookieCollateral">Bookie Risk (ETH)</th>
+                    <th scope="col" data-field="createdTime">Bet Time</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="tab-pane fade" id="bookie-closedbets-tab" role="tabpanel" aria-labelledby="bookie-closedbets-tab">
+              <table id="bookie-closedbets" class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" data-field="id">Position Id</th>
+                    <th scope="col" data-field="punditPayout">Pundit Payout (ETH)</th>
+                    <th scope="col" data-field="bookiePayout">Bookie Payout (ETH)</th>
+                    <th scope="col" data-field="feePaid">Fee (ETH)</th>
+                    <th scope="col" data-field="result">Result</th>
+                    <th scope="col" data-field="createdTime">Bet Time</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
         </div>
         
       </div>
@@ -168,20 +221,18 @@
                   Match:
                 </div>
                 <div class="col">
-                  <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="bk_lq_match">
-                    <option selected value="1">Federer vs Nadal</option>
-                    <option value="2">Djokovic vs Medvedev</option>
-                  </select>
+                  <small><span id="bk_lq_match_desc">Match description</span></small>
                 </div>
               </div>
               <div class="row" style="padding:3px">
                 <div class="col">
-                  Winning Player:
+                  Result (To Win):
                 </div>
                 <div class="col">
-                  <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="bk_lq_player">
-                    <option selected value="1">Federer</option>
-                    <option value="2">Nadal</option>
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="bk_lq_match_winner">
+                    <option selected value="1">Home Team</option>
+                    <option value="2">Draw</option>
+                    <option value="3">Away Team</option>
                   </select>
                 </div>
               </div>
@@ -205,7 +256,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="bk_modal_cancel">Cancel</button>
-          <button type="button" class="btn btn-primary btn-liquid" data-bs-dismiss="modal">Confirm</button>
+          <button type="button" class="btn btn-primary btn-add-position" data-bs-dismiss="modal">Confirm</button>
         </div>
       </div>
     </div>
@@ -264,7 +315,7 @@
         </div>
       </div>
     </div>
-  </div>
+ 
 
 </body>
 
