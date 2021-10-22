@@ -1,18 +1,23 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.5.16 <0.9.0;
 import "./safemath.sol";
-
+import "./Ownable.sol";
+import "./OracleInterface.sol";
+import "./SoccerOracle.sol";
 /// @title A title that should describe the contract/interface
 /// @author Chris Patterson
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
-contract BeTheBookie {
+contract BeTheBookie is Ownable {
 
-    address payable public owner;
+    address payable private ownerPayable;
     uint256 betCounter;
     uint minBet = 0.001 ether;
     uint256 liquidityCounter;
     uint minLiquidity = 0.001 ether;
+
+    address internal soccerOracleAddr = address(0);
+    OracleInterface internal oracle = OracleInterface(soccerOracleAddr);
 
     Bet[] public bets;
     mapping (uint256 => uint) betMapping; //id -> index
@@ -96,9 +101,9 @@ contract BeTheBookie {
    */
 
   // Create a modifer, `isOwner` that checks if the msg.sender is the owner of the contract
-  function isOwner() public view returns(bool) {
-    return msg.sender == owner;
-  }
+//   function isOwner() public view returns(bool) {
+//     return msg.sender == owner;
+//   }
 
   function isNotExcluded() public view returns(bool) {
     return !exclusionList[msg.sender];
@@ -114,7 +119,7 @@ contract BeTheBookie {
     }
 
     constructor() public {
-        owner = msg.sender;
+        ownerPayable = msg.sender;
     }
 
 /// @notice Gambling addiction is a real problem and this option allows people to self exclude from the platform should they feel they are participating in an unhealthly way.
@@ -132,8 +137,15 @@ contract BeTheBookie {
         _balance = address(this).balance;
     }
 
+    function setOracleAddress(address _address) public onlyOwner returns (bool) {
+        soccerOracleAddr = _address;
+        oracle = OracleInterface(soccerOracleAddr);
+        return oracle.Validate();
+    }
     
-    
+    function testOracleValid() public view returns (bool) {
+        return oracle.Validate();
+    }
 
 /// @notice Public function allowing a pundit to place a bet leveraging existing liquidity in a market/odds.
 /// @dev bookieCollateral is somewhat complex as depending on the stake, the payout has to be calculated on the fly and deducted from the pool of liquidity. 
@@ -165,7 +177,7 @@ contract BeTheBookie {
             pundit: msg.sender,
             bookie: _l.bookie,
             result: MatchResult.Undecided, 
-            createdTime: now,
+            createdTime: block.timestamp,
             closedTime: 0,
             closed: false
             }));
@@ -185,9 +197,10 @@ contract BeTheBookie {
 
     }
 
-    function setMatchResult(uint256 _matchId, uint256 winningPlayerId) public payable returns (bool _success) {
-        require(isOwner());
+    function matchCompleteHandlePayouts(uint256 _matchId) public payable onlyOwner returns (bool _success) {
         require(msg.value == 0);
+        (OracleInterface.ResultType _type,uint256 winning_team_id,uint256 result_time)  = oracle.getMatchResult(_matchId);
+        require(_type != OracleInterface.ResultType.Undecided);
 
         for (uint i = 0; i < matchBetMapping[_matchId].length; i++)
         {
@@ -196,10 +209,13 @@ contract BeTheBookie {
                 {continue;}
 
             Liquidity storage _l = betPools[poolMapping[_bet.liquidityId]];
-            MatchResult _result = MatchResult.BookieWon;
-            if (_l.sideId == winningPlayerId)
-                _result = MatchResult.PunditWon;
 
+            MatchResult _result = MatchResult.BookieWon;
+            if (_type == OracleInterface.ResultType.Void)
+                _result = MatchResult.Void;
+            else if (_l.sideId == winning_team_id)
+                _result = MatchResult.PunditWon;
+            
             setResult(_bet.id, _result);
         }
 
@@ -210,26 +226,26 @@ contract BeTheBookie {
                 { continue; }
             refundLiquidity(_l.id);
         }
+        
 
-        return true;
+        _success = true;
     }
 
-/// @notice called by the contract owner to set the result of a given bet. This should be handled by an oracle in the future so there is no manual intervention required. 
+
+/// @notice called internally by the contract owner to set the result of a given bet.  
 /// @dev The payout structure depends on who wins but either the pundit or bookie gets paid - 1% of profits as a fee.
 /// @param _betId - unique id of the bet
 /// @param _result - result of the match. Determines how the bet pays out.
 /// @return _success true if no errors.
-    function setResult(uint256 _betId, MatchResult _result) public payable returns (bool _success) {
-        require(isOwner());
+    function setResult(uint256 _betId, MatchResult _result) public payable onlyOwner returns (bool _success) {
         require(msg.value == 0);
 
         Bet storage _bet = bets[betMapping[_betId]];
         require(_bet.closed == false);
         require(_bet.result == MatchResult.Undecided);
 
-        
         _bet.result = _result;
-        _bet.closedTime = now;
+        _bet.closedTime = block.timestamp;
         
         uint256 fee;
         if (_result == MatchResult.BookieWon)
@@ -261,7 +277,7 @@ contract BeTheBookie {
         if (fee > 0)
         {
             _bet.feePaid = fee;
-            owner.transfer(fee);
+            ownerPayable.transfer(fee);
         }
 
         _bet.closed = true;
@@ -332,7 +348,7 @@ contract BeTheBookie {
             remainingLiquidity: msg.value,
             odds: _odds, 
             closed: false,
-            createdTime: now,
+            createdTime: block.timestamp,
             closedTime: 0
             }));
 

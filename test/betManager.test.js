@@ -1,6 +1,7 @@
 
 const { catchRevert } = require("./exceptionsHelpers.js");
 var BeTheBookie = artifacts.require("./BeTheBookie.sol");
+var SoccerOracle = artifacts.require("./SoccerOracle.sol");
 
 contract("BetManager", function (accounts) {
   const [contractOwner, chris, alice] = accounts;
@@ -274,12 +275,16 @@ contract("BetManager", function (accounts) {
     const betAmount = web3.utils.toWei('1', 'ether');
     await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
     await instance.placeBet(1, odds1, { from: alice, value: betAmount });
+    oracle = await SoccerOracle.new();
+    await instance.setOracleAddress(oracle.address);
+    await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
+    await oracle.setMatchResult(1, 2, 2);
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
     const chrisBalance1 = await web3.eth.getBalance(chris);
     const aliceBalance1 = await web3.eth.getBalance(alice);
 
-    const tx1 = await instance.setMatchResult(1, 2, { from: contractOwner, value: 0 });
+    const tx1 = await instance.matchCompleteHandlePayouts(1);
 
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);
@@ -344,12 +349,16 @@ contract("BetManager", function (accounts) {
     const betAmount = web3.utils.toWei('1', 'ether');
     await instance.addLiquidity(1, 1, 200, { from: chris, value: betAmount });
     await instance.placeBet(1, 200, { from: alice, value: betAmount });
+    oracle = await SoccerOracle.new();
+    await instance.setOracleAddress(oracle.address);
+    await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
+    await oracle.setMatchResult(1, 2, 1);
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
     const chrisBalance1 = await web3.eth.getBalance(chris);
     const aliceBalance1 = await web3.eth.getBalance(alice);
 
-    await instance.setMatchResult(1, 1, { from: contractOwner, value: 0 });
+    await instance.matchCompleteHandlePayouts(1);
 
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);
@@ -401,12 +410,16 @@ contract("BetManager", function (accounts) {
     const betAmount = web3.utils.toWei('1', 'ether');
     await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
     await instance.placeBet(1, odds1, { from: alice, value: betAmount });
+    await instance.setOracleAddress(oracle.address);
+    await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
+    await oracle.setMatchResult(1, 1, 0);
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
     const chrisBalance1 = await web3.eth.getBalance(chris);
     const aliceBalance1 = await web3.eth.getBalance(alice);
 
-    await instance.setResult(1, 3, { from: contractOwner, value: 0 });
+    //await instance.setResult(1, 3, { from: contractOwner, value: 0 });
+    await instance.matchCompleteHandlePayouts(1);
 
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);
@@ -455,41 +468,53 @@ contract("BetManager", function (accounts) {
   });
 
 
-  it("Refund Liquidity", async () => {
-    const betAmount = web3.utils.toWei('1', 'ether');
-    const remainingAmount = web3.utils.toWei('0.5', 'ether');
-    await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
-    await instance.placeBet(1, odds1, { from: alice, value: betAmount });
+  // it("Refund Liquidity", async () => {
+  //   const betAmount = web3.utils.toWei('1', 'ether');
+  //   const remainingAmount = web3.utils.toWei('0.5', 'ether');
+  //   await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
+  //   await instance.placeBet(1, odds1, { from: alice, value: betAmount });
 
 
-    const chrisBalance1 = await web3.eth.getBalance(chris);
+  //   const chrisBalance1 = await web3.eth.getBalance(chris);
 
-    await instance.refundLiquidity(1, { from: contractOwner, value: 0 });
-    const liquidity1 = await instance.getLiquidityById.call(1);
+  //   await instance.refundLiquidity(1, { from: contractOwner, value: 0 });
+  //   const liquidity1 = await instance.getLiquidityById.call(1);
 
-    assert.equal(
-      liquidity1[3],
-      0,
-      "the remainingLiquidity value does not match the expected value (0)",
-    );
+  //   assert.equal(
+  //     liquidity1[3],
+  //     0,
+  //     "the remainingLiquidity value does not match the expected value (0)",
+  //   );
 
-    assert.equal(
-      liquidity1[5],
-      true,
-      "the closed value does not match the expected value (true)",
-    );
+  //   assert.equal(
+  //     liquidity1[5],
+  //     true,
+  //     "the closed value does not match the expected value (true)",
+  //   );
 
-    const chrisBalance2 = await web3.eth.getBalance(chris);
+  //   const chrisBalance2 = await web3.eth.getBalance(chris);
 
-    let balanceMatch0 = (chrisBalance1 < chrisBalance2);
+  //   let balanceMatch0 = (chrisBalance1 < chrisBalance2);
       
-    assert.equal(
-      balanceMatch0,
-      true,
-      "the chrisBalance1 " + web3.utils.fromWei(chrisBalance1) + " should < chrisBalance2 " + web3.utils.fromWei(chrisBalance2),
-    );
+  //   assert.equal(
+  //     balanceMatch0,
+  //     true,
+  //     "the chrisBalance1 " + web3.utils.fromWei(chrisBalance1) + " should < chrisBalance2 " + web3.utils.fromWei(chrisBalance2),
+  //   );
 
     
-  });
+  // });
+
+  // it("Oracle Test", async () => {
+  //   oracle = await SoccerOracle.new();
+  //   await instance.setOracleAddress(oracle.address);
+  //   const result = await instance.testOracleValid();
+  //   assert.equal(
+  //     result,
+  //     true,
+  //     "the result should be true",
+  //   );
+  // });
+  //
   
 });
