@@ -26,6 +26,7 @@ interface  OracleInterface {
         ResultType result; 
         uint256 match_id;
         uint256 winning_team_id;
+        string final_score;
         uint256 result_time;
     }
 
@@ -38,7 +39,7 @@ interface  OracleInterface {
                         string calldata team1_name,
                         string calldata team2_name) external;
 
-    function setMatchResult(uint256 matchId, ResultType result, uint256 winner) external;
+    function setMatchResult(uint256 matchId, ResultType result, uint256 winner, string calldata final_score) external;
     function getAvailableMatches() external view returns (uint256[] memory);
     function getMatch(uint256 match_id) external view returns (string memory match_date,
                                                     uint256 team1_id,

@@ -77,7 +77,7 @@ contract("SoccerOracle", function (accounts) {
 
   it("Set Match Result", async () => {
     await instance.addMatch(100, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
-    await instance.setMatchResult(100, 2, 1);
+    await instance.setMatchResult(100, 2, 1, "1-0");
     const matchResult = await instance.getMatchResult(100);
     assert.equal(
         matchResult.result,
@@ -94,7 +94,7 @@ contract("SoccerOracle", function (accounts) {
 
   it("Set Match Result - VOID", async () => {
     await instance.addMatch(100, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
-    await instance.setMatchResult(100, 1, 0);
+    await instance.setMatchResult(100, 1, 0, "0-0");
     const matchResult = await instance.getMatchResult(100);
     assert.equal(
         matchResult.result,

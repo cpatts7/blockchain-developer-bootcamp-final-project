@@ -32,7 +32,7 @@ contract SoccerOracle is OracleInterface, Ownable {
         _result = true;
     }
 
-    function setMatchResult(uint256 matchId, ResultType result, uint256 winner) external onlyOwner {
+    function setMatchResult(uint256 matchId, ResultType result, uint256 winner, string calldata final_score) external onlyOwner {
         Match storage _match = matches[matchIdIndexMapping[matchId]];
         require(_match.pending); //make sure this is still a pending match.
 
@@ -41,7 +41,8 @@ contract SoccerOracle is OracleInterface, Ownable {
             match_id: matchId,
             result: result,
             winning_team_id: winner,
-            result_time: block.timestamp
+            result_time: block.timestamp,
+            final_score: final_score
         }));
         matchIdResultIndexMapping[matchId] = matchResults.length-1;
     }

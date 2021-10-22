@@ -278,7 +278,7 @@ contract("BetManager", function (accounts) {
     oracle = await SoccerOracle.new();
     await instance.setOracleAddress(oracle.address);
     await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
-    await oracle.setMatchResult(1, 2, 2);
+    await oracle.setMatchResult(1, 2, 2, "0-1");
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
     const chrisBalance1 = await web3.eth.getBalance(chris);
@@ -352,7 +352,7 @@ contract("BetManager", function (accounts) {
     oracle = await SoccerOracle.new();
     await instance.setOracleAddress(oracle.address);
     await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
-    await oracle.setMatchResult(1, 2, 1);
+    await oracle.setMatchResult(1, 2, 1, "1-0");
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
     const chrisBalance1 = await web3.eth.getBalance(chris);
@@ -412,7 +412,7 @@ contract("BetManager", function (accounts) {
     await instance.placeBet(1, odds1, { from: alice, value: betAmount });
     await instance.setOracleAddress(oracle.address);
     await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
-    await oracle.setMatchResult(1, 1, 0);
+    await oracle.setMatchResult(1, 1, 0, "0-0");
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
     const chrisBalance1 = await web3.eth.getBalance(chris);
@@ -505,16 +505,16 @@ contract("BetManager", function (accounts) {
     
   // });
 
-  // it("Oracle Test", async () => {
-  //   oracle = await SoccerOracle.new();
-  //   await instance.setOracleAddress(oracle.address);
-  //   const result = await instance.testOracleValid();
-  //   assert.equal(
-  //     result,
-  //     true,
-  //     "the result should be true",
-  //   );
-  // });
-  //
+  it("Oracle Test", async () => {
+    oracle = await SoccerOracle.new();
+    await instance.setOracleAddress(oracle.address);
+    const result = await instance.testOracleValid();
+    assert.equal(
+      result,
+      true,
+      "the result should be true",
+    );
+  });
+  
   
 });
