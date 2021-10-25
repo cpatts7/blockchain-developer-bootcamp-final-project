@@ -13,6 +13,7 @@
   <script language="javascript" src="js/truffle-contract.js"></script>
   <script language="javascript" src="https://cdn.ethers.io/lib/ethers-5.1.umd.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/app.js"></script>
+  <script language="javascript" type="text/javascript" src="js/admin.js"></script>
   <script language="javascript" type="text/javascript" src="js/bookie.js"></script>
   <script language="javascript" type="text/javascript" src="js/pundit.js"></script>
   <script language="javascript" type="text/javascript" src="js/bootstrap-datepicker.js"></script>
@@ -80,9 +81,9 @@
                 <thead>
                   <tr>
                     <th scope="col" data-field="match_id">Match Id</th>
-                    <th scope="col" data-field="match_start">Date</th>
-                    <th scope="col" data-field="home_team.name">Home Team</th>
-                    <th scope="col" data-field="away_team.name">Away Team</th>
+                    <th scope="col" data-field="match_date">Date</th>
+                    <th scope="col" data-field="home_team_name">Home Team</th>
+                    <th scope="col" data-field="away_team_name">Away Team</th>
                     <th scope="col" data-field="match_id">Place Odds</th>
                   </tr>
                 </thead>
@@ -94,7 +95,7 @@
                   <tr>
                     <th scope="col" data-field="id">Id</th>
                     <th scope="col" data-field="matchId">Match Id</th>
-                    <th scope="col" data-field="match_start">Date</th>
+                    <th scope="col" data-field="match_date">Date</th>
                     <th scope="col" data-field="matchDetails">Match Details</th>
                     <th scope="col" data-field="teamName">Team (To Win)</th>
                     <th scope="col" data-field="odds">Odds</th>
@@ -110,6 +111,10 @@
                 <thead>
                   <tr>
                     <th scope="col" data-field="id">Position Id</th>
+                    <th scope="col" data-field="match_date">Date</th>
+                    <th scope="col" data-field="matchDetails">Match Details</th>
+                    <th scope="col" data-field="teamName">Team (To Win)</th>
+                    <th scope="col" data-field="odds">Odds</th>
                     <th scope="col" data-field="punditCollateral">Pundit Stake (ETH)</th>
                     <th scope="col" data-field="bookieCollateral">Bookie Risk (ETH)</th>
                     <th scope="col" data-field="createdTime">Bet Time</th>
@@ -122,11 +127,16 @@
                 <thead>
                   <tr>
                     <th scope="col" data-field="id">Position Id</th>
+                    <th scope="col" data-field="match_date">Date</th>
+                    <th scope="col" data-field="matchDetails">Match Details</th>
+                    <th scope="col" data-field="teamName">Team (To Win)</th>
+                    <th scope="col" data-field="odds">Odds</th>
                     <th scope="col" data-field="punditPayout">Pundit Payout (ETH)</th>
                     <th scope="col" data-field="bookiePayout">Bookie Payout (ETH)</th>
                     <th scope="col" data-field="feePaid">Fee (ETH)</th>
                     <th scope="col" data-field="result">Result</th>
                     <th scope="col" data-field="createdTime">Bet Time</th>
+                    <th scope="col" data-field="closedTime">Closed Time</th>
                   </tr>
                 </thead>
               </table>
@@ -179,7 +189,7 @@
                   <thead>
                     <tr>
                       <th scope="col" data-field="id">Position Id</th>
-                      <th scope="col" data-field="match_start">Date</th>
+                      <th scope="col" data-field="match_date">Date</th>
                       <th scope="col" data-field="matchDetails">Match Details</th>
                       <th scope="col" data-field="teamName">Team (To Win)</th>
                       <th scope="col" data-field="odds">Odds</th>
@@ -196,7 +206,7 @@
                   <thead>
                     <tr>            
                       <th scope="col" data-field="id">Position Id</th>
-                      <th scope="col" data-field="match_start">Date</th>
+                      <th scope="col" data-field="match_date">Date</th>
                       <th scope="col" data-field="matchDetails">Match Details</th>
                       <th scope="col" data-field="teamName">Team (To Win)</th>
                       <th scope="col" data-field="punditCollateral">My Stake (ETH)</th>
@@ -227,42 +237,53 @@
 
           </div>
         </div>
-      
-        
-        
-
-        
-
       </div>
+
       <div class="tab-pane fade" id="management" role="tabpanel" aria-labelledby="management-tab">
-        <br/>
-        <h6>Select Match</h6>
-        <div class="container-sm">
-          <div class="row">
-            <div class="col">
-              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="bk_manage_match">
-                <option selected value="1">Federer vs Nadal</option>
-                <option value="2">Djokovic vs Medvedev</option>
-              </select>
+        <div class="container-md">
+          <br/>
+          <p>Administrative functions</p>
+
+          <div class="container">
+            <div class="row" style="padding:3px">
+              <div class="col">
+                Oracle Address:
+              </div>
+              <div class="col">
+                <input type="text" class="form-control form-control-sm" placeholder="Oracle" aria-label="Oracle" id="admin_oracle_address">
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-primary btn-admin-oracle">Set Oracle</button>
+              </div>
             </div>
           </div>
-        </div>
-        <br/>
-        <h6>Select Winner</h6>
-        <div class="container-sm">
-          <div class="row">
+          <div class="row" style="padding:3px">
             <div class="col">
-              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="bk_manage_match_result">
-                <option selected value="1">Player 1</option>
-                <option value="2">Player 2</option>
-              </select>
+              Set Initial Matches:
+            </div>
+            <div class="col">
+              
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-primary btn-admin-oracle-matches">Set Initial Matches</button>
             </div>
           </div>
+
+          <br/>
+          <table id="admin-matches" class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th scope="col" data-field="match_id">Match Id</th>
+                <th scope="col" data-field="match_date">Date</th>
+                <th scope="col" data-field="home_team_name">Home Team</th>
+                <th scope="col" data-field="away_team_name">Away Team</th>
+                <th scope="col" data-field="match_id">Set Result</th>
+              </tr>
+            </thead>
+          </table>
         </div>
-        <br/>
-        <button class="btn btn-outline-primary btn-sm btn-mgt-result" type="button">Set Result</button><br/><br/>
+        </div>
       </div>
-    </div>
   </div>
   
 
@@ -353,14 +374,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Place Bet</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Set Result</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" id="bk_pundit_bet_modal">
+        <div class="modal-body" id="punditPlaceBetModal">
             <div class="container">
               <div class="row" style="padding:3px">
                 <div class="col">
-                  Bet Amount (ETH):
+                  Bet Amount
                 </div>
                 <div class="col">
                   <input type="text" class="form-control form-control-sm" placeholder="Bet Amount" aria-label="Bet Amount" id="bk_pundit_bet_amount">
@@ -371,6 +392,54 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="bk_modal_cancel">Cancel</button>
           <button type="button" class="btn btn-primary btn-place-bet" data-bs-dismiss="modal">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="modal fade" id="adminSetResultModal" tabindex="-1" aria-labelledby="Set Result" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Set Result</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="bk_pundit_bet_modal">
+              <div class="container">
+                <div class="row" style="padding:3px">
+                  <div class="col">
+                    Match:
+                  </div>
+                  <div class="col">
+                    <small><span id="admin_match_desc">Match description</span></small>
+                  </div>
+                </div>
+                <div class="row" style="padding:3px">
+                  <div class="col">
+                    Winner:
+                  </div>
+                  <div class="col">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="admin_match_winner">
+                      <option selected value="1">Home Team</option>
+                      <option value="2">Draw</option>
+                      <option value="3">Away Team</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row" style="padding:3px">
+                  <div class="col">
+                    Final Score:
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control form-control-sm" placeholder="Final Score" aria-label="Final Score" id="admin_final_score">
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="bk_modal_cancel">Cancel</button>
+            <button type="button" class="btn btn-primary btn-admin-setresult" data-bs-dismiss="modal">Confirm</button>
+          </div>
         </div>
       </div>
     </div>

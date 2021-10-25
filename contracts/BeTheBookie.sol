@@ -23,10 +23,7 @@ contract BeTheBookie is Ownable {
     mapping (uint256 => uint) betMapping; //id -> index
     
     //mapping of pundit bets to an address
-    mapping (address => uint256[]) punditBetsMapping; 
-
-    //mapping of bookie bets to an address
-    mapping (address => uint256[]) bookieBetsMapping; 
+    mapping (address => uint256[]) addressBetsMapping; 
 
     Liquidity[] public betPools;
     mapping (uint256 => uint) poolMapping; //id -> index
@@ -71,6 +68,7 @@ contract BeTheBookie is Ownable {
         uint256 feePaid;
         address payable bookie; // bookie address copied from the liquidity object
         address payable pundit; //account taking a punt on this outcome (they want to win)
+        uint odds; //odds at the time of bet.
         MatchResult result;
         uint createdTime;
         uint closedTime;
@@ -164,6 +162,16 @@ contract BeTheBookie is Ownable {
         uint256 bookieCollateral = SafeMath.div(SafeMath.mul(msg.value, _odds), 100)-msg.value;
         require(_l.remainingLiquidity >= bookieCollateral);
 
+        (uint256 id, 
+        string memory match_date, 
+        uint256 team1_id,
+        uint256 team2_id,
+        string memory team1_name,
+        string memory team2_name,
+        bool pending) = oracle.getMatch(_l.matchId);
+
+        require(pending);
+
         _id = ++betCounter;
 
         bets.push(Bet({
@@ -176,6 +184,7 @@ contract BeTheBookie is Ownable {
             feePaid: 0,
             pundit: msg.sender,
             bookie: _l.bookie,
+            odds: _odds,
             result: MatchResult.Undecided, 
             createdTime: block.timestamp,
             closedTime: 0,
@@ -183,8 +192,8 @@ contract BeTheBookie is Ownable {
             }));
 
         betMapping[_id] = _id-1;
-        punditBetsMapping[msg.sender].push(_id);
-        bookieBetsMapping[_l.bookie].push(_id);
+        addressBetsMapping[msg.sender].push(_id);
+        addressBetsMapping[_l.bookie].push(_id);
         matchBetMapping[_l.matchId].push(_id);
 
         _l.remainingLiquidity = SafeMath.sub(_l.remainingLiquidity, bookieCollateral);
@@ -289,41 +298,77 @@ contract BeTheBookie is Ownable {
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @return uint256[] - list of bet ID's owned by the msg.sender
-    function getPunditBets(address pundit) external view returns (uint256[] memory)
+    function getActiveBetsByAddress() external view returns (uint256[] memory)
     {
-        uint256[] memory response = punditBetsMapping[pundit];
-        return response;
+        uint256[] memory _bets = addressBetsMapping[msg.sender];
+        return getActiveBetsByAddressAndStatus(_bets, false);
     }
 
-    /// @notice Explain to an end user what this does
+/// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @return uint256[] - list of bet ID's owned by the msg.sender
-    function getBookieBets(address bookie) external view returns (uint256[] memory)
+    function getInActiveBetsByAddress() external view returns (uint256[] memory)
     {
-        uint256[] memory response = bookieBetsMapping[bookie];
-        return response;
+        uint256[] memory _bets = addressBetsMapping[msg.sender];
+        return getActiveBetsByAddressAndStatus(_bets, true);
     }
 
+    function getActiveBetsByAddressAndStatus(uint256[] memory _bets, bool isClosed) private view returns (uint256[] memory)
+    {
+        uint count = 0; 
+
+        //get count of pending matches 
+        for (uint i = 0; i < _bets.length; i++) {
+            Bet storage _bet = bets[betMapping[_bets[i]]];
+            if (_bet.closed == isClosed) 
+                count++; 
+        }
+
+        //collect up all the pending matches
+        uint256[] memory output = new uint256[](count); 
+
+        if (count > 0) {
+            uint index = 0;
+            for (uint n = _bets.length; n > 0; n--) {
+                Bet storage _bet = bets[betMapping[_bets[n-1]]];
+                if (_bet.closed == isClosed) 
+                    output[index++] = _bet.id;
+            }
+        } 
+
+        return output;
+    }
 
     /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @param _id bet id
-    function getBetById(uint _id) external view returns (uint256 id, uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, MatchResult result, uint createdTime, bool closed)
+    function getBetById(uint256 _id) external view returns (uint256 id, uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 odds, uint createdTime, bool closed)
     {
         Bet storage bet = bets[betMapping[_id]];
         id = bet.id;
         liquidityId = bet.liquidityId;
         bookieCollateral = bet.bookieCollateral;
         punditCollateral = bet.punditCollateral;
+        odds = bet.odds;
+        createdTime = bet.createdTime;
+        closed = bet.closed;
+        return (id, liquidityId, bookieCollateral, punditCollateral, odds, createdTime, closed);
+    }
+
+    function getClosedBetById(uint256 _id) external view returns (uint256 id, uint256 liquidityId, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, uint256 odds, MatchResult result, uint createdTime, uint closedTime)
+    {
+        Bet storage bet = bets[betMapping[_id]];
+        id = bet.id;
+        liquidityId = bet.liquidityId;
         bookiePayout = bet.bookiePayout;
         punditPayout = bet.punditPayout;
         feePaid = bet.feePaid;
+        odds = bet.odds;
         result = bet.result;
         createdTime = bet.createdTime;
-        closed = bet.closed;
-        return (id, liquidityId, bookieCollateral, punditCollateral, bookiePayout, punditPayout, feePaid, result, createdTime, closed);
+        closedTime = bet.closedTime;
+        return (id, liquidityId, bookiePayout, punditPayout, feePaid, odds, result, createdTime, closedTime);
     }
-
 
     /// @notice Public function for a bookie to place odds on a match result and submit available liquidity. ie: Federer to beat Nadal, 200 odds with 10ETH max payout.
     /// @param _matchId The unique ID of a match (ie: Federer vs Nadal at 2018 Wimbledon final)
@@ -337,6 +382,17 @@ contract BeTheBookie is Ownable {
         require(_odds > 100);
         require(_odds < 10001);
         require(msg.value >= minLiquidity);
+
+        (uint256 id, 
+        string memory match_date, 
+        uint256 team1_id,
+        uint256 team2_id,
+        string memory team1_name,
+        string memory team2_name,
+        bool pending) = oracle.getMatch(_matchId);
+
+        require(pending);
+        require(_sideId == 0 || _sideId == team1_id || _sideId == team2_id);
 
         _id = ++liquidityCounter;
 

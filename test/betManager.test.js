@@ -13,11 +13,9 @@ contract("BetManager", function (accounts) {
 
   beforeEach(async () => {
     instance = await BeTheBookie.new();
-  });
-
-  it("Tests have been initialised successfully.", async() => {
-    const eth100 = 100e18;
-    assert.equal(await web3.eth.getBalance(chris), eth100.toString());
+    oracle = await SoccerOracle.new();
+    await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
+    await instance.setOracleAddress(oracle.address);
   });
 
   it("Is owned by owner", async () => {
@@ -162,7 +160,7 @@ contract("BetManager", function (accounts) {
     const result = await instance.getBetById.call(1);
     const liquidityObject = await instance.getLiquidityById.call(1);
     const balance = await instance.contractBalance.call();
-    const bets = await instance.getBookieBets(chris);
+    const bets = await instance.getActiveBetsByAddress({ from: alice});
     const matchBets = await instance.getMatchBets(1);
 
     assert.equal(
@@ -243,7 +241,8 @@ contract("BetManager", function (accounts) {
 
     const liquidity2 = await instance.getLiquidityById.call(1);
 
-    const bets = await instance.getPunditBets(alice);
+    const bets = await instance.getActiveBetsByAddress({ from: alice});
+    const bookieBets = await instance.getActiveBetsByAddress({ from: chris});
 
     assert.equal(
       liquidity2[5],
@@ -252,21 +251,27 @@ contract("BetManager", function (accounts) {
     );
 
     assert.equal(
+      bookieBets.length,
+      2,
+      "the bookieBets.length does not match the expected value"
+    )
+
+    assert.equal(
       bets.length,
       2,
-      "the bets does not match the expected value"
+      "the bets.length does not match the expected value"
     )
 
     assert.equal(
       bets[0],
-      1,
-      "the bets does not match the expected value"
+      2,
+      "the bets[0] does not match the expected value"
     )
 
     assert.equal(
       bets[1],
-      2,
-      "the bets does not match the expected value"
+      1,
+      "the bets[1] does not match the expected value"
     )
     
   });
@@ -275,9 +280,6 @@ contract("BetManager", function (accounts) {
     const betAmount = web3.utils.toWei('1', 'ether');
     await instance.addLiquidity(1, 1, odds1, { from: chris, value: bookiePaymentAmount1 });
     await instance.placeBet(1, odds1, { from: alice, value: betAmount });
-    oracle = await SoccerOracle.new();
-    await instance.setOracleAddress(oracle.address);
-    await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
     await oracle.setMatchResult(1, 2, 2, "0-1");
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
@@ -290,9 +292,9 @@ contract("BetManager", function (accounts) {
     const chrisBalance2 = await web3.eth.getBalance(chris);
     const aliceBalance2 = await web3.eth.getBalance(alice);
 
-    const bet = await instance.getBetById.call(1);
+    const bet = await instance.getClosedBetById.call(1);
 
-    let feeWasPaid = (bet[6] > 0);
+    let feeWasPaid = (bet[4] > 0);
 
     assert.equal(
       feeWasPaid,
@@ -301,7 +303,7 @@ contract("BetManager", function (accounts) {
     );
 
     assert.equal(
-      bet[9],
+      bet[6],
       1,
       "the result does not match the expected value",
     );
@@ -349,9 +351,6 @@ contract("BetManager", function (accounts) {
     const betAmount = web3.utils.toWei('1', 'ether');
     await instance.addLiquidity(1, 1, 200, { from: chris, value: betAmount });
     await instance.placeBet(1, 200, { from: alice, value: betAmount });
-    oracle = await SoccerOracle.new();
-    await instance.setOracleAddress(oracle.address);
-    await oracle.addMatch(1, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
     await oracle.setMatchResult(1, 2, 1, "1-0");
 
     const ownerBalance1 = await web3.eth.getBalance(contractOwner);
@@ -360,13 +359,21 @@ contract("BetManager", function (accounts) {
 
     await instance.matchCompleteHandlePayouts(1);
 
+    const closedBets = await instance.getInActiveBetsByAddress(alice);
+
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);
     const aliceBalance2 = await web3.eth.getBalance(alice);
 
-    const bet = await instance.getBetById.call(1);
+    const bet = await instance.getClosedBetById.call(1);
 
-    let feeWasPaid = (bet[6] > 0);
+    let feeWasPaid = (bet[4] > 0);
+
+    assert.equal(
+      closedBets.length,
+      1,
+      "the closedBets.length does not match the expected value"
+    )
 
     assert.equal(
       feeWasPaid,
@@ -375,7 +382,7 @@ contract("BetManager", function (accounts) {
     );
     
     assert.equal(
-      bet[7],
+      bet[6],
       2,
       "the result does not match the expected value",
     );
@@ -425,9 +432,9 @@ contract("BetManager", function (accounts) {
     const chrisBalance2 = await web3.eth.getBalance(chris);
     const aliceBalance2 = await web3.eth.getBalance(alice);
 
-    const bet = await instance.getBetById.call(1);
+    const bet = await instance.getClosedBetById.call(1);
 
-    let feeWasNotPaid = (bet[6] == 0);
+    let feeWasNotPaid = (bet[4] == 0);
 
     assert.equal(
       feeWasNotPaid,
@@ -436,7 +443,7 @@ contract("BetManager", function (accounts) {
     );
     
     assert.equal(
-      bet[7],
+      bet[6],
       3,
       "the result does not match the expected value",
     );
@@ -506,8 +513,8 @@ contract("BetManager", function (accounts) {
   // });
 
   it("Oracle Test", async () => {
-    oracle = await SoccerOracle.new();
-    await instance.setOracleAddress(oracle.address);
+    // oracle = await SoccerOracle.new();
+    // await instance.setOracleAddress(oracle.address);
     const result = await instance.testOracleValid();
     assert.equal(
       result,

@@ -113,6 +113,11 @@
       "name": "getMatch",
       "outputs": [
         {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
           "internalType": "string",
           "name": "match_date",
           "type": "string"
@@ -177,27 +182,36 @@
       "payable": false,
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "setInitialMatches",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"Validate\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"match_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"match_date\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"team1_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"team2_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"team1_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"team2_name\",\"type\":\"string\"}],\"name\":\"addMatch\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAvailableMatches\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"match_id\",\"type\":\"uint256\"}],\"name\":\"getMatch\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"match_date\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"team1_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"team2_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"team1_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"team2_name\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"pending\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"match_id\",\"type\":\"uint256\"}],\"name\":\"getMatchResult\",\"outputs\":[{\"internalType\":\"enum OracleInterface.ResultType\",\"name\":\"result\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"winning_team_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"result_time\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"matchId\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.ResultType\",\"name\":\"result\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"winner\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"final_score\",\"type\":\"string\"}],\"name\":\"setMatchResult\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/OracleInterface.sol\":\"OracleInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/OracleInterface.sol\":{\"keccak256\":\"0x5fa8641d67e4c1025c3a4f4c1efe329137ec099ca7e27c0317d22e9cf4a6d797\",\"urls\":[\"bzz-raw://ea8da69162bcfd7df0c775be763ed37d143221d2317858cb30a4c5775410b299\",\"dweb:/ipfs/QmfEdsBiVNjHy9gb4GMTp3h9EQbmcykiGfZYUpS6kEwNmA\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"Validate\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"match_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"match_date\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"team1_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"team2_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"team1_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"team2_name\",\"type\":\"string\"}],\"name\":\"addMatch\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAvailableMatches\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"match_id\",\"type\":\"uint256\"}],\"name\":\"getMatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"match_date\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"team1_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"team2_id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"team1_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"team2_name\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"pending\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"match_id\",\"type\":\"uint256\"}],\"name\":\"getMatchResult\",\"outputs\":[{\"internalType\":\"enum OracleInterface.ResultType\",\"name\":\"result\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"winning_team_id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"result_time\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"setInitialMatches\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"matchId\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.ResultType\",\"name\":\"result\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"winner\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"final_score\",\"type\":\"string\"}],\"name\":\"setMatchResult\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/OracleInterface.sol\":\"OracleInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/OracleInterface.sol\":{\"keccak256\":\"0x8c6dcc88b23f22e8e32ce68738825aca86a6040fbe35f8cdaa4ac367622461e3\",\"urls\":[\"bzz-raw://450aaff2a391528ffb551d4228e1ae791bfc197bcb38cf5d33b4d8e52c35e13d\",\"dweb:/ipfs/QmQD3oPD45bNDfFVj6UEswMCmrhW6SmmTXVoFqPTDZKkwo\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity >=0.5.16 <0.9.0;\r\n\r\ninterface  OracleInterface {\r\n\r\n    enum ResultType\r\n    {\r\n        Undecided,\r\n        Void,\r\n        Completed\r\n    }\r\n\r\n    struct Match\r\n    {\r\n        uint256 match_id;\r\n        string match_date;\r\n        uint256 team1_id;\r\n        uint256 team2_id;\r\n        string team1_name;\r\n        string team2_name;\r\n        bool pending;\r\n        \r\n    }\r\n\r\n    struct MatchResult\r\n    {\r\n        ResultType result; \r\n        uint256 match_id;\r\n        uint256 winning_team_id;\r\n        string final_score;\r\n        uint256 result_time;\r\n    }\r\n\r\n    function Validate() external view returns (bool);\r\n\r\n    function addMatch(uint256 match_id,\r\n                        string calldata match_date,\r\n                        uint256 team1_id,\r\n                        uint256 team2_id,\r\n                        string calldata team1_name,\r\n                        string calldata team2_name) external;\r\n\r\n    function setMatchResult(uint256 matchId, ResultType result, uint256 winner, string calldata final_score) external;\r\n    function getAvailableMatches() external view returns (uint256[] memory);\r\n    function getMatch(uint256 match_id) external view returns (string memory match_date,\r\n                                                    uint256 team1_id,\r\n                                                    uint256 team2_id,\r\n                                                    string memory team1_name,\r\n                                                    string memory team2_name,\r\n                                                    bool pending);\r\n    function getMatchResult(uint256 match_id) external view returns (ResultType result,\r\n                                                                    uint256 winning_team_id,\r\n                                                                    uint256 result_time);\r\n\r\n                                                                \r\n}",
+  "source": "pragma solidity >=0.5.16 <0.9.0;\r\n\r\ninterface  OracleInterface {\r\n\r\n    enum ResultType\r\n    {\r\n        Undecided,\r\n        Void,\r\n        Completed\r\n    }\r\n\r\n    struct Match\r\n    {\r\n        uint256 match_id;\r\n        string match_date;\r\n        uint256 team1_id;\r\n        uint256 team2_id;\r\n        string team1_name;\r\n        string team2_name;\r\n        bool pending;\r\n        \r\n    }\r\n\r\n    struct MatchResult\r\n    {\r\n        ResultType result; \r\n        uint256 match_id;\r\n        uint256 winning_team_id;\r\n        string final_score;\r\n        uint256 result_time;\r\n    }\r\n\r\n    function Validate() external view returns (bool);\r\n\r\n    function addMatch(uint256 match_id,\r\n                        string calldata match_date,\r\n                        uint256 team1_id,\r\n                        uint256 team2_id,\r\n                        string calldata team1_name,\r\n                        string calldata team2_name) external;\r\n\r\n    function setMatchResult(uint256 matchId, ResultType result, uint256 winner, string calldata final_score) external;\r\n    function getAvailableMatches() external view returns (uint256[] memory);\r\n    function getMatch(uint256 match_id) external view returns (\r\n                                                    uint256 id,\r\n                                                    string memory match_date,\r\n                                                    uint256 team1_id,\r\n                                                    uint256 team2_id,\r\n                                                    string memory team1_name,\r\n                                                    string memory team2_name,\r\n                                                    bool pending);\r\n    function getMatchResult(uint256 match_id) external view returns (ResultType result,\r\n                                                                    uint256 winning_team_id,\r\n                                                                    uint256 result_time);\r\n\r\n    function setInitialMatches() external;\r\n                                                                \r\n}",
   "sourcePath": "E:\\GIT\\blockchain-developer-bootcamp-final-project\\contracts\\OracleInterface.sol",
   "ast": {
     "absolutePath": "project:/contracts/OracleInterface.sol",
     "exportedSymbols": {
       "OracleInterface": [
-        1389
+        1629
       ]
     },
-    "id": 1390,
+    "id": 1630,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1293,
+        "id": 1528,
         "literals": [
           "solidity",
           ">=",
@@ -216,31 +230,31 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1389,
+        "id": 1629,
         "linearizedBaseContracts": [
-          1389
+          1629
         ],
         "name": "OracleInterface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "OracleInterface.ResultType",
-            "id": 1297,
+            "id": 1532,
             "members": [
               {
-                "id": 1294,
+                "id": 1529,
                 "name": "Undecided",
                 "nodeType": "EnumValue",
                 "src": "104:9:2"
               },
               {
-                "id": 1295,
+                "id": 1530,
                 "name": "Void",
                 "nodeType": "EnumValue",
                 "src": "124:4:2"
               },
               {
-                "id": 1296,
+                "id": 1531,
                 "name": "Completed",
                 "nodeType": "EnumValue",
                 "src": "139:9:2"
@@ -252,14 +266,14 @@
           },
           {
             "canonicalName": "OracleInterface.Match",
-            "id": 1312,
+            "id": 1547,
             "members": [
               {
                 "constant": false,
-                "id": 1299,
+                "id": 1534,
                 "name": "match_id",
                 "nodeType": "VariableDeclaration",
-                "scope": 1312,
+                "scope": 1547,
                 "src": "192:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -268,7 +282,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1298,
+                  "id": 1533,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "192:7:2",
@@ -282,10 +296,10 @@
               },
               {
                 "constant": false,
-                "id": 1301,
+                "id": 1536,
                 "name": "match_date",
                 "nodeType": "VariableDeclaration",
-                "scope": 1312,
+                "scope": 1547,
                 "src": "219:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -294,7 +308,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1300,
+                  "id": 1535,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "219:6:2",
@@ -308,10 +322,10 @@
               },
               {
                 "constant": false,
-                "id": 1303,
+                "id": 1538,
                 "name": "team1_id",
                 "nodeType": "VariableDeclaration",
-                "scope": 1312,
+                "scope": 1547,
                 "src": "247:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -320,7 +334,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1302,
+                  "id": 1537,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "247:7:2",
@@ -334,10 +348,10 @@
               },
               {
                 "constant": false,
-                "id": 1305,
+                "id": 1540,
                 "name": "team2_id",
                 "nodeType": "VariableDeclaration",
-                "scope": 1312,
+                "scope": 1547,
                 "src": "274:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -346,7 +360,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1304,
+                  "id": 1539,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "274:7:2",
@@ -360,10 +374,10 @@
               },
               {
                 "constant": false,
-                "id": 1307,
+                "id": 1542,
                 "name": "team1_name",
                 "nodeType": "VariableDeclaration",
-                "scope": 1312,
+                "scope": 1547,
                 "src": "301:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -372,7 +386,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1306,
+                  "id": 1541,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "301:6:2",
@@ -386,10 +400,10 @@
               },
               {
                 "constant": false,
-                "id": 1309,
+                "id": 1544,
                 "name": "team2_name",
                 "nodeType": "VariableDeclaration",
-                "scope": 1312,
+                "scope": 1547,
                 "src": "329:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -398,7 +412,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1308,
+                  "id": 1543,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "329:6:2",
@@ -412,10 +426,10 @@
               },
               {
                 "constant": false,
-                "id": 1311,
+                "id": 1546,
                 "name": "pending",
                 "nodeType": "VariableDeclaration",
-                "scope": 1312,
+                "scope": 1547,
                 "src": "357:12:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -424,7 +438,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1310,
+                  "id": 1545,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "357:4:2",
@@ -439,36 +453,36 @@
             ],
             "name": "Match",
             "nodeType": "StructDefinition",
-            "scope": 1389,
+            "scope": 1629,
             "src": "163:224:2",
             "visibility": "public"
           },
           {
             "canonicalName": "OracleInterface.MatchResult",
-            "id": 1323,
+            "id": 1558,
             "members": [
               {
                 "constant": false,
-                "id": 1314,
+                "id": 1549,
                 "name": "result",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
+                "scope": 1558,
                 "src": "430:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ResultType_$1297",
+                  "typeIdentifier": "t_enum$_ResultType_$1532",
                   "typeString": "enum OracleInterface.ResultType"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 1313,
+                  "id": 1548,
                   "name": "ResultType",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1297,
+                  "referencedDeclaration": 1532,
                   "src": "430:10:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ResultType_$1297",
+                    "typeIdentifier": "t_enum$_ResultType_$1532",
                     "typeString": "enum OracleInterface.ResultType"
                   }
                 },
@@ -477,10 +491,10 @@
               },
               {
                 "constant": false,
-                "id": 1316,
+                "id": 1551,
                 "name": "match_id",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
+                "scope": 1558,
                 "src": "459:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -489,7 +503,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1315,
+                  "id": 1550,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "459:7:2",
@@ -503,10 +517,10 @@
               },
               {
                 "constant": false,
-                "id": 1318,
+                "id": 1553,
                 "name": "winning_team_id",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
+                "scope": 1558,
                 "src": "486:23:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -515,7 +529,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1317,
+                  "id": 1552,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "486:7:2",
@@ -529,10 +543,10 @@
               },
               {
                 "constant": false,
-                "id": 1320,
+                "id": 1555,
                 "name": "final_score",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
+                "scope": 1558,
                 "src": "520:18:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -541,7 +555,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1319,
+                  "id": 1554,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "520:6:2",
@@ -555,10 +569,10 @@
               },
               {
                 "constant": false,
-                "id": 1322,
+                "id": 1557,
                 "name": "result_time",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
+                "scope": 1558,
                 "src": "549:19:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -567,7 +581,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1321,
+                  "id": 1556,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "549:7:2",
@@ -582,35 +596,35 @@
             ],
             "name": "MatchResult",
             "nodeType": "StructDefinition",
-            "scope": 1389,
+            "scope": 1629,
             "src": "395:181:2",
             "visibility": "public"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 1328,
+            "id": 1563,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "Validate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1324,
+              "id": 1559,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "601:2:2"
             },
             "returnParameters": {
-              "id": 1327,
+              "id": 1562,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1326,
+                  "id": 1561,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1328,
+                  "scope": 1563,
                   "src": "627:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -619,7 +633,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1325,
+                    "id": 1560,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "627:4:2",
@@ -634,7 +648,7 @@
               ],
               "src": "626:6:2"
             },
-            "scope": 1389,
+            "scope": 1629,
             "src": "584:49:2",
             "stateMutability": "view",
             "superFunction": null,
@@ -643,22 +657,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1343,
+            "id": 1578,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "addMatch",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1341,
+              "id": 1576,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1330,
+                  "id": 1565,
                   "name": "match_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
+                  "scope": 1578,
                   "src": "659:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -667,7 +681,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1329,
+                    "id": 1564,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "659:7:2",
@@ -681,10 +695,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1332,
+                  "id": 1567,
                   "name": "match_date",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
+                  "scope": 1578,
                   "src": "702:26:2",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -693,7 +707,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1331,
+                    "id": 1566,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "702:6:2",
@@ -707,10 +721,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1334,
+                  "id": 1569,
                   "name": "team1_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
+                  "scope": 1578,
                   "src": "755:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -719,7 +733,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1333,
+                    "id": 1568,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "755:7:2",
@@ -733,10 +747,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1336,
+                  "id": 1571,
                   "name": "team2_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
+                  "scope": 1578,
                   "src": "798:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -745,7 +759,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1335,
+                    "id": 1570,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "798:7:2",
@@ -759,10 +773,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1338,
+                  "id": 1573,
                   "name": "team1_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
+                  "scope": 1578,
                   "src": "841:26:2",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -771,7 +785,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1337,
+                    "id": 1572,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "841:6:2",
@@ -785,10 +799,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1340,
+                  "id": 1575,
                   "name": "team2_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1343,
+                  "scope": 1578,
                   "src": "894:26:2",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -797,7 +811,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1339,
+                    "id": 1574,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "894:6:2",
@@ -813,12 +827,12 @@
               "src": "658:263:2"
             },
             "returnParameters": {
-              "id": 1342,
+              "id": 1577,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "930:0:2"
             },
-            "scope": 1389,
+            "scope": 1629,
             "src": "641:290:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -827,22 +841,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1354,
+            "id": 1589,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setMatchResult",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1352,
+              "id": 1587,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1345,
+                  "id": 1580,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1589,
                   "src": "963:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -851,7 +865,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1344,
+                    "id": 1579,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "963:7:2",
@@ -865,26 +879,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 1347,
+                  "id": 1582,
                   "name": "result",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1589,
                   "src": "980:17:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ResultType_$1297",
+                    "typeIdentifier": "t_enum$_ResultType_$1532",
                     "typeString": "enum OracleInterface.ResultType"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1346,
+                    "id": 1581,
                     "name": "ResultType",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1297,
+                    "referencedDeclaration": 1532,
                     "src": "980:10:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_ResultType_$1297",
+                      "typeIdentifier": "t_enum$_ResultType_$1532",
                       "typeString": "enum OracleInterface.ResultType"
                     }
                   },
@@ -893,10 +907,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1349,
+                  "id": 1584,
                   "name": "winner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1589,
                   "src": "999:14:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -905,7 +919,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1348,
+                    "id": 1583,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "999:7:2",
@@ -919,10 +933,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 1351,
+                  "id": 1586,
                   "name": "final_score",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1354,
+                  "scope": 1589,
                   "src": "1015:27:2",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -931,7 +945,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1350,
+                    "id": 1585,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1015:6:2",
@@ -947,12 +961,12 @@
               "src": "962:81:2"
             },
             "returnParameters": {
-              "id": 1353,
+              "id": 1588,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1052:0:2"
             },
-            "scope": 1389,
+            "scope": 1629,
             "src": "939:114:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -961,28 +975,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1360,
+            "id": 1595,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAvailableMatches",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1355,
+              "id": 1590,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1087:2:2"
             },
             "returnParameters": {
-              "id": 1359,
+              "id": 1594,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1358,
+                  "id": 1593,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1360,
+                  "scope": 1595,
                   "src": "1113:16:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -992,7 +1006,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1356,
+                      "id": 1591,
                       "name": "uint256",
                       "nodeType": "ElementaryTypeName",
                       "src": "1113:7:2",
@@ -1001,7 +1015,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 1357,
+                    "id": 1592,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "1113:9:2",
@@ -1016,7 +1030,7 @@
               ],
               "src": "1112:18:2"
             },
-            "scope": 1389,
+            "scope": 1629,
             "src": "1059:72:2",
             "stateMutability": "view",
             "superFunction": null,
@@ -1025,22 +1039,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1377,
+            "id": 1614,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getMatch",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1363,
+              "id": 1598,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1362,
+                  "id": 1597,
                   "name": "match_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1377,
+                  "scope": 1614,
                   "src": "1155:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1049,7 +1063,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1361,
+                    "id": 1596,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1155:7:2",
@@ -1065,16 +1079,42 @@
               "src": "1154:18:2"
             },
             "returnParameters": {
-              "id": 1376,
+              "id": 1613,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1365,
+                  "id": 1600,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1614,
+                  "src": "1250:10:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1599,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1250:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1602,
                   "name": "match_date",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1377,
-                  "src": "1196:24:2",
+                  "scope": 1614,
+                  "src": "1315:24:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1082,10 +1122,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1364,
+                    "id": 1601,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1196:6:2",
+                    "src": "1315:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1096,11 +1136,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1367,
+                  "id": 1604,
                   "name": "team1_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1377,
-                  "src": "1275:16:2",
+                  "scope": 1614,
+                  "src": "1394:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1108,10 +1148,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1366,
+                    "id": 1603,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1275:7:2",
+                    "src": "1394:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1122,11 +1162,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1369,
+                  "id": 1606,
                   "name": "team2_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1377,
-                  "src": "1346:16:2",
+                  "scope": 1614,
+                  "src": "1465:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1134,10 +1174,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1368,
+                    "id": 1605,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1346:7:2",
+                    "src": "1465:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1148,11 +1188,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1371,
+                  "id": 1608,
                   "name": "team1_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1377,
-                  "src": "1417:24:2",
+                  "scope": 1614,
+                  "src": "1536:24:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1160,10 +1200,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1370,
+                    "id": 1607,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1417:6:2",
+                    "src": "1536:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1174,11 +1214,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1373,
+                  "id": 1610,
                   "name": "team2_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1377,
-                  "src": "1496:24:2",
+                  "scope": 1614,
+                  "src": "1615:24:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1186,10 +1226,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1372,
+                    "id": 1609,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1496:6:2",
+                    "src": "1615:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1200,11 +1240,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1375,
+                  "id": 1612,
                   "name": "pending",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1377,
-                  "src": "1575:12:2",
+                  "scope": 1614,
+                  "src": "1694:12:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1212,10 +1252,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1374,
+                    "id": 1611,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1575:4:2",
+                    "src": "1694:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1225,10 +1265,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1195:393:2"
+              "src": "1195:512:2"
             },
-            "scope": 1389,
-            "src": "1137:452:2",
+            "scope": 1629,
+            "src": "1137:571:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -1236,23 +1276,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1388,
+            "id": 1625,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getMatchResult",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1380,
+              "id": 1617,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1379,
+                  "id": 1616,
                   "name": "match_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1388,
-                  "src": "1619:16:2",
+                  "scope": 1625,
+                  "src": "1738:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1260,10 +1300,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1378,
+                    "id": 1615,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1619:7:2",
+                    "src": "1738:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1273,34 +1313,34 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1618:18:2"
+              "src": "1737:18:2"
             },
             "returnParameters": {
-              "id": 1387,
+              "id": 1624,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1382,
+                  "id": 1619,
                   "name": "result",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1388,
-                  "src": "1660:17:2",
+                  "scope": 1625,
+                  "src": "1779:17:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ResultType_$1297",
+                    "typeIdentifier": "t_enum$_ResultType_$1532",
                     "typeString": "enum OracleInterface.ResultType"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1381,
+                    "id": 1618,
                     "name": "ResultType",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1297,
-                    "src": "1660:10:2",
+                    "referencedDeclaration": 1532,
+                    "src": "1779:10:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_ResultType_$1297",
+                      "typeIdentifier": "t_enum$_ResultType_$1532",
                       "typeString": "enum OracleInterface.ResultType"
                     }
                   },
@@ -1309,11 +1349,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1384,
+                  "id": 1621,
                   "name": "winning_team_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1388,
-                  "src": "1748:23:2",
+                  "scope": 1625,
+                  "src": "1867:23:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1321,10 +1361,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1383,
+                    "id": 1620,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1748:7:2",
+                    "src": "1867:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1335,11 +1375,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1386,
+                  "id": 1623,
                   "name": "result_time",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1388,
-                  "src": "1842:19:2",
+                  "scope": 1625,
+                  "src": "1961:19:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1347,10 +1387,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1385,
+                    "id": 1622,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1842:7:2",
+                    "src": "1961:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1360,27 +1400,54 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1659:203:2"
+              "src": "1778:203:2"
             },
-            "scope": 1389,
-            "src": "1595:268:2",
+            "scope": 1629,
+            "src": "1714:268:2",
             "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1628,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setInitialMatches",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1626,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2016:2:2"
+            },
+            "returnParameters": {
+              "id": 1627,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2027:0:2"
+            },
+            "scope": 1629,
+            "src": "1990:38:2",
+            "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1390,
-        "src": "36:1898:2"
+        "scope": 1630,
+        "src": "36:2061:2"
       }
     ],
-    "src": "0:1934:2"
+    "src": "0:2097:2"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "project:/contracts/OracleInterface.sol",
       "exportedSymbols": {
         "OracleInterface": [
-          1389
+          1629
         ]
       }
     },
@@ -1397,7 +1464,7 @@
             ".0"
           ]
         },
-        "id": 1293,
+        "id": 1528,
         "name": "PragmaDirective",
         "src": "0:32:2"
       },
@@ -1413,10 +1480,10 @@
           "documentation": null,
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            1389
+            1629
           ],
           "name": "OracleInterface",
-          "scope": 1390
+          "scope": 1630
         },
         "children": [
           {
@@ -1429,7 +1496,7 @@
                 "attributes": {
                   "name": "Undecided"
                 },
-                "id": 1294,
+                "id": 1529,
                 "name": "EnumValue",
                 "src": "104:9:2"
               },
@@ -1437,7 +1504,7 @@
                 "attributes": {
                   "name": "Void"
                 },
-                "id": 1295,
+                "id": 1530,
                 "name": "EnumValue",
                 "src": "124:4:2"
               },
@@ -1445,12 +1512,12 @@
                 "attributes": {
                   "name": "Completed"
                 },
-                "id": 1296,
+                "id": 1531,
                 "name": "EnumValue",
                 "src": "139:9:2"
               }
             ],
-            "id": 1297,
+            "id": 1532,
             "name": "EnumDefinition",
             "src": "72:83:2"
           },
@@ -1458,7 +1525,7 @@
             "attributes": {
               "canonicalName": "OracleInterface.Match",
               "name": "Match",
-              "scope": 1389,
+              "scope": 1629,
               "visibility": "public"
             },
             "children": [
@@ -1466,7 +1533,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "match_id",
-                  "scope": 1312,
+                  "scope": 1547,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1479,12 +1546,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 1298,
+                    "id": 1533,
                     "name": "ElementaryTypeName",
                     "src": "192:7:2"
                   }
                 ],
-                "id": 1299,
+                "id": 1534,
                 "name": "VariableDeclaration",
                 "src": "192:16:2"
               },
@@ -1492,7 +1559,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "match_date",
-                  "scope": 1312,
+                  "scope": 1547,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "string",
@@ -1505,12 +1572,12 @@
                       "name": "string",
                       "type": "string"
                     },
-                    "id": 1300,
+                    "id": 1535,
                     "name": "ElementaryTypeName",
                     "src": "219:6:2"
                   }
                 ],
-                "id": 1301,
+                "id": 1536,
                 "name": "VariableDeclaration",
                 "src": "219:17:2"
               },
@@ -1518,7 +1585,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "team1_id",
-                  "scope": 1312,
+                  "scope": 1547,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1531,12 +1598,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 1302,
+                    "id": 1537,
                     "name": "ElementaryTypeName",
                     "src": "247:7:2"
                   }
                 ],
-                "id": 1303,
+                "id": 1538,
                 "name": "VariableDeclaration",
                 "src": "247:16:2"
               },
@@ -1544,7 +1611,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "team2_id",
-                  "scope": 1312,
+                  "scope": 1547,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1557,12 +1624,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 1304,
+                    "id": 1539,
                     "name": "ElementaryTypeName",
                     "src": "274:7:2"
                   }
                 ],
-                "id": 1305,
+                "id": 1540,
                 "name": "VariableDeclaration",
                 "src": "274:16:2"
               },
@@ -1570,7 +1637,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "team1_name",
-                  "scope": 1312,
+                  "scope": 1547,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "string",
@@ -1583,12 +1650,12 @@
                       "name": "string",
                       "type": "string"
                     },
-                    "id": 1306,
+                    "id": 1541,
                     "name": "ElementaryTypeName",
                     "src": "301:6:2"
                   }
                 ],
-                "id": 1307,
+                "id": 1542,
                 "name": "VariableDeclaration",
                 "src": "301:17:2"
               },
@@ -1596,7 +1663,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "team2_name",
-                  "scope": 1312,
+                  "scope": 1547,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "string",
@@ -1609,12 +1676,12 @@
                       "name": "string",
                       "type": "string"
                     },
-                    "id": 1308,
+                    "id": 1543,
                     "name": "ElementaryTypeName",
                     "src": "329:6:2"
                   }
                 ],
-                "id": 1309,
+                "id": 1544,
                 "name": "VariableDeclaration",
                 "src": "329:17:2"
               },
@@ -1622,7 +1689,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "pending",
-                  "scope": 1312,
+                  "scope": 1547,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "bool",
@@ -1635,17 +1702,17 @@
                       "name": "bool",
                       "type": "bool"
                     },
-                    "id": 1310,
+                    "id": 1545,
                     "name": "ElementaryTypeName",
                     "src": "357:4:2"
                   }
                 ],
-                "id": 1311,
+                "id": 1546,
                 "name": "VariableDeclaration",
                 "src": "357:12:2"
               }
             ],
-            "id": 1312,
+            "id": 1547,
             "name": "StructDefinition",
             "src": "163:224:2"
           },
@@ -1653,7 +1720,7 @@
             "attributes": {
               "canonicalName": "OracleInterface.MatchResult",
               "name": "MatchResult",
-              "scope": 1389,
+              "scope": 1629,
               "visibility": "public"
             },
             "children": [
@@ -1661,7 +1728,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "result",
-                  "scope": 1323,
+                  "scope": 1558,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "enum OracleInterface.ResultType",
@@ -1673,15 +1740,15 @@
                     "attributes": {
                       "contractScope": null,
                       "name": "ResultType",
-                      "referencedDeclaration": 1297,
+                      "referencedDeclaration": 1532,
                       "type": "enum OracleInterface.ResultType"
                     },
-                    "id": 1313,
+                    "id": 1548,
                     "name": "UserDefinedTypeName",
                     "src": "430:10:2"
                   }
                 ],
-                "id": 1314,
+                "id": 1549,
                 "name": "VariableDeclaration",
                 "src": "430:17:2"
               },
@@ -1689,7 +1756,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "match_id",
-                  "scope": 1323,
+                  "scope": 1558,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1702,12 +1769,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 1315,
+                    "id": 1550,
                     "name": "ElementaryTypeName",
                     "src": "459:7:2"
                   }
                 ],
-                "id": 1316,
+                "id": 1551,
                 "name": "VariableDeclaration",
                 "src": "459:16:2"
               },
@@ -1715,7 +1782,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "winning_team_id",
-                  "scope": 1323,
+                  "scope": 1558,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1728,12 +1795,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 1317,
+                    "id": 1552,
                     "name": "ElementaryTypeName",
                     "src": "486:7:2"
                   }
                 ],
-                "id": 1318,
+                "id": 1553,
                 "name": "VariableDeclaration",
                 "src": "486:23:2"
               },
@@ -1741,7 +1808,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "final_score",
-                  "scope": 1323,
+                  "scope": 1558,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "string",
@@ -1754,12 +1821,12 @@
                       "name": "string",
                       "type": "string"
                     },
-                    "id": 1319,
+                    "id": 1554,
                     "name": "ElementaryTypeName",
                     "src": "520:6:2"
                   }
                 ],
-                "id": 1320,
+                "id": 1555,
                 "name": "VariableDeclaration",
                 "src": "520:18:2"
               },
@@ -1767,7 +1834,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "result_time",
-                  "scope": 1323,
+                  "scope": 1558,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1780,17 +1847,17 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 1321,
+                    "id": 1556,
                     "name": "ElementaryTypeName",
                     "src": "549:7:2"
                   }
                 ],
-                "id": 1322,
+                "id": 1557,
                 "name": "VariableDeclaration",
                 "src": "549:19:2"
               }
             ],
-            "id": 1323,
+            "id": 1558,
             "name": "StructDefinition",
             "src": "395:181:2"
           },
@@ -1805,7 +1872,7 @@
                 null
               ],
               "name": "Validate",
-              "scope": 1389,
+              "scope": 1629,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "external"
@@ -1818,7 +1885,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1324,
+                "id": 1559,
                 "name": "ParameterList",
                 "src": "601:2:2"
               },
@@ -1828,7 +1895,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 1328,
+                      "scope": 1563,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1841,22 +1908,22 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 1325,
+                        "id": 1560,
                         "name": "ElementaryTypeName",
                         "src": "627:4:2"
                       }
                     ],
-                    "id": 1326,
+                    "id": 1561,
                     "name": "VariableDeclaration",
                     "src": "627:4:2"
                   }
                 ],
-                "id": 1327,
+                "id": 1562,
                 "name": "ParameterList",
                 "src": "626:6:2"
               }
             ],
-            "id": 1328,
+            "id": 1563,
             "name": "FunctionDefinition",
             "src": "584:49:2"
           },
@@ -1871,7 +1938,7 @@
                 null
               ],
               "name": "addMatch",
-              "scope": 1389,
+              "scope": 1629,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -1883,7 +1950,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "match_id",
-                      "scope": 1343,
+                      "scope": 1578,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1896,12 +1963,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1329,
+                        "id": 1564,
                         "name": "ElementaryTypeName",
                         "src": "659:7:2"
                       }
                     ],
-                    "id": 1330,
+                    "id": 1565,
                     "name": "VariableDeclaration",
                     "src": "659:16:2"
                   },
@@ -1909,7 +1976,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "match_date",
-                      "scope": 1343,
+                      "scope": 1578,
                       "stateVariable": false,
                       "storageLocation": "calldata",
                       "type": "string",
@@ -1922,12 +1989,12 @@
                           "name": "string",
                           "type": "string"
                         },
-                        "id": 1331,
+                        "id": 1566,
                         "name": "ElementaryTypeName",
                         "src": "702:6:2"
                       }
                     ],
-                    "id": 1332,
+                    "id": 1567,
                     "name": "VariableDeclaration",
                     "src": "702:26:2"
                   },
@@ -1935,7 +2002,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "team1_id",
-                      "scope": 1343,
+                      "scope": 1578,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1948,12 +2015,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1333,
+                        "id": 1568,
                         "name": "ElementaryTypeName",
                         "src": "755:7:2"
                       }
                     ],
-                    "id": 1334,
+                    "id": 1569,
                     "name": "VariableDeclaration",
                     "src": "755:16:2"
                   },
@@ -1961,7 +2028,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "team2_id",
-                      "scope": 1343,
+                      "scope": 1578,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1974,12 +2041,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1335,
+                        "id": 1570,
                         "name": "ElementaryTypeName",
                         "src": "798:7:2"
                       }
                     ],
-                    "id": 1336,
+                    "id": 1571,
                     "name": "VariableDeclaration",
                     "src": "798:16:2"
                   },
@@ -1987,7 +2054,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "team1_name",
-                      "scope": 1343,
+                      "scope": 1578,
                       "stateVariable": false,
                       "storageLocation": "calldata",
                       "type": "string",
@@ -2000,12 +2067,12 @@
                           "name": "string",
                           "type": "string"
                         },
-                        "id": 1337,
+                        "id": 1572,
                         "name": "ElementaryTypeName",
                         "src": "841:6:2"
                       }
                     ],
-                    "id": 1338,
+                    "id": 1573,
                     "name": "VariableDeclaration",
                     "src": "841:26:2"
                   },
@@ -2013,7 +2080,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "team2_name",
-                      "scope": 1343,
+                      "scope": 1578,
                       "stateVariable": false,
                       "storageLocation": "calldata",
                       "type": "string",
@@ -2026,17 +2093,17 @@
                           "name": "string",
                           "type": "string"
                         },
-                        "id": 1339,
+                        "id": 1574,
                         "name": "ElementaryTypeName",
                         "src": "894:6:2"
                       }
                     ],
-                    "id": 1340,
+                    "id": 1575,
                     "name": "VariableDeclaration",
                     "src": "894:26:2"
                   }
                 ],
-                "id": 1341,
+                "id": 1576,
                 "name": "ParameterList",
                 "src": "658:263:2"
               },
@@ -2047,12 +2114,12 @@
                   ]
                 },
                 "children": [],
-                "id": 1342,
+                "id": 1577,
                 "name": "ParameterList",
                 "src": "930:0:2"
               }
             ],
-            "id": 1343,
+            "id": 1578,
             "name": "FunctionDefinition",
             "src": "641:290:2"
           },
@@ -2067,7 +2134,7 @@
                 null
               ],
               "name": "setMatchResult",
-              "scope": 1389,
+              "scope": 1629,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -2079,7 +2146,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "matchId",
-                      "scope": 1354,
+                      "scope": 1589,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2092,12 +2159,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1344,
+                        "id": 1579,
                         "name": "ElementaryTypeName",
                         "src": "963:7:2"
                       }
                     ],
-                    "id": 1345,
+                    "id": 1580,
                     "name": "VariableDeclaration",
                     "src": "963:15:2"
                   },
@@ -2105,7 +2172,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "result",
-                      "scope": 1354,
+                      "scope": 1589,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "enum OracleInterface.ResultType",
@@ -2117,15 +2184,15 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "ResultType",
-                          "referencedDeclaration": 1297,
+                          "referencedDeclaration": 1532,
                           "type": "enum OracleInterface.ResultType"
                         },
-                        "id": 1346,
+                        "id": 1581,
                         "name": "UserDefinedTypeName",
                         "src": "980:10:2"
                       }
                     ],
-                    "id": 1347,
+                    "id": 1582,
                     "name": "VariableDeclaration",
                     "src": "980:17:2"
                   },
@@ -2133,7 +2200,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "winner",
-                      "scope": 1354,
+                      "scope": 1589,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2146,12 +2213,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1348,
+                        "id": 1583,
                         "name": "ElementaryTypeName",
                         "src": "999:7:2"
                       }
                     ],
-                    "id": 1349,
+                    "id": 1584,
                     "name": "VariableDeclaration",
                     "src": "999:14:2"
                   },
@@ -2159,7 +2226,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "final_score",
-                      "scope": 1354,
+                      "scope": 1589,
                       "stateVariable": false,
                       "storageLocation": "calldata",
                       "type": "string",
@@ -2172,17 +2239,17 @@
                           "name": "string",
                           "type": "string"
                         },
-                        "id": 1350,
+                        "id": 1585,
                         "name": "ElementaryTypeName",
                         "src": "1015:6:2"
                       }
                     ],
-                    "id": 1351,
+                    "id": 1586,
                     "name": "VariableDeclaration",
                     "src": "1015:27:2"
                   }
                 ],
-                "id": 1352,
+                "id": 1587,
                 "name": "ParameterList",
                 "src": "962:81:2"
               },
@@ -2193,12 +2260,12 @@
                   ]
                 },
                 "children": [],
-                "id": 1353,
+                "id": 1588,
                 "name": "ParameterList",
                 "src": "1052:0:2"
               }
             ],
-            "id": 1354,
+            "id": 1589,
             "name": "FunctionDefinition",
             "src": "939:114:2"
           },
@@ -2213,7 +2280,7 @@
                 null
               ],
               "name": "getAvailableMatches",
-              "scope": 1389,
+              "scope": 1629,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "external"
@@ -2226,7 +2293,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1355,
+                "id": 1590,
                 "name": "ParameterList",
                 "src": "1087:2:2"
               },
@@ -2236,7 +2303,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 1360,
+                      "scope": 1595,
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "type": "uint256[]",
@@ -2255,27 +2322,27 @@
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 1356,
+                            "id": 1591,
                             "name": "ElementaryTypeName",
                             "src": "1113:7:2"
                           }
                         ],
-                        "id": 1357,
+                        "id": 1592,
                         "name": "ArrayTypeName",
                         "src": "1113:9:2"
                       }
                     ],
-                    "id": 1358,
+                    "id": 1593,
                     "name": "VariableDeclaration",
                     "src": "1113:16:2"
                   }
                 ],
-                "id": 1359,
+                "id": 1594,
                 "name": "ParameterList",
                 "src": "1112:18:2"
               }
             ],
-            "id": 1360,
+            "id": 1595,
             "name": "FunctionDefinition",
             "src": "1059:72:2"
           },
@@ -2290,7 +2357,7 @@
                 null
               ],
               "name": "getMatch",
-              "scope": 1389,
+              "scope": 1629,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "external"
@@ -2302,7 +2369,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "match_id",
-                      "scope": 1377,
+                      "scope": 1614,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2315,17 +2382,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1361,
+                        "id": 1596,
                         "name": "ElementaryTypeName",
                         "src": "1155:7:2"
                       }
                     ],
-                    "id": 1362,
+                    "id": 1597,
                     "name": "VariableDeclaration",
                     "src": "1155:16:2"
                   }
                 ],
-                "id": 1363,
+                "id": 1598,
                 "name": "ParameterList",
                 "src": "1154:18:2"
               },
@@ -2334,8 +2401,34 @@
                   {
                     "attributes": {
                       "constant": false,
+                      "name": "id",
+                      "scope": 1614,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 1599,
+                        "name": "ElementaryTypeName",
+                        "src": "1250:7:2"
+                      }
+                    ],
+                    "id": 1600,
+                    "name": "VariableDeclaration",
+                    "src": "1250:10:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
                       "name": "match_date",
-                      "scope": 1377,
+                      "scope": 1614,
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "type": "string",
@@ -2348,20 +2441,20 @@
                           "name": "string",
                           "type": "string"
                         },
-                        "id": 1364,
+                        "id": 1601,
                         "name": "ElementaryTypeName",
-                        "src": "1196:6:2"
+                        "src": "1315:6:2"
                       }
                     ],
-                    "id": 1365,
+                    "id": 1602,
                     "name": "VariableDeclaration",
-                    "src": "1196:24:2"
+                    "src": "1315:24:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "team1_id",
-                      "scope": 1377,
+                      "scope": 1614,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2374,20 +2467,20 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1366,
+                        "id": 1603,
                         "name": "ElementaryTypeName",
-                        "src": "1275:7:2"
+                        "src": "1394:7:2"
                       }
                     ],
-                    "id": 1367,
+                    "id": 1604,
                     "name": "VariableDeclaration",
-                    "src": "1275:16:2"
+                    "src": "1394:16:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "team2_id",
-                      "scope": 1377,
+                      "scope": 1614,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2400,20 +2493,20 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1368,
+                        "id": 1605,
                         "name": "ElementaryTypeName",
-                        "src": "1346:7:2"
+                        "src": "1465:7:2"
                       }
                     ],
-                    "id": 1369,
+                    "id": 1606,
                     "name": "VariableDeclaration",
-                    "src": "1346:16:2"
+                    "src": "1465:16:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "team1_name",
-                      "scope": 1377,
+                      "scope": 1614,
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "type": "string",
@@ -2426,20 +2519,20 @@
                           "name": "string",
                           "type": "string"
                         },
-                        "id": 1370,
+                        "id": 1607,
                         "name": "ElementaryTypeName",
-                        "src": "1417:6:2"
+                        "src": "1536:6:2"
                       }
                     ],
-                    "id": 1371,
+                    "id": 1608,
                     "name": "VariableDeclaration",
-                    "src": "1417:24:2"
+                    "src": "1536:24:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "team2_name",
-                      "scope": 1377,
+                      "scope": 1614,
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "type": "string",
@@ -2452,20 +2545,20 @@
                           "name": "string",
                           "type": "string"
                         },
-                        "id": 1372,
+                        "id": 1609,
                         "name": "ElementaryTypeName",
-                        "src": "1496:6:2"
+                        "src": "1615:6:2"
                       }
                     ],
-                    "id": 1373,
+                    "id": 1610,
                     "name": "VariableDeclaration",
-                    "src": "1496:24:2"
+                    "src": "1615:24:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "pending",
-                      "scope": 1377,
+                      "scope": 1614,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2478,24 +2571,24 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 1374,
+                        "id": 1611,
                         "name": "ElementaryTypeName",
-                        "src": "1575:4:2"
+                        "src": "1694:4:2"
                       }
                     ],
-                    "id": 1375,
+                    "id": 1612,
                     "name": "VariableDeclaration",
-                    "src": "1575:12:2"
+                    "src": "1694:12:2"
                   }
                 ],
-                "id": 1376,
+                "id": 1613,
                 "name": "ParameterList",
-                "src": "1195:393:2"
+                "src": "1195:512:2"
               }
             ],
-            "id": 1377,
+            "id": 1614,
             "name": "FunctionDefinition",
-            "src": "1137:452:2"
+            "src": "1137:571:2"
           },
           {
             "attributes": {
@@ -2508,7 +2601,7 @@
                 null
               ],
               "name": "getMatchResult",
-              "scope": 1389,
+              "scope": 1629,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "external"
@@ -2520,7 +2613,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "match_id",
-                      "scope": 1388,
+                      "scope": 1625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2533,19 +2626,19 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1378,
+                        "id": 1615,
                         "name": "ElementaryTypeName",
-                        "src": "1619:7:2"
+                        "src": "1738:7:2"
                       }
                     ],
-                    "id": 1379,
+                    "id": 1616,
                     "name": "VariableDeclaration",
-                    "src": "1619:16:2"
+                    "src": "1738:16:2"
                   }
                 ],
-                "id": 1380,
+                "id": 1617,
                 "name": "ParameterList",
-                "src": "1618:18:2"
+                "src": "1737:18:2"
               },
               {
                 "children": [
@@ -2553,7 +2646,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "result",
-                      "scope": 1388,
+                      "scope": 1625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "enum OracleInterface.ResultType",
@@ -2565,23 +2658,23 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "ResultType",
-                          "referencedDeclaration": 1297,
+                          "referencedDeclaration": 1532,
                           "type": "enum OracleInterface.ResultType"
                         },
-                        "id": 1381,
+                        "id": 1618,
                         "name": "UserDefinedTypeName",
-                        "src": "1660:10:2"
+                        "src": "1779:10:2"
                       }
                     ],
-                    "id": 1382,
+                    "id": 1619,
                     "name": "VariableDeclaration",
-                    "src": "1660:17:2"
+                    "src": "1779:17:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "winning_team_id",
-                      "scope": 1388,
+                      "scope": 1625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2594,20 +2687,20 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1383,
+                        "id": 1620,
                         "name": "ElementaryTypeName",
-                        "src": "1748:7:2"
+                        "src": "1867:7:2"
                       }
                     ],
-                    "id": 1384,
+                    "id": 1621,
                     "name": "VariableDeclaration",
-                    "src": "1748:23:2"
+                    "src": "1867:23:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "result_time",
-                      "scope": 1388,
+                      "scope": 1625,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2620,34 +2713,78 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1385,
+                        "id": 1622,
                         "name": "ElementaryTypeName",
-                        "src": "1842:7:2"
+                        "src": "1961:7:2"
                       }
                     ],
-                    "id": 1386,
+                    "id": 1623,
                     "name": "VariableDeclaration",
-                    "src": "1842:19:2"
+                    "src": "1961:19:2"
                   }
                 ],
-                "id": 1387,
+                "id": 1624,
                 "name": "ParameterList",
-                "src": "1659:203:2"
+                "src": "1778:203:2"
               }
             ],
-            "id": 1388,
+            "id": 1625,
             "name": "FunctionDefinition",
-            "src": "1595:268:2"
+            "src": "1714:268:2"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setInitialMatches",
+              "scope": 1629,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1626,
+                "name": "ParameterList",
+                "src": "2016:2:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1627,
+                "name": "ParameterList",
+                "src": "2027:0:2"
+              }
+            ],
+            "id": 1628,
+            "name": "FunctionDefinition",
+            "src": "1990:38:2"
           }
         ],
-        "id": 1389,
+        "id": 1629,
         "name": "ContractDefinition",
-        "src": "36:1898:2"
+        "src": "36:2061:2"
       }
     ],
-    "id": 1390,
+    "id": 1630,
     "name": "SourceUnit",
-    "src": "0:1934:2"
+    "src": "0:2097:2"
   },
   "compiler": {
     "name": "solc",
@@ -2655,7 +2792,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-10-22T22:54:52.809Z",
+  "updatedAt": "2021-10-24T22:56:37.194Z",
   "devdoc": {
     "methods": {}
   },

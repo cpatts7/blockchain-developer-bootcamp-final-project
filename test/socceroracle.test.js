@@ -18,6 +18,15 @@ contract("SoccerOracle", function (accounts) {
     );
   });
 
+  it("Init Test Data", async () => {
+    await instance.setInitialMatches({ from: contractOwner });
+    const result = await instance.getAvailableMatches();
+    assert.equal(
+      result.length>5,
+      true,
+      "the number of matches should be >5"
+    );
+  });
 
   it("Add Match", async () => {
     await instance.addMatch(100, "2021-11-01", 1, 2, "A", "B", { from: contractOwner });
