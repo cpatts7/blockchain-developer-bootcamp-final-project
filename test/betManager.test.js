@@ -108,6 +108,7 @@ contract("BetManager", function (accounts) {
     await instance.addLiquidity(1, 2, 195, { from: chris, value: bookiePaymentAmount1 });
     const betAmount = web3.utils.toWei('1.052631578947368', 'ether');
     const ownedLiquidityResult = await instance.getBookieLiquidity(chris);
+    const availableLiquidity = await instance.getAllAvailableLiquidity();
     await instance.placeBet(1, 195, { from: alice, value: betAmount });
     await instance.placeBet(2, 195, { from: alice, value: betAmount });
     const result1 = await instance.getLiquidityById.call(1);
@@ -129,6 +130,12 @@ contract("BetManager", function (accounts) {
       ownedLiquidityResult.length,
       2,
       "the ownedLiquidityResult does not match the expected value"
+    )
+
+    assert.equal(
+      availableLiquidity.length,
+      2,
+      "the availableLiquidity does not match the expected value"
     )
 
     assert.equal(
@@ -359,7 +366,7 @@ contract("BetManager", function (accounts) {
 
     await instance.matchCompleteHandlePayouts(1);
 
-    const closedBets = await instance.getInActiveBetsByAddress(alice);
+    const closedBets = await instance.getInActiveBetsByAddress({ from: alice});
 
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);

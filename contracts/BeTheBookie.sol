@@ -319,7 +319,7 @@ contract BeTheBookie is Ownable {
 
         //get count of pending matches 
         for (uint i = 0; i < _bets.length; i++) {
-            Bet storage _bet = bets[betMapping[_bets[i]]];
+            Bet storage _bet = bets[i];
             if (_bet.closed == isClosed) 
                 count++; 
         }
@@ -330,7 +330,7 @@ contract BeTheBookie is Ownable {
         if (count > 0) {
             uint index = 0;
             for (uint n = _bets.length; n > 0; n--) {
-                Bet storage _bet = bets[betMapping[_bets[n-1]]];
+                Bet storage _bet = bets[n-1];
                 if (_bet.closed == isClosed) 
                     output[index++] = _bet.id;
             }
@@ -463,6 +463,31 @@ contract BeTheBookie is Ownable {
     function getMatchLiquidity(uint256 _matchId) external view returns (uint256[] memory) {
         uint256[] memory response = matchLiquidityMapping[_matchId];
         return response;
+    }
+
+    function getAllAvailableLiquidity() external view returns (uint256[] memory) {
+        uint count = 0; 
+
+        //get count of available liquidity 
+        for (uint i = 0; i < betPools.length; i++) {
+            Liquidity storage _l = betPools[i];
+            if (_l.closed == false) 
+                count++; 
+        }
+
+        //collect up all the pending matches
+        uint256[] memory output = new uint256[](count); 
+
+        if (count > 0) {
+            uint index = 0;
+            for (uint n = betPools.length; n > 0; n--) {
+                Liquidity storage _l = betPools[n-1];
+                if (_l.closed == false) 
+                    output[index++] = _l.id;
+            }
+        } 
+
+        return output;
     }
 
 /// @notice Explain to an end user what this does

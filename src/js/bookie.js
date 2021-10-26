@@ -107,7 +107,6 @@ BookieApp = {
             var bets = [];
             
             $('#bookie-bets').bootstrapTable('destroy');
-            $('#bookie-closedbets').bootstrapTable('destroy');
 
             if (ids == null || ids.length == 0)  
             return;
@@ -126,15 +125,16 @@ BookieApp = {
                         var myDate = new Date(dt);
                         item ["createdTime"] = myDate.toLocaleString();
                         var match = BookieApp.findMatchData(lq[1]);
+                        if (match != null)
+                        {
+                            item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
+                            item ["match_date"] = match.match_date;
                             
-                        item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
-                        item ["match_date"] = match.match_date;
-                        
-                        if (lq[2] == match.home_team_id)
-                            item ["teamName"] = match.home_team_name;
-                        else if (lq[2] == match.away_team_id)
-                            item ["teamName"] = match.away_team_name;
-
+                            if (lq[2] == match.home_team_id)
+                                item ["teamName"] = match.home_team_name;
+                            else if (lq[2] == match.away_team_id)
+                                item ["teamName"] = match.away_team_name;
+                        }
                         bets.push(item);
                         
                         if (bets.length == ids.length) {
@@ -184,18 +184,19 @@ BookieApp = {
                         item ["closedTime"] = myDate.toLocaleString();
 
                         var match = BookieApp.findMatchData(lq[1]);
+                        if (match != null)
+                        {
+                            item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
+                            item ["match_date"] = match.match_date;
                             
-                        item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
-                        item ["match_date"] = match.match_date;
-                        
-                        if (lq[2] == match.home_team_id)
-                            item ["teamName"] = match.home_team_name;
-                        else if (lq[2] == match.away_team_id)
-                            item ["teamName"] = match.away_team_name;
-
+                            if (lq[2] == match.home_team_id)
+                                item ["teamName"] = match.home_team_name;
+                            else if (lq[2] == match.away_team_id)
+                                item ["teamName"] = match.away_team_name;
+                        }
                         bets.push(item);
 
-                        if (closedBets.length == ids.length) {
+                        if (bets.length == ids.length) {
                             $('#bookie-closedbets').bootstrapTable({
                                 data: bets
                             });
@@ -330,12 +331,20 @@ BookieApp = {
         },
 
         bindBookieMatchTable: function(matches) {
+
+            var bindData = [];
+            for (var i = 0; i < matches.length; i++)
+            {
+                if (matches[i].available)
+                    bindData.push(matches[i]);
+            }
+
             $('#bookie-matches').bootstrapTable('destroy');
-            if (matches == null || matches.length == 0)
+            if (bindData == null || bindData.length == 0)
                 return;
 
             $('#bookie-matches').bootstrapTable({
-                data: matches,
+                data: bindData,
                 columns: [ {},{},{},{},  
                     {
                     field: 'match_id',
@@ -344,7 +353,7 @@ BookieApp = {
                     valign: 'middle',
                     clickToSelect: false,
                         formatter : function(value,row,index) {
-                            return '<button class=\'btn btn-primary \' matchId="'+matches[index].match_id+'" onclick=\'BookieApp.addMatchOdds('+matches[index].match_id+')\' data-bs-toggle="modal" data-bs-target="#bookieAddLiquidityModal">Place Odds</button> ';
+                            return '<button class=\'btn btn-primary \' matchId="'+bindData[index].match_id+'" onclick=\'BookieApp.addMatchOdds('+bindData[index].match_id+')\' data-bs-toggle="modal" data-bs-target="#bookieAddLiquidityModal">Place Odds</button> ';
                         }
                     }
                 ]     
@@ -371,6 +380,8 @@ BookieApp = {
 
         formatWEI: function(weiValue) {
             return  ethers.utils.formatEther(ethers.utils.bigNumberify(weiValue));
-        }
+        },
+
+       
   
   };

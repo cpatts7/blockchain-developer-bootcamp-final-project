@@ -69,19 +69,15 @@ App = {
           PunditApp.bookieInstance = instance;
           web3.eth.defaultAccount=web3.eth.accounts[0];
 
-          //bookieInstance.setOracleAddress(App.oracleInstance.address).then(function(result) {alert(result)});
-          //App.loadTestData();
+          //only the owner can access this tab
+          bookieInstance.isOwner().then(function(result) {
+              if (!result) {
+                $('#management-tab').addClass('disabled');
+              }
+          });
+
           App.loadAvailableMatches();
           
-          //PunditApp.loadMyBets();
-          // $.getJSON('../json/football_matches.json', function(data) {
-          //   App.initOracle(data.data);
-          //   // BookieApp.initMatches(data.data);
-          //   // PunditApp.initMatches(data.data);
-          //   // 
-          //   }
-          // );
-
         });
 
       });
@@ -100,6 +96,49 @@ App = {
   loadAvailableMatches: function() {
      var matchIds = [];
      var matches = [];
+
+     $.getJSON('../json/football_matches.json', function(jsonData) {
+        App.oracleInstance.getAvailableMatches().then(function (data) {
+          matchIds = data;
+          for (var i = 0; i < jsonData.data.length; i++)
+          {
+            var item = jsonData.data[i];
+            if (item.status != "notstarted")
+              continue;
+
+              var match = {}
+                  
+              match ["match_id"] = parseInt(item.match_id);
+              match ["match_date"] = item.match_start.substring(0, 10);
+              match ["home_team_id"] = parseInt(item.home_team.team_id);
+              match ["away_team_id"] = parseInt(item.away_team.team_id);
+              match ["home_team_name"] = item.home_team.name;
+              match ["away_team_name"] = item.away_team.name;
+              match ["available"] = false;
+
+              for (var j = 0; j < matchIds.length; j++) {
+                if (matchIds[j] == parseInt(item.match_id))
+                {
+                  match ["available"] = true;
+                  break;
+                }
+              }
+
+              matches.push(match);
+          }
+
+          BookieApp.initMatches(matches);
+          PunditApp.initMatches(matches);
+          AdminApp.initMatches(matches);
+          BookieApp.loadBets();
+          BookieApp.loadLiquidity();
+          PunditApp.loadMyBets();
+        });
+
+      });
+
+      
+
      App.oracleInstance.getAvailableMatches().then(function (data) {
         
           matchIds = data;
@@ -144,31 +183,7 @@ App = {
     //   });
   },
 
-  initOracle: function(matchData) {
-    for (var i = 0; i < matchData.length; i++) {
-      if (matchData[i].status != "notstarted")
-        continue;
-      var item = matchData[i];
-      web3.eth.defaultAccount=web3.eth.accounts[0];
-      var matchId = parseInt(item.match_id);
-      var matchDate = item.match_start.substring(0, 10);
-      var homeTeamId = parseInt(item.home_team.team_id);
-      var awayTeamId = parseInt(item.away_team.team_id);
-      var homeTeamName = item.home_team.name;
-      var awayTeamName = item.away_team.name;
-
-      
-      //alert(matchId + " " + matchDate + " " + homeTeamId)
-
-      // App.oracleInstance.addMatch(1, "", 1, 2, "", "").then(function(result) {alert(result)});
-      App.oracleInstance.addMatch(matchId, 
-                                  matchDate, 
-                                  homeTeamId, 
-                                  awayTeamId, 
-                                  homeTeamName, 
-                                  awayTeamName).then(function(result) {});
-    }
-  }
+  
 
 };
 

@@ -69,7 +69,7 @@ AdminApp = {
 
         App.oracleInstance.setMatchResult(AdminApp.selectedMatchId, 2, parseInt(sideId), finalScore).then(function() {
 
-            alert("ok");
+            App.oracleInstance.matchCompleteHandlePayouts(AdminApp.selectedMatchId).then(function () {alert("Match Updated");});
 
         });
     },
