@@ -159,7 +159,7 @@ BookieApp = {
             
             for (var i = 0; i < ids.length; i++)
             {
-                BookieApp.bookieInstance.getClosedBetById(parseInt(ids[i])).then(function (bet) {
+                BookieApp.bookieInstance.getBetById(parseInt(ids[i])).then(function (bet) {
                     BookieApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
                         var item = {}
                         

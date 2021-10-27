@@ -255,7 +255,8 @@ contract BeTheBookie is Ownable {
 
         _bet.result = _result;
         _bet.closedTime = block.timestamp;
-        
+        _bet.closed = true;
+
         uint256 fee;
         if (_result == MatchResult.BookieWon)
         {
@@ -280,16 +281,11 @@ contract BeTheBookie is Ownable {
             _bet.pundit.transfer(_bet.punditCollateral);
         }
 
-        _bet.bookieCollateral = 0;
-        _bet.punditCollateral = 0;
-
         if (fee > 0)
         {
             _bet.feePaid = fee;
             ownerPayable.transfer(fee);
         }
-
-        _bet.closed = true;
 
         _success = _bet.closed;
         emit BetResult(_betId);
@@ -339,35 +335,22 @@ contract BeTheBookie is Ownable {
         return output;
     }
 
-    /// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
-/// @param _id bet id
-    function getBetById(uint256 _id) external view returns (uint256 id, uint256 liquidityId, uint256 bookieCollateral, uint256 punditCollateral, uint256 odds, uint createdTime, bool closed)
+    function getBetById(uint256 _id) external view returns (uint256 liquidityId, uint256 odds, uint256 bookieCollateral, uint256 punditCollateral, uint createdTime,  MatchResult result, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, uint closedTime, bool closed)
     {
         Bet storage bet = bets[betMapping[_id]];
-        id = bet.id;
+        //id = bet.id;
         liquidityId = bet.liquidityId;
+        odds = bet.odds;
         bookieCollateral = bet.bookieCollateral;
         punditCollateral = bet.punditCollateral;
-        odds = bet.odds;
         createdTime = bet.createdTime;
-        closed = bet.closed;
-        return (id, liquidityId, bookieCollateral, punditCollateral, odds, createdTime, closed);
-    }
-
-    function getClosedBetById(uint256 _id) external view returns (uint256 id, uint256 liquidityId, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, uint256 odds, MatchResult result, uint createdTime, uint closedTime)
-    {
-        Bet storage bet = bets[betMapping[_id]];
-        id = bet.id;
-        liquidityId = bet.liquidityId;
+        result = bet.result;
         bookiePayout = bet.bookiePayout;
         punditPayout = bet.punditPayout;
         feePaid = bet.feePaid;
-        odds = bet.odds;
-        result = bet.result;
-        createdTime = bet.createdTime;
         closedTime = bet.closedTime;
-        return (id, liquidityId, bookiePayout, punditPayout, feePaid, odds, result, createdTime, closedTime);
+        closed = bet.closed;
+        return (liquidityId, odds, bookieCollateral, punditCollateral, createdTime,  result, bookiePayout, punditPayout, feePaid, closedTime, closed);
     }
 
     /// @notice Public function for a bookie to place odds on a match result and submit available liquidity. ie: Federer to beat Nadal, 200 odds with 10ETH max payout.

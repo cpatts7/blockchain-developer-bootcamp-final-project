@@ -18,7 +18,7 @@ AdminApp = {
       },
     
       setOracleMatchData: function() {
-        App.oracleInstance.setInitialMatches().then(function() {alert("Done")});
+        App.oracleInstance.setInitialMatches(1).then(function() {alert("Done")});
       },
 
       initMatches: function(matches) {

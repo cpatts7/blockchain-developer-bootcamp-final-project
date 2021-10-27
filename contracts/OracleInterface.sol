@@ -53,6 +53,6 @@ interface  OracleInterface {
                                                                     uint256 winning_team_id,
                                                                     uint256 result_time);
 
-    function setInitialMatches() external;
+    function setInitialMatches(uint256 _set) external;
                                                                 
 }

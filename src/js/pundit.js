@@ -265,7 +265,7 @@ PunditApp = {
         for (var i = 0; i < ids.length; i++)
         {
             
-            PunditApp.bookieInstance.getClosedBetById(parseInt(ids[i])).then(function (bet) {
+            PunditApp.bookieInstance.getBetById(parseInt(ids[i])).then(function (bet) {
                 PunditApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
                     var item = {}
                     
@@ -273,7 +273,7 @@ PunditApp = {
                     item ["bookiePayout"] =  bet[2]/BookieApp.oneETH;;
                     item ["punditPayout"] = bet[3]/BookieApp.oneETH;
                     item ["feePaid"] = bet[4]/BookieApp.oneETH;
-                    //item ["punditCollateral"] = openBet[2]/BookieApp.oneETH;
+                    item ["punditCollateral"] = openBet[2]/BookieApp.oneETH;
                     item ["odds"] = bet[5]/100;
                     if (bet[6] == 1)
                         item ["result"] = "Bookie Won";
