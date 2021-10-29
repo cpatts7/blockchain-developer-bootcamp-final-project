@@ -16,7 +16,9 @@
     "lite-server": "^2.3.0"
   },
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.5.1",
     "bootstrap-icons": "^1.6.1",
+    "dotenv": "^10.0.0",
     "mdb-ui-kit": "^3.9.0"
   }
 }

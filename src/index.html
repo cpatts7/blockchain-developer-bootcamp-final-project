@@ -110,14 +110,13 @@
               <table id="bookie-bets" class="table table-hover table-striped">
                 <thead>
                   <tr>
-                    <th scope="col" data-field="id">Position Id</th>
                     <th scope="col" data-field="match_date">Date</th>
                     <th scope="col" data-field="matchDetails">Match Details</th>
                     <th scope="col" data-field="teamName">Team (To Win)</th>
                     <th scope="col" data-field="odds">Odds</th>
                     <th scope="col" data-field="punditCollateral">Pundit Stake (ETH)</th>
                     <th scope="col" data-field="bookieCollateral">Bookie Risk (ETH)</th>
-                    <th scope="col" data-field="createdTime">Bet Time</th>
+                    <th scope="col" data-field="lastUpdateTime">Last Updated Time</th>
                   </tr>
                 </thead>
               </table>
@@ -126,7 +125,6 @@
               <table id="bookie-closedbets" class="table table-hover table-striped">
                 <thead>
                   <tr>
-                    <th scope="col" data-field="id">Position Id</th>
                     <th scope="col" data-field="match_date">Date</th>
                     <th scope="col" data-field="matchDetails">Match Details</th>
                     <th scope="col" data-field="teamName">Team (To Win)</th>
@@ -134,8 +132,7 @@
                     <th scope="col" data-field="punditPayout">Pundit Payout (ETH)</th>
                     <th scope="col" data-field="bookiePayout">Bookie Payout (ETH)</th>
                     <th scope="col" data-field="result">Result</th>
-                    <th scope="col" data-field="createdTime">Bet Time</th>
-                    <th scope="col" data-field="closedTime">Closed Time</th>
+                    <th scope="col" data-field="lastUpdateTime">Last Updated Time</th>
                   </tr>
                 </thead>
               </table>
@@ -187,7 +184,6 @@
                 <table id="pundit-liquidity" class="table table-hover table-striped">
                   <thead>
                     <tr>
-                      <th scope="col" data-field="id">Position Id</th>
                       <th scope="col" data-field="match_date">Date</th>
                       <th scope="col" data-field="matchDetails">Match Details</th>
                       <th scope="col" data-field="teamName">Team (To Win)</th>
@@ -210,7 +206,7 @@
                       <th scope="col" data-field="punditCollateral">My Stake (ETH)</th>
                       <th scope="col" data-field="odds">Odds</th>
                       <th scope="col" data-field="bookieCollateral">Potential Profit (ETH)</th>
-                      <th scope="col" data-field="createdTime">Bet Time</th>
+                      <th scope="col" data-field="lastUpdateTime">Last Modified</th>
                     </tr>
                   </thead>
                 </table>
@@ -228,8 +224,7 @@
                       <th scope="col" data-field="punditPayout">Payout (ETH)</th>
                       <th scope="col" data-field="feePaid">Fee (ETH)</th>
                       <th scope="col" data-field="result">Result</th>
-                      <th scope="col" data-field="createdTime">Bet Time</th>
-                      <th scope="col" data-field="closedTime">Closed Time</th>
+                      <th scope="col" data-field="lastModifiedTime">Last Modified</th>
                     </tr>
                   </thead>
                 </table>
@@ -264,7 +259,7 @@
               Set Initial Matches:
             </div>
             <div class="col">
-              
+              <input type="text" class="form-control form-control-sm" placeholder="Num" aria-label="Oracle" id="admin_oracle_num">
             </div>
             <div class="col">
               <button type="button" class="btn btn-primary btn-admin-oracle-matches">Set Initial Matches</button>

@@ -167,7 +167,7 @@ contract("BetManager", function (accounts) {
     const result = await instance.getBetById.call(1);
     const liquidityObject = await instance.getLiquidityById.call(1);
     const balance = await instance.contractBalance.call();
-    const bets = await instance.getActiveBetsByAddress({ from: alice});
+    const bets = await instance.getActiveBetsByAddress(alice, false, { from: alice});
     const matchBets = await instance.getMatchBets(1);
 
     assert.equal(
@@ -177,13 +177,13 @@ contract("BetManager", function (accounts) {
     );
 
     assert.equal(
-      result[2],
+      result[3],
       bookiePayout,
       "the bookieCollateral does not match the expected value",
     );
 
     assert.equal(
-      result[3],
+      result[4],
       betAmount,
       "the punditCollateral does not match the expected value",
     );
@@ -248,8 +248,8 @@ contract("BetManager", function (accounts) {
 
     const liquidity2 = await instance.getLiquidityById.call(1);
 
-    const bets = await instance.getActiveBetsByAddress({ from: alice});
-    const bookieBets = await instance.getActiveBetsByAddress({ from: chris});
+    const bets = await instance.getActiveBetsByAddress(alice, false, { from: alice});
+    const bookieBets = await instance.getActiveBetsByAddress(chris, true, { from: chris});
 
     assert.equal(
       liquidity2[5],
@@ -366,7 +366,7 @@ contract("BetManager", function (accounts) {
 
     await instance.matchCompleteHandlePayouts(1);
 
-    const closedBets = await instance.getInActiveBetsByAddress({ from: alice});
+    const closedBets = await instance.getInActiveBetsByAddress(alice, false, { from: alice});
 
     const ownerBalance2 = await web3.eth.getBalance(contractOwner);
     const chrisBalance2 = await web3.eth.getBalance(chris);

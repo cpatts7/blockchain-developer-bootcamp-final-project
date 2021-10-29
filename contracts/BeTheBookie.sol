@@ -294,29 +294,32 @@ contract BeTheBookie is Ownable {
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @return uint256[] - list of bet ID's owned by the msg.sender
-    function getActiveBetsByAddress() external view returns (uint256[] memory)
+    function getActiveBetsByAddress(address a, bool asBookie) external view returns (uint256[] memory)
     {
-        uint256[] memory _bets = addressBetsMapping[msg.sender];
-        return getActiveBetsByAddressAndStatus(_bets, false);
+        uint256[] memory _bets = addressBetsMapping[a];
+        return getActiveBetsByAddressAndStatus(_bets, asBookie, false);
     }
 
 /// @notice Explain to an end user what this does
 /// @dev Explain to a developer any extra details
 /// @return uint256[] - list of bet ID's owned by the msg.sender
-    function getInActiveBetsByAddress() external view returns (uint256[] memory)
+    function getInActiveBetsByAddress(address a, bool asBookie) external view returns (uint256[] memory)
     {
-        uint256[] memory _bets = addressBetsMapping[msg.sender];
-        return getActiveBetsByAddressAndStatus(_bets, true);
+        uint256[] memory _bets = addressBetsMapping[a];
+        return getActiveBetsByAddressAndStatus(_bets, asBookie, true);
     }
 
-    function getActiveBetsByAddressAndStatus(uint256[] memory _bets, bool isClosed) private view returns (uint256[] memory)
+    function getActiveBetsByAddressAndStatus(uint256[] memory _bets, bool asBookie, bool isClosed) private view returns (uint256[] memory)
     {
         uint count = 0; 
 
         //get count of pending matches 
         for (uint i = 0; i < _bets.length; i++) {
             Bet storage _bet = bets[i];
-            if (_bet.closed == isClosed) 
+            if (_bet.closed == isClosed && 
+                    ((asBookie && _bet.bookie == msg.sender) 
+                    || (!asBookie && _bet.pundit == msg.sender))
+                ) 
                 count++; 
         }
 
@@ -335,22 +338,25 @@ contract BeTheBookie is Ownable {
         return output;
     }
 
-    function getBetById(uint256 _id) external view returns (uint256 liquidityId, uint256 odds, uint256 bookieCollateral, uint256 punditCollateral, uint createdTime,  MatchResult result, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, uint closedTime, bool closed)
+    function getBetById(uint256 _id) external view returns (uint256 matchId, uint256 sideId, uint256 odds, uint256 bookieCollateral, uint256 punditCollateral,  MatchResult result, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, uint lastUpdateTime, bool closed)
     {
         Bet storage bet = bets[betMapping[_id]];
-        //id = bet.id;
-        liquidityId = bet.liquidityId;
+        Liquidity storage _l = betPools[poolMapping[bet.liquidityId]];
+        
+        matchId = _l.matchId;
+        sideId = _l.sideId;
         odds = bet.odds;
         bookieCollateral = bet.bookieCollateral;
         punditCollateral = bet.punditCollateral;
-        createdTime = bet.createdTime;
         result = bet.result;
         bookiePayout = bet.bookiePayout;
         punditPayout = bet.punditPayout;
         feePaid = bet.feePaid;
-        closedTime = bet.closedTime;
+        lastUpdateTime = bet.createdTime;
+        if (bet.closedTime > 0)
+            lastUpdateTime = bet.closedTime;
         closed = bet.closed;
-        return (liquidityId, odds, bookieCollateral, punditCollateral, createdTime,  result, bookiePayout, punditPayout, feePaid, closedTime, closed);
+        return (matchId, sideId, odds, bookieCollateral, punditCollateral, result, bookiePayout, punditPayout, feePaid, lastUpdateTime, closed);
     }
 
     /// @notice Public function for a bookie to place odds on a match result and submit available liquidity. ie: Federer to beat Nadal, 200 odds with 10ETH max payout.

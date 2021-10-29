@@ -18,7 +18,8 @@ AdminApp = {
       },
     
       setOracleMatchData: function() {
-        App.oracleInstance.setInitialMatches(1).then(function() {alert("Done")});
+          var num = parseInt($('#admin_oracle_num').val());
+        App.oracleInstance.setInitialMatches(num).then(function() {alert("Done")});
       },
 
       initMatches: function(matches) {
@@ -69,7 +70,7 @@ AdminApp = {
 
         App.oracleInstance.setMatchResult(AdminApp.selectedMatchId, 2, parseInt(sideId), finalScore).then(function() {
 
-            App.oracleInstance.matchCompleteHandlePayouts(AdminApp.selectedMatchId).then(function () {alert("Match Updated");});
+            App.bookieInstance.matchCompleteHandlePayouts(AdminApp.selectedMatchId).then(function () {alert("Match Updated");});
 
         });
     },

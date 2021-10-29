@@ -31,7 +31,7 @@ App = {
       }
       // If no injected web3 instance is detected, fall back to Ganache
       else {
-        App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
+        App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');//
       }
       web3 = new Web3(App.web3Provider);
     return App.initContract();
@@ -39,7 +39,7 @@ App = {
 
   initContract: function() {
       
-    $.getJSON('./SoccerOracle.json', function(data) {
+    $.getJSON('../json/SoccerOracle.json', function(data) {
       // Get the necessary contract artifact file and instantiate it with @truffle/contract
       
       var SoccerOracleABIArtifact = data;
@@ -54,7 +54,7 @@ App = {
       });
     });
 
-      $.getJSON('./BeTheBookie.json', function(data) {
+      $.getJSON('../json/BeTheBookie.json', function(data) {
         // Get the necessary contract artifact file and instantiate it with @truffle/contract
         
         var BeTheBookieABIArtifact = data;
@@ -64,6 +64,7 @@ App = {
         App.contracts.BeTheBookie.setProvider(App.web3Provider);
       
         App.contracts.BeTheBookie.deployed().then(function(instance) {
+          
           bookieInstance = instance;
           BookieApp.bookieInstance = instance;
           PunditApp.bookieInstance = instance;
@@ -76,7 +77,7 @@ App = {
               }
           });
 
-          App.loadAvailableMatches();
+         App.loadAvailableMatches();
           
         });
 
@@ -139,36 +140,33 @@ App = {
 
       
 
-     App.oracleInstance.getAvailableMatches().then(function (data) {
+    //  App.oracleInstance.getAvailableMatches().then(function (data) {
         
-          matchIds = data;
-          for (var i = 0; i < matchIds.length; i++)
-          {
-           App.oracleInstance.getMatch(parseInt(matchIds[i])).then(function (result)
-             {
-              var match = {}
+    //       matchIds = data;
+    //       for (var i = 0; i < matchIds.length; i++)
+    //       {
+    //        App.oracleInstance.getMatch(parseInt(matchIds[i])).then(function (result)
+    //          {
+    //           var match = {}
                 
-              match ["match_id"] = parseInt(result[0]);
-              match ["match_date"] = result[1];
-              match ["home_team_id"] = parseInt(result[2]);
-              match ["away_team_id"] = parseInt(result[3]);
-              match ["home_team_name"] = result[4];
-              match ["away_team_name"] = result[5];
+    //           match ["match_id"] = parseInt(result[0]);
+    //           match ["match_date"] = result[1];
+    //           match ["home_team_id"] = parseInt(result[2]);
+    //           match ["away_team_id"] = parseInt(result[3]);
+    //           match ["home_team_name"] = result[4];
+    //           match ["away_team_name"] = result[5];
   
-              matches.push(match);
+    //           matches.push(match);
   
-              if (matches.length == matchIds.length)
-              {
-                BookieApp.initMatches(matches);
-                PunditApp.initMatches(matches);
-                AdminApp.initMatches(matches);
-                BookieApp.loadBets();
-                BookieApp.loadLiquidity();
-                PunditApp.loadMyBets();
-              }
-             });
-          }
-     });
+    //           if (matches.length == matchIds.length)
+    //           {
+    //             BookieApp.initMatches(matches);
+    //             PunditApp.initMatches(matches);
+    //             AdminApp.initMatches(matches);
+    //           }
+    //          });
+    //       }
+    //  });
      
     //  App.oracleInstance.getAvailableMatches().then(function (data) {
     //    matchIds = data;

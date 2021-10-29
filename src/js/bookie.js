@@ -86,10 +86,10 @@ BookieApp = {
   
       loadBets: function() {
         var account = web3.eth.accounts[0];
-        BookieApp.bookieInstance.getActiveBetsByAddress(account).then(function (ids) {
+        BookieApp.bookieInstance.getActiveBetsByAddress(account, true).then(function (ids) {
             BookieApp.displayActiveBets(ids);
         });
-        BookieApp.bookieInstance.getInActiveBetsByAddress(account).then(function (ids) {
+        BookieApp.bookieInstance.getInActiveBetsByAddress(account, true).then(function (ids) {
             BookieApp.displayClosedBets(ids);
         });
     },
@@ -114,25 +114,27 @@ BookieApp = {
             for (var i = 0; i < ids.length; i++)
             {
                 BookieApp.bookieInstance.getBetById(parseInt(ids[i])).then(function (bet) {
-                    BookieApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
+                    //BookieApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
                         var item = {}
                         
-                        item ["id"] = bet[0];
-                        item ["bookieCollateral"] = bet[2]/BookieApp.oneETH;
-                        item ["punditCollateral"] = bet[3]/BookieApp.oneETH;
-                        item ["odds"] = bet[4]/100;
-                        var dt=eval(bet[5]*1000);
+                        item ["matchId"] = bet[0];
+                        item ["sideId"] = bet[1];
+                        item ["odds"] = bet[2]/100;
+                        item ["bookieCollateral"] = bet[3]/BookieApp.oneETH;
+                        item ["punditCollateral"] = bet[4]/BookieApp.oneETH;
+                        
+                        var dt=eval(bet[9]*1000);
                         var myDate = new Date(dt);
-                        item ["createdTime"] = myDate.toLocaleString();
-                        var match = BookieApp.findMatchData(lq[1]);
+                        item ["lastUpdateTime"] = myDate.toLocaleString();
+                        var match = BookieApp.findMatchData(bet[0]);
                         if (match != null)
                         {
                             item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
                             item ["match_date"] = match.match_date;
                             
-                            if (lq[2] == match.home_team_id)
+                            if (bet[1] == match.home_team_id)
                                 item ["teamName"] = match.home_team_name;
-                            else if (lq[2] == match.away_team_id)
+                            else if (bet[1] == match.away_team_id)
                                 item ["teamName"] = match.away_team_name;
                         }
                         bets.push(item);
@@ -144,7 +146,7 @@ BookieApp = {
                                 $("#bookie-bets").bootstrapTable("hideLoading");
 
                             }
-                        });
+                        //});
                 });
             }
         },
@@ -160,38 +162,36 @@ BookieApp = {
             for (var i = 0; i < ids.length; i++)
             {
                 BookieApp.bookieInstance.getBetById(parseInt(ids[i])).then(function (bet) {
-                    BookieApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
+                    //BookieApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
                         var item = {}
                         
-                        item ["id"] = bet[0];
-                        item ["bookiePayout"] =  bet[2]/BookieApp.oneETH;;
-                        item ["punditPayout"] = bet[3]/BookieApp.oneETH;
-                        item ["feePaid"] = bet[4]/BookieApp.oneETH;
-                        item ["odds"] = bet[5]/100;
-                        if (bet[6] == 1)
+                        item ["matchId"] = bet[0];
+                        item ["sideId"] = bet[1];
+                        item ["odds"] = bet[2]/100;
+                        item ["bookiePayout"] =  bet[6]/BookieApp.oneETH;;
+                        item ["punditPayout"] = bet[7]/BookieApp.oneETH;
+                        item ["feePaid"] = bet[8]/BookieApp.oneETH;
+                        
+                        if (bet[5] == 1)
                             item ["result"] = "Bookie Won";
-                        else if (bet[6] == 2)
+                        else if (bet[5] == 2)
                             item ["result"] = "Pundit Won";
-                        else if (bet[6] == 3)
+                        else if (bet[5] == 3)
                             item ["result"] = "VOID";
 
-                        var dt=eval(bet[7]*1000);
+                        var dt=eval(bet[9]*1000);
                         var myDate = new Date(dt);
-                        item ["createdTime"] = myDate.toLocaleString();
+                        item ["lastUpdateTime"] = myDate.toLocaleString();
 
-                        var closedDt=eval(bet[8]*1000);
-                        var myDate = new Date(dt);
-                        item ["closedTime"] = myDate.toLocaleString();
-
-                        var match = BookieApp.findMatchData(lq[1]);
+                        var match = BookieApp.findMatchData(bet[0]);
                         if (match != null)
                         {
                             item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
                             item ["match_date"] = match.match_date;
                             
-                            if (lq[2] == match.home_team_id)
+                            if (bet[1] == match.home_team_id)
                                 item ["teamName"] = match.home_team_name;
-                            else if (lq[2] == match.away_team_id)
+                            else if (bet[1] == match.away_team_id)
                                 item ["teamName"] = match.away_team_name;
                         }
                         bets.push(item);
@@ -202,7 +202,7 @@ BookieApp = {
                             });
                             $("#bookie-closedbets").bootstrapTable("hideLoading");
                         }
-                    });
+                    //});
                 });
             }
         },

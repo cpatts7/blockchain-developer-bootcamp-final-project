@@ -39,11 +39,11 @@ PunditApp = {
 
     initMatches: function(matches) {
         PunditApp.matchData = matches;
-        PunditApp.loadAvailableBets(matches);
+        PunditApp.loadAvailableBets();
     },
 
     filterMatchesTable: function() {
-        PunditApp.loadAvailableBets(PunditApp.matchData);
+        PunditApp.loadAvailableBets();
     },
 
     selectBet: function(id) {
@@ -73,7 +73,7 @@ PunditApp = {
         });
     },
 
-    loadAvailableBets: function(matches) {
+    loadAvailableBets: function() {
         
         PunditApp.bookieInstance.getAllAvailableLiquidity().then(function (ids) {
             PunditApp.displayAvailableBets(ids);
@@ -82,31 +82,42 @@ PunditApp = {
 
     displayAvailableBets: async function(ids) {
         
-        var openData = [];
-        var historicData = [];
+        var data = [];
         
         $('#pundit-liquidity').bootstrapTable('destroy');
 
         if (ids == null || ids.length == 0)  
         return;
 
+        var selectedTeam = $('#pundit_match_filter').find(":selected").val();
+        var matchDateText = $('#punditDateFilter').val();
+        var matchDateFilter = "";
+        if (matchDateText != "")
+        {
+            matchDate = new Date(matchDateText);
+            matchDateFilter = matchDate.toISOString().slice(0,10);
+        }
+
+        var expectedCount = ids.length;
+
         for (var i = 0; i < ids.length; i++)
         {
             PunditApp.bookieInstance.getLiquidityById(parseInt(ids[i])).then(function (lq) {
             var item = {}
             
+            var match = PunditApp.findMatchData(lq[1]);
+
+
+
             item ["id"] = lq[0];
             item ["matchId"] = lq[1];
             item ["sideId"] = lq[2];
             item ["remainingLiquidity"] = lq[3]/PunditApp.oneETH;
             item ["odds"] = lq[4]/100;
             item ["maxBet"] = item ["remainingLiquidity"] / (item ["odds"]-1);
-            item ["maxPayout"] = (item ["maxBet"] * item ["odds"]);
+            item ["maxPayout"] = item ["maxBet"] * item ["odds"];
             item ["closed"] = lq[5];
             item ["teamName"] = "DRAW";
-
-            var match = PunditApp.findMatchData(lq[1]);
-
             item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
             item ["match_date"] = match.match_date;
             
@@ -115,14 +126,14 @@ PunditApp = {
             else if (lq[2] == match.away_team_id)
                 item ["teamName"] = match.away_team_name;
 
-            if (lq[5] == true)
-                historicData.push(item);
-            else
-                openData.push(item);
+            
+            
 
-            if (openData.length + historicData.length == ids.length) {
-                PunditApp.availablePositions = openData;
-                PunditApp.updateBookieLiquidityTable(openData); 
+            data.push(item);
+
+            if (data.length == expectedCount) {
+                PunditApp.availablePositions = data;
+                PunditApp.updateBookieLiquidityTable(data); 
                 }
             });
         }
@@ -133,7 +144,7 @@ PunditApp = {
         $(function() {
         $('#pundit-liquidity').bootstrapTable({
             data: data,
-            columns: [ {},{},{},{},{},{},{},  
+            columns: [ {},{},{},{},{},{},  
             {
             field: 'id',
             title: 'Place Bet',
@@ -153,10 +164,10 @@ PunditApp = {
 
     loadMyBets: function() {
         var account = web3.eth.accounts[0];
-        PunditApp.bookieInstance.getActiveBetsByAddress(account).then(function (ids) {
+        PunditApp.bookieInstance.getActiveBetsByAddress(account, false).then(function (ids) {
             PunditApp.displayActiveBets(ids);
         });
-        PunditApp.bookieInstance.getInActiveBetsByAddress(account).then(function (ids) {
+        PunditApp.bookieInstance.getInActiveBetsByAddress(account, false).then(function (ids) {
             PunditApp.displayClosedBets(ids);
         });
     },
@@ -211,7 +222,7 @@ PunditApp = {
     displayActiveBets: function(ids) {
         var bets = [];
         
-        $('#pundit-bets').bootstrapTable('destroy');
+        $('#pundit-mybets').bootstrapTable('destroy');
 
         if (ids == null || ids.length == 0)  
         return;
@@ -219,37 +230,40 @@ PunditApp = {
         for (var i = 0; i < ids.length; i++)
         {
             PunditApp.bookieInstance.getBetById(parseInt(ids[i])).then(function (bet) {
-                PunditApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
+                //PunditApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
                     var item = {}
                     
-                    item ["id"] = bet[0];
-                    item ["bookieCollateral"] = bet[2]/BookieApp.oneETH;
-                    item ["punditCollateral"] = bet[3]/BookieApp.oneETH;
-                    item ["odds"] = bet[4]/100;
-                    var dt=eval(bet[5]*1000);
+                    item ["matchId"] = bet[0];
+                    item ["sideId"] = bet[1];
+                    item ["odds"] = bet[2]/100;
+                    item ["bookieCollateral"] = bet[3]/PunditApp.oneETH;
+                    item ["punditCollateral"] = bet[4]/PunditApp.oneETH;
+                    
+                    var dt=eval(bet[9]*1000);
                     var myDate = new Date(dt);
-                    item ["createdTime"] = myDate.toLocaleString();
-                    var match = BookieApp.findMatchData(lq[1]);
+                    item ["lastUpdateTime"] = myDate.toLocaleString();
+                    var match = PunditApp.findMatchData(bet[0]);
                     if (match != null)
                     {
                         item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
                         item ["match_date"] = match.match_date;
                         
-                        if (lq[2] == match.home_team_id)
+                        if (bet[1] == match.home_team_id)
                             item ["teamName"] = match.home_team_name;
-                        else if (lq[2] == match.away_team_id)
+                        else if (bet[1] == match.away_team_id)
                             item ["teamName"] = match.away_team_name;
                     }
                     bets.push(item);
                     
                     if (bets.length == ids.length) {
-                            $('#pundit-bets').bootstrapTable({
+                        
+                            $('#pundit-mybets').bootstrapTable({
                                 data: bets
                             });
-                            $("#pundit-bets").bootstrapTable("hideLoading");
+                            $("#pundit-mybets").bootstrapTable("hideLoading");
 
                         }
-                    });
+                   // });
             });
         }
     },
@@ -266,39 +280,38 @@ PunditApp = {
         {
             
             PunditApp.bookieInstance.getBetById(parseInt(ids[i])).then(function (bet) {
-                PunditApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
+                //PunditApp.bookieInstance.getLiquidityById(parseInt(bet[1])).then(function(lq) {
                     var item = {}
                     
-                    item ["id"] = bet[0];
-                    item ["bookiePayout"] =  bet[2]/BookieApp.oneETH;;
-                    item ["punditPayout"] = bet[3]/BookieApp.oneETH;
-                    item ["feePaid"] = bet[4]/BookieApp.oneETH;
-                    item ["punditCollateral"] = openBet[2]/BookieApp.oneETH;
-                    item ["odds"] = bet[5]/100;
-                    if (bet[6] == 1)
+                    item ["matchId"] = bet[0];
+                    item ["sideId"] = bet[1];
+                    item ["odds"] = bet[2]/100;
+                    item ["punditCollateral"] = bet[4]/BookieApp.oneETH;
+                    item ["bookiePayout"] =  bet[6]/BookieApp.oneETH;;
+                    item ["punditPayout"] = bet[7]/BookieApp.oneETH;
+                    item ["feePaid"] = bet[8]/BookieApp.oneETH;
+                    
+                    if (bet[5] == 1)
                         item ["result"] = "Bookie Won";
-                    else if (bet[6] == 2)
+                    else if (bet[5] == 2)
                         item ["result"] = "Pundit Won";
-                    else if (bet[6] == 3)
+                    else if (bet[5] == 3)
                         item ["result"] = "VOID";
 
-                    var dt=eval(bet[7]*1000);
+                    var dt=eval(bet[9]*1000);
                     var myDate = new Date(dt);
-                    item ["createdTime"] = myDate.toLocaleString();
+                    item ["lastModifiedTime"] = myDate.toLocaleString();
+                    
 
-                    var closedDt=eval(bet[8]*1000);
-                    myDate = new Date(closedDt);
-                    item ["closedTime"] = myDate.toLocaleString();
-
-                    var match = BookieApp.findMatchData(lq[1]);
+                    var match = BookieApp.findMatchData(bet[0]);
                     if (match != null)
                     {
                         item ["matchDetails"] = match.home_team_name + " vs " + match.away_team_name;
                         item ["match_date"] = match.match_date;
                         
-                        if (lq[2] == match.home_team_id)
+                        if (bet[1] == match.home_team_id)
                             item ["teamName"] = match.home_team_name;
-                        else if (lq[2] == match.away_team_id)
+                        else if (bet[1] == match.away_team_id)
                             item ["teamName"] = match.away_team_name;
                     }
                     bets.push(item);
@@ -309,7 +322,7 @@ PunditApp = {
                         });
                         $("#pundit-closedbets").bootstrapTable("hideLoading");
                     }
-                });
+                //});
             });
             
         }
