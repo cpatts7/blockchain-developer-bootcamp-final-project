@@ -113,7 +113,6 @@ contract("BetManager", function (accounts) {
     await instance.placeBet(2, 195, { from: alice, value: betAmount });
     const result1 = await instance.getLiquidityById.call(1);
     const result2 = await instance.getLiquidityById.call(2);
-    const matchResult = await instance.getMatchLiquidity.call(1);
 
     assert.equal(
       web3.utils.fromWei(result1[3]),
@@ -150,11 +149,7 @@ contract("BetManager", function (accounts) {
       "the ownedLiquidityResult does not match the expected value"
     )
 
-    assert.equal(
-      matchResult.length,
-      2,
-      "the matchResult does not match the expected value"
-    )
+    
   });
 
   it("Placing Bet", async () => {
@@ -168,7 +163,6 @@ contract("BetManager", function (accounts) {
     const liquidityObject = await instance.getLiquidityById.call(1);
     const balance = await instance.contractBalance.call();
     const bets = await instance.getActiveBetsByAddress(alice, false, { from: alice});
-    const matchBets = await instance.getMatchBets(1);
 
     assert.equal(
       result[0],
@@ -209,12 +203,6 @@ contract("BetManager", function (accounts) {
       bets.length,
       1,
       "the bets does not match the expected value"
-    )
-
-    assert.equal(
-      matchBets.length,
-      1,
-      "the matchBets does not match the expected value"
     )
 
     it("should emit a BetPlaced event when bookie lays a bet", async () => {

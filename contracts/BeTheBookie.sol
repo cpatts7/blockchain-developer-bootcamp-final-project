@@ -11,6 +11,7 @@ import "./SoccerOracle.sol";
 contract BeTheBookie is Ownable {
 
     address payable private ownerPayable;
+    bool contractPaused;
     uint256 betCounter;
     uint minBet = 0.001 ether;
     uint256 liquidityCounter;
@@ -25,7 +26,10 @@ contract BeTheBookie is Ownable {
     //mapping of pundit bets to an address
     mapping (address => uint256[]) addressBetsMapping; 
 
+    //Collection of liquidity provided by the bookmakers of the app.
     Liquidity[] public betPools;
+
+    //Mapping of the Liquidity ID to the index in the betPools array.
     mapping (uint256 => uint) poolMapping; //id -> index
 
     //mapping of bookie liquidity to an address
@@ -36,9 +40,10 @@ contract BeTheBookie is Ownable {
     //mapping of the unique match id's to bets. It is needed to be able to find all bets for a given match on the client. 
     mapping (uint256 => uint256[]) matchBetMapping; 
     
+    //Enum representing the various types of results for a bet.
     enum MatchResult{ Undecided, BookieWon, PunditWon, Void }
 
-/// @notice Maintains a list of addresses which have opted to self exclude from the platform.
+    //Mapping of an address to a bool if they chose to exclude themselves from the contract.
     mapping (address => bool) exclusionList;
 
 /// @notice Raises an event that a new liquidity / market has been provided to pundits.
@@ -94,15 +99,9 @@ contract BeTheBookie is Ownable {
     }
 
 
-      /* 
-   * Modifiers
-   */
-
-  // Create a modifer, `isOwner` that checks if the msg.sender is the owner of the contract
-//   function isOwner() public view returns(bool) {
-//     return msg.sender == owner;
-//   }
-
+    
+/// @notice Returns true/false depending if the address is in the exclusion list or not.
+/// @return Returns true/false
   function isNotExcluded() public view returns(bool) {
     return !exclusionList[msg.sender];
   }
@@ -116,8 +115,19 @@ contract BeTheBookie is Ownable {
         revert();
     }
 
+/// @notice Main constructor for the contract. Set's the owner to the sender.
     constructor() public {
         ownerPayable = msg.sender;
+    }
+
+/// @notice This function is for the owner to put the contract in a paused state if there is a flaw that needs to be investigated. It will stop new money from being sent to the contract.
+/// @dev Only applies to the placeBet / addLiquidity functions
+/// @param paused switch to enable/disable the contract.
+/// @return bool - returns current paused state.
+    function setContractState(bool paused) public onlyOwner returns (bool)
+    {
+        contractPaused = paused;
+        return contractPaused;
     }
 
 /// @notice Gambling addiction is a real problem and this option allows people to self exclude from the platform should they feel they are participating in an unhealthly way.
@@ -129,18 +139,22 @@ contract BeTheBookie is Ownable {
         exclusionList[msg.sender] = _excluded;
     }
 
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
+/// @notice Returns the total contract balance in this contract.
     function contractBalance() public view returns (uint256 _balance) {
         _balance = address(this).balance;
     }
 
+/// @notice Called after creation to link this contract to the appropriate Oracle that provides the matches/scores.
+/// @param _address of the Oracle
+/// @return returns bool - the oracle will return true if setup properly.
     function setOracleAddress(address _address) public onlyOwner returns (bool) {
         soccerOracleAddr = _address;
         oracle = OracleInterface(soccerOracleAddr);
         return oracle.Validate();
     }
     
+    /// @notice Calls the validation method on the oracle to prove it is connected.
+    /// @return Returns true/false based on if the oracle is setup.
     function testOracleValid() public view returns (bool) {
         return oracle.Validate();
     }
@@ -151,6 +165,7 @@ contract BeTheBookie is Ownable {
 /// @return _id - returns unique ID of the new bet object.
     function placeBet(uint256 _liquidityId, uint _odds) public payable returns (uint256 _id)
     {
+        require(!contractPaused);
         require(isNotExcluded()); //ensure the participant has not chosed to self exclude from the platform
         require(msg.value >= minBet);
         
@@ -206,6 +221,9 @@ contract BeTheBookie is Ownable {
 
     }
 
+/// @notice Called after a match result has been set in the Oracle by the owner. Handles all the payouts depending on the result. Also refunds any excess liquidity where bets have not been placed.
+/// @param _matchId a parameter just like in doxygen (must be followed by parameter name)
+/// @return _success returns true if successfully completed.
     function matchCompleteHandlePayouts(uint256 _matchId) public payable onlyOwner returns (bool _success) {
         require(msg.value == 0);
         (OracleInterface.ResultType _type,uint256 winning_team_id,uint256 result_time)  = oracle.getMatchResult(_matchId);
@@ -291,8 +309,7 @@ contract BeTheBookie is Ownable {
         emit BetResult(_betId);
     }
 
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
+/// @notice used by the GUI to display current bets for active user
 /// @return uint256[] - list of bet ID's owned by the msg.sender
     function getActiveBetsByAddress(address a, bool asBookie) external view returns (uint256[] memory)
     {
@@ -300,8 +317,7 @@ contract BeTheBookie is Ownable {
         return getActiveBetsByAddressAndStatus(_bets, asBookie, false);
     }
 
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
+/// @notice used by the GUI to display closed bets for active user
 /// @return uint256[] - list of bet ID's owned by the msg.sender
     function getInActiveBetsByAddress(address a, bool asBookie) external view returns (uint256[] memory)
     {
@@ -309,6 +325,12 @@ contract BeTheBookie is Ownable {
         return getActiveBetsByAddressAndStatus(_bets, asBookie, true);
     }
 
+/// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+/// @param _bets - collection of bets to filter
+/// @param asBookie -  determines the address to filter on (bookie or pundit)
+/// @param isClosed - filter to bring back open/closed bets
+/// @return uint256[] list of bet ID's owned by the msg.sender
     function getActiveBetsByAddressAndStatus(uint256[] memory _bets, bool asBookie, bool isClosed) private view returns (uint256[] memory)
     {
         uint count = 0; 
@@ -338,6 +360,9 @@ contract BeTheBookie is Ownable {
         return output;
     }
 
+/// @notice Returns all important properties of a bet by it's ID
+/// @param _id Bet.ID
+/// @return properties of the bet.
     function getBetById(uint256 _id) external view returns (uint256 matchId, uint256 sideId, uint256 odds, uint256 bookieCollateral, uint256 punditCollateral,  MatchResult result, uint256 bookiePayout, uint256 punditPayout, uint256 feePaid, uint lastUpdateTime, bool closed)
     {
         Bet storage bet = bets[betMapping[_id]];
@@ -367,6 +392,7 @@ contract BeTheBookie is Ownable {
     /// @return _id returns unique ID of the new liquidity object.
     function addLiquidity(uint _matchId, uint _sideId, uint256 _odds) public payable returns (uint _id)
     {
+        require(!contractPaused);
         require(isNotExcluded()); //ensure the participant has not chosed to self exclude from the platform
         require(_odds > 100);
         require(_odds < 10001);
@@ -405,7 +431,12 @@ contract BeTheBookie is Ownable {
 
     }
 
+/// @notice Allows the bookie to adjust their odds for a given liquidity object.
+/// @param _liquidityId Liquidity.ID
+/// @param _odds New odds.
+/// @return bool - true if successful.
     function adjustOdds(uint _liquidityId, uint _odds) public returns (bool _result) {
+        require(!contractPaused);
         require(_odds > 100);
         require(_odds < 10001);
 
@@ -413,14 +444,14 @@ contract BeTheBookie is Ownable {
         require(msg.sender == _l.bookie);
         require(!_l.closed);
         require(_l.remainingLiquidity > 0);
+        require(_l.odds != _odds); //no point in performing the change if the values match.
 
         _l.odds = _odds;
         _result = true;
     }
 
 
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
+/// @notice Returns unused liqudity to the bookie after a match is over or if they cancel in the GUI.
 /// @param _id liqudity id
 /// @return _result true if no errors
     function refundLiquidity(uint _id) public payable returns (bool _result) {
@@ -436,8 +467,7 @@ contract BeTheBookie is Ownable {
         _result = true;
     }
 
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
+/// @notice Used by the GUI to return all bookie liquidity items for tracking purpose.
 /// @return uint256[] - list of liquidity ID's owned by the msg.sender
     function getBookieLiquidity(address bookie) external view returns (uint256[] memory)
     {
@@ -445,15 +475,8 @@ contract BeTheBookie is Ownable {
         return response;
     }
 
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
-/// @param _matchId unique match id
-/// @return uint256[] - list of liquidity ID's for that match
-    function getMatchLiquidity(uint256 _matchId) external view returns (uint256[] memory) {
-        uint256[] memory response = matchLiquidityMapping[_matchId];
-        return response;
-    }
-
+/// @notice Returns all available liquidity that a pundit can bet on. Used by the GUI to show the user all the bets they could take.
+/// @return uint256[] - returns all liquidty ID's where they are still valid.
     function getAllAvailableLiquidity() external view returns (uint256[] memory) {
         uint count = 0; 
 
@@ -479,19 +502,9 @@ contract BeTheBookie is Ownable {
         return output;
     }
 
-/// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
-/// @param _matchId unique match id
-/// @return uint256[] - list of liquidity ID's for that match
-    function getMatchBets(uint256 _matchId) external view returns (uint256[] memory) {
-        uint256[] memory response = matchBetMapping[_matchId];
-        return response;
-    }    
-    
-    /// @notice Explain to an end user what this does
-/// @dev Explain to a developer any extra details
-/// @param _id liqudity id
-/// @return _result true if no errors
+/// @notice Returns all useful properites of the liquidity object to the GUI
+/// @param _id liqudity.id
+/// @return returns all useful properites of the liquidity object to the GUI
     function getLiquidityById(uint _id) external view returns (uint id, uint matchId, uint sideId, uint256 remainingLiquidity, uint odds, bool closed, uint createdTime)
     {
         Liquidity storage _l = betPools[poolMapping[_id]];
