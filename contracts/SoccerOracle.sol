@@ -3,6 +3,9 @@ pragma solidity >=0.5.16 <0.9.0;
 import "./OracleInterface.sol";
 import "./Ownable.sol";
 
+/// @title Specific implementation to the OracleInterface providing English Football matches and scores.
+/// @author Chris Patterson
+/// @notice Provides match data and result data back to the BeTheBookie contract.
 contract SoccerOracle is OracleInterface, Ownable {
 
     Match[] public matches;
@@ -11,6 +14,8 @@ contract SoccerOracle is OracleInterface, Ownable {
     MatchResult[] public matchResults;
     mapping (uint256 => uint256) matchIdResultIndexMapping;
 
+/// @notice Constructor object
+/// @dev Creates a default match with ID 0 to handle specific scenarios where the validation checks for objects in the set.
     constructor() public {
         //this is done to make sure there is a blank match at index 0. Due to the way the mappings work, a missing value results in 0 which would be the first index of the matches[] array. 
         //It would be possible to accidentally set the result for the wrong match this way. By having a seeded match in index 0 that is by default invalid this issue is mitigated.
@@ -27,10 +32,17 @@ contract SoccerOracle is OracleInterface, Ownable {
         matchIdIndexMapping[0] = matches.length - 1;
     }
 
+/// @notice Returns simple bool so contract can be validated as having a valid oracle.
+/// @return return bool (hard coded to true) - this is passed back to the Bet Contract so it knows it is properly connected.
     function Validate() external view returns (bool _result) {
         _result = true;
     }
 
+/// @notice Adds the result (win, loss, draw) to the 
+/// @param matchId - the unique ID of the match
+/// @param result - result of the match
+/// @param winner - the unique ID of the winner (0 for a draw)
+/// @param final_score - final score in string format: "0-1" or "2-2"
     function setMatchResult(uint256 matchId, ResultType result, uint256 winner, string calldata final_score) external onlyOwner {
         Match storage _match = matches[matchIdIndexMapping[matchId]];
         require(_match.pending); //make sure this is still a pending match.
@@ -46,6 +58,7 @@ contract SoccerOracle is OracleInterface, Ownable {
         matchIdResultIndexMapping[matchId] = matchResults.length-1;
     }
 
+/// @notice Adds a new match to the available matches that can be bet on.
     function addMatch(uint256 match_id,
                         string calldata match_date,
                         uint256 team1_id,
@@ -56,6 +69,14 @@ contract SoccerOracle is OracleInterface, Ownable {
         addMatchDetails(match_id, match_date, team1_id, team2_id, team1_name, team2_name);
     }
 
+/// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+/// @param match_id Unique ID of the match
+/// @param match_date Date of match "yyyyMMdd"
+/// @param team1_id Unique team id for home team
+/// @param team2_id Unique team id for away team
+/// @param team1_name Home team name
+/// @param team2_name Away team name
     function addMatchDetails(uint256 match_id,
                         string memory match_date,
                         uint256 team1_id,
@@ -63,6 +84,7 @@ contract SoccerOracle is OracleInterface, Ownable {
                         string memory team1_name,
                         string memory team2_name) public onlyOwner
     {
+        require(team1_id != team2_id);
         matches.push(Match({
             match_id: match_id,
             match_date: match_date,
@@ -76,6 +98,8 @@ contract SoccerOracle is OracleInterface, Ownable {
         matchIdIndexMapping[match_id] = matches.length - 1;
     }
 
+/// @notice Returns all matches that are still pending. ie: ones that have not been set with a result.
+/// @return Array of match id's
     function getAvailableMatches() external view returns (uint256[] memory) {
         uint count = 0; 
 
@@ -99,6 +123,9 @@ contract SoccerOracle is OracleInterface, Ownable {
         return output; 
     }
 
+
+/// @notice Returns details of a single match by ID
+/// @return Tupple containing all relevant attributes of the match.
     function getMatch(uint256 match_id) external view returns (
                                                     uint256 id,
                                                     string memory match_date,
@@ -118,6 +145,9 @@ contract SoccerOracle is OracleInterface, Ownable {
         pending = _match.pending;
     }
 
+/// @notice Returns the result of a match. Used by the BeTheBookie contract to work out how to pay the people that bet on it.
+/// @param match_id match id to get the details for
+/// @return Appropriate attributes of the result.
     function getMatchResult(uint256 match_id) external view returns (ResultType result,
                                                                     uint256 winning_team_id,
                                                                     uint256 result_time)
@@ -128,6 +158,8 @@ contract SoccerOracle is OracleInterface, Ownable {
         result_time = _matchResult.result_time;
     }
 
+/// @notice Creates test data
+/// @param _set switch to add various sets of test data
     function setInitialMatches(uint256 _set) external
     {
         if (_set == 1)

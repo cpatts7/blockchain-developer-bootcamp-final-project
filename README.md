@@ -7,7 +7,6 @@ Most centralized betting sites (bet365 for example) make odds on sporting events
 ## Goals
 This project (Be-The-Bookie) aims to disrupt this business model by removing the need for this middle man in between. Particpants can either make a market on a match (be a bookie) or take a bet on a particular result. The app will leverage an oracle to determine who is paid out in the end. 
 
-
 ## Requirements
   1. Latest truffle version.
      ```console
@@ -31,3 +30,8 @@ This project (Be-The-Bookie) aims to disrupt this business model by removing the
   8. Enter 1 in the Num textbox and press Set Initial Matches button (for more matches, repeat using numbers 2 through 10)
   9. Refresh and the bookie tab will refresh with available matches
 
+## About
+Author: Chris Patterson
+Project: Final project for Consensys Bootcamp of 2021.
+URL: http://bethebookie.surge.sh
+Metamask Address: 0x4818F545FeD4b0c9be8D24c3645F18F48f928E2c
