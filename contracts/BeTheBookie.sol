@@ -314,7 +314,7 @@ contract BeTheBookie is Ownable {
     function getActiveBetsByAddress(address a, bool asBookie) external view returns (uint256[] memory)
     {
         uint256[] memory _bets = addressBetsMapping[a];
-        return getActiveBetsByAddressAndStatus(_bets, asBookie, false);
+        return getActiveBetsByAddressAndStatus(_bets, a, asBookie, false);
     }
 
 /// @notice used by the GUI to display closed bets for active user
@@ -322,7 +322,7 @@ contract BeTheBookie is Ownable {
     function getInActiveBetsByAddress(address a, bool asBookie) external view returns (uint256[] memory)
     {
         uint256[] memory _bets = addressBetsMapping[a];
-        return getActiveBetsByAddressAndStatus(_bets, asBookie, true);
+        return getActiveBetsByAddressAndStatus(_bets, a, asBookie, true);
     }
 
 /// @notice Explain to an end user what this does
@@ -331,7 +331,7 @@ contract BeTheBookie is Ownable {
 /// @param asBookie -  determines the address to filter on (bookie or pundit)
 /// @param isClosed - filter to bring back open/closed bets
 /// @return uint256[] list of bet ID's owned by the msg.sender
-    function getActiveBetsByAddressAndStatus(uint256[] memory _bets, bool asBookie, bool isClosed) private view returns (uint256[] memory)
+    function getActiveBetsByAddressAndStatus(uint256[] memory _bets, address a, bool asBookie, bool isClosed) private view returns (uint256[] memory)
     {
         uint count = 0; 
 
@@ -339,8 +339,8 @@ contract BeTheBookie is Ownable {
         for (uint i = 0; i < _bets.length; i++) {
             Bet storage _bet = bets[i];
             if (_bet.closed == isClosed && 
-                    ((asBookie && _bet.bookie == msg.sender) 
-                    || (!asBookie && _bet.pundit == msg.sender))
+                    ((asBookie && _bet.bookie == a) 
+                    || (!asBookie && _bet.pundit == a))
                 ) 
                 count++; 
         }

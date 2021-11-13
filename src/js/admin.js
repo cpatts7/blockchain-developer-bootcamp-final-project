@@ -14,7 +14,7 @@ AdminApp = {
       },
 
     setOracle: function() {
-        bookieInstance.setOracleAddress(App.oracleInstance.address).then(function(result) {alert(result)});
+        bookieInstance.setOracleAddress(App.oracleInstance.address).then(function(result) {alert("Oracle is set.")});
       },
     
       setOracleMatchData: function() {
