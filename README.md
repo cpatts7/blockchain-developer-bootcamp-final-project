@@ -32,7 +32,11 @@ This project (Be-The-Bookie) aims to disrupt this business model by removing the
 
 ## About
 Author: Chris Patterson
+
 Project: Final project for Consensys Bootcamp of 2021.
+
 URL: http://bethebookie.surge.sh
+
 Screencast: https://www.loom.com/share/bdcadd81c11f4a5b9fc062b460e0a91c
+
 Metamask Address: 0x4818F545FeD4b0c9be8D24c3645F18F48f928E2c
