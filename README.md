@@ -35,7 +35,7 @@ Author: Chris Patterson
 
 Project: Final project for Consensys Bootcamp of 2021.
 
-URL: http://bethebookie.surge.sh
+URL: http://bethebookie.surge.sh (Please connect to the Rinkby testnet)
 
 Screencast: https://www.loom.com/share/bdcadd81c11f4a5b9fc062b460e0a91c
 
